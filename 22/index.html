@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 34</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: var(--off-white); color: var(--text-color); text-align: justify; }
+        header { background: var(--coffee); color: var(--off-white); padding: 1rem 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { margin-bottom: 0.5rem; }
+        main { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+        .content-block { background: var(--beige); padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h3, h4 { color: var(--coffee); border-bottom: 2px solid var(--light-coffee); padding-bottom: 5px; margin-bottom: 15px; text-align: left; }
+        .key-terms ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; text-align: left; }
+        .key-terms li { background: var(--off-white); padding: 8px 15px; border-radius: 5px; font-weight: bold; color: var(--text-color); }
+        .responsive-image { max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); max-width: 400px; }
+        figure { margin: 0; }
+        figcaption { font-size: 0.9em; font-style: italic; text-align: center; color: #666; margin-top: 5px; }
+        .accordion-item { border: 1px solid var(--light-coffee); margin-bottom: 10px; border-radius: 5px; overflow: hidden; }
+        .accordion-header { background-color: var(--light-coffee); color: var(--off-white); padding: 12px 15px; width: 100%; text-align: left; border: none; outline: none; cursor: pointer; font-size: 1.1em; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease; }
+        .accordion-header:hover { background-color: var(--coffee); }
+        .accordion-header::after { content: '\002B'; font-weight: bold; font-size: 1.2em; }
+        .accordion-header.active::after { content: '\2212'; }
+        .accordion-content { padding: 0 15px; background-color: var(--beige); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-content p, .accordion-content ul { padding: 15px 0; margin: 0; }
+        .accordion-content ul li { margin-bottom: 10px; }
+        .quiz-container { background: var(--off-white); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .quiz-container.true-false-quiz { background: var(--beige); border: 1px solid var(--light-coffee); }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .question-block p { font-weight: bold; margin-bottom: 10px; text-align: left; }
+        .options button { display: block; width: 100%; padding: 10px 15px; margin-bottom: 8px; border: 1px solid var(--light-coffee); border-radius: 5px; background-color: var(--beige); color: var(--text-color); cursor: pointer; text-align: left; font-size: 1em; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .options button:hover { background-color: #e0e0d0; }
+        .options button.correct { background-color: #d4edda; border-color: #28a745; color: #155724; }
+        .options button.incorrect { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .feedback { margin-top: 10px; font-weight: bold; font-size: 0.9em; text-align: left; }
+        footer { text-align: center; padding: 20px; margin-top: 30px; background: var(--coffee); color: var(--off-white); box-shadow: 0 -2px 5px rgba(0,0,0,0.2); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Close other open accordions in the same group
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.style.maxHeight = "0";
+                        }
+                    });
+
+                    // Toggle the current accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = "0";
+                    }
+                });
+            });
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        options.forEach(opt => { opt.disabled = true; });
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) { correctAnswer.classList.add('correct'); }
+                            feedback.textContent = 'Λάθος απάντηση.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΠΕΜΠΤΟ: Ο Α' ΠΑΓΚΟΣΜΙΟΣ ΠΟΛΕΜΟΣ ΚΑΙ ΟΙ ΑΜΕΣΕΣ ΕΠΙΠΤΩΣΕΙΣ ΤΟΥ</h2>
+    </header>
+    <main>
+        <section id="unit-34" class="content-block">
+            <h3>34. Η Λήξη του Α΄ Παγκοσμίου Πολέμου και οι Μεταπολεμικές Ρυθμίσεις</h3>
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Συνέδριο της Ειρήνης</li>
+                    <li>Αυτοδιάθεση των λαών</li>
+                    <li>Συνθήκη των Βερσαλλιών</li>
+                    <li>Συνθήκη του Αγίου Γερμανού</li>
+                    <li>Συνθήκη του Νεϊγύ</li>
+                    <li>Συνθήκη του Τριανόν</li>
+                    <li>Συνθήκη των Σεβρών</li>
+                    <li>Κοινωνία των Εθνών</li>
+                </ul>
+            </div>
+
+            <h4>Το Συνέδριο της Ειρήνης στο Παρίσι (1919-1920)</h4>
+            <p>Τον Ιανουάριο του 1919 ξεκίνησε στο Παρίσι το Συνέδριο της Ειρήνης, με στόχο τον τερματισμό του Α' Παγκοσμίου Πολέμου και τη ρύθμιση των μεταπολεμικών ζητημάτων. Στο συνέδριο δεν προσκλήθηκαν οι ηττημένες χώρες, οι ουδέτερες, ούτε η Σοβιετική Ένωση. Οι αποφάσεις των νικητών καθορίστηκαν από την ανάγκη ανασχεδιασμού του χάρτη της Ευρώπης, την επιθυμία της Γαλλίας να αποδυναμώσει τη Γερμανία και την προσπάθεια απομόνωσης της Σοβιετικής Ρωσίας. Μια βασική αρχή των συζητήσεων ήταν η "αυτοδιάθεση των λαών", την οποία πρότεινε ο πρόεδρος των ΗΠΑ Γούντροου Ουίλσον, σύμφωνα με την οποία κάθε λαός είχε δικαίωμα να αποφασίζει για το μέλλον του.</p>
+
+            <h4>Οι Συνθήκες Ειρήνης</h4>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Η Συνθήκη των Βερσαλλιών (Ιούνιος 1919)</button>
+                    <div class="accordion-content">
+                        <p>Η συνθήκη αυτή επέβαλε τους όρους ειρήνης στη Γερμανία, υποχρεώνοντάς τη:</p>
+                        <ul>
+                            <li>Να παραχωρήσει εδάφη στη Γαλλία, το Βέλγιο, τη Δανία, την Πολωνία, την Τσεχοσλοβακία και τη Λιθουανία.</li>
+                            <li>Να αποδεχτεί την αποστρατιωτικοποίηση της Ρηνανίας και του Σάαρ.</li>
+                            <li>Να πληρώσει τεράστιες πολεμικές αποζημιώσεις.</li>
+                            <li>Να παραδώσει τις αποικίες της και να ακυρώσει τα κέρδη της από τη Συνθήκη του Μπρεστ-Λιτόφσκ.</li>
+                            <li>Να αφοπλιστεί πλήρως.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Η Συνθήκη του Αγίου Γερμανού (Σεπτέμβριος 1919)</button>
+                    <div class="accordion-content">
+                        <p>Η συνθήκη αυτή αφορούσε την Αυστροουγγαρία και προέβλεπε τα εξής:</p>
+                        <ul>
+                            <li>Την αναγνώριση της ανεξαρτησίας της Ουγγαρίας, της Τσεχοσλοβακίας, της Γιουγκοσλαβίας και της Πολωνίας.</li>
+                            <li>Την παραχώρηση σημαντικών εδαφών στα νέα αυτά κράτη.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Η Συνθήκη του Τριανόν (Ιούνιος 1920)</button>
+                    <div class="accordion-content">
+                        <p>Η συνθήκη αυτή υπαγόρευε στην Ουγγαρία την παραχώρηση εδαφών στην Τσεχοσλοβακία, τη Ρουμανία και τη Γιουγκοσλαβία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header"><strong>Η Συνθήκη του Νεϊγύ (Νοέμβριος 1919)</strong></button>
+                    <div class="accordion-content">
+                        <p>Η συνθήκη αυτή αφορούσε τη Βουλγαρία και προέβλεπε:</p>
+                        <ul>
+                            <li>Την παραίτηση της Βουλγαρίας από κάθε διεκδίκηση στην Ανατολική Μακεδονία και τη Δυτική Θράκη, οι οποίες παραχωρούνταν στην Ελλάδα.</li>
+                            <li>Την παραχώρηση εδαφών στη Ρουμανία και τη Σερβία.</li>
+                            <li>Την αμοιβαία ανταλλαγή πληθυσμών μεταξύ Ελλάδας και Βουλγαρίας.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header"><strong>Η Συνθήκη των Σεβρών (Αύγουστος 1920)</strong></button>
+                    <div class="accordion-content">
+                        <p>Αυτή η συνθήκη, που αφορούσε την Οθωμανική Αυτοκρατορία, ήταν ιδιαίτερα ευνοϊκή για την Ελλάδα:</p>
+                        <ul>
+                            <li>Η Παλαιστίνη, η Μεσοποταμία και η Υπεριορδανία δόθηκαν στη Βρετανία, ενώ η Συρία και ο Λίβανος στη Γαλλία.</li>
+                            <li>Το Κουρδιστάν και η Αρμενία θα γίνονταν ανεξάρτητα κράτη.</li>
+                            <li>Η Ίμβρος, η Τένεδος και η Θράκη μέχρι τα περίχωρα της Κωνσταντινούπολης παραχωρήθηκαν στην Ελλάδα.</li>
+                            <li>Η Ελλάδα ανέλαβε τη διοίκηση της περιοχής της Σμύρνης για 5 χρόνια, με πρόβλεψη για δημοψήφισμα σχετικά με το μέλλον της.</li>
+                            <li>Η Ιταλία παραχώρησε τα Δωδεκάνησα στην Ελλάδα, εκτός από τη Ρόδο.</li>
+                            <li>Τα Στενά των Δαρδανελίων τέθηκαν υπό διεθνή έλεγχο.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η Κοινωνία των Εθνών (ΚτΕ)</h4>
+            <p>Μέσα από τις συνθήκες, δημιουργήθηκε η Κοινωνία των Εθνών, ένας διεθνής οργανισμός με στόχο την ειρηνική επίλυση των διαφορών μεταξύ των κρατών. Ωστόσο, η αποτελεσματικότητά του υπονομεύτηκε από τις αδυναμίες του, όπως το δικαίωμα βέτο που διέθετε κάθε μέλος και η έλλειψη μηχανισμών επιβολής των αποφάσεών του.</p>
+            <figure>
+                <img src="1.jpg" alt="Το έμβλημα της Κοινωνίας των Εθνών" class="responsive-image">
+                <figcaption>Το έμβλημα της Κοινωνίας των Εθνών, του διεθνούς οργανισμού που ιδρύθηκε μετά τον Α' Παγκόσμιο Πόλεμο για τη διατήρηση της ειρήνης.</figcaption>
+            </figure>
+        </section>
+
+        <section id="quiz-section-34" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποια συνθήκη επέβαλε τους όρους ειρήνης στη Γερμανία;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η Συνθήκη του Νεϊγύ</button>
+                        <button class="option" data-correct="true">Η Συνθήκη των Βερσαλλιών.</button>
+                        <button class="option" data-correct="false">Η Συνθήκη των Σεβρών</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Με ποια συνθήκη παραχωρήθηκε η Δυτική Θράκη στην Ελλάδα;</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Με τη Συνθήκη του Νεϊγύ.</button>
+                        <button class="option" data-correct="false">Με τη Συνθήκη του Αγίου Γερμανού.</button>
+                        <button class="option" data-correct="false">Με τη Συνθήκη των Σεβρών.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Στο Συνέδριο της Ειρήνης στο Παρίσι κλήθηκαν να συμμετάσχουν όλες οι εμπλεκόμενες χώρες, συμπεριλαμβανομένων των ηττημένων.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Η Συνθήκη των Σεβρών προέβλεπε ότι η Ελλάδα θα αναλάμβανε οριστικά τη διοίκηση της Σμύρνης.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-34" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <p>Μετά τη λήξη του Α' Παγκοσμίου Πολέμου, οι νικητές συγκεντρώθηκαν στο Συνέδριο της Ειρήνης στο Παρίσι (1919-1920) για να καθορίσουν το μέλλον της Ευρώπης. Οι αποφάσεις τους οδήγησαν στη δημιουργία μιας σειράς συνθηκών που αναδιαμόρφωσαν ριζικά τον πολιτικό χάρτη. Η Συνθήκη των Βερσαλλιών επέβαλε βαρύτατους όρους στη Γερμανία. Οι συνθήκες του Αγίου Γερμανού και του Τριανόν διέλυσαν την Αυστροουγγρική Αυτοκρατορία, δημιουργώντας νέα κράτη. Η Συνθήκη του Νεϊγύ υποχρέωσε τη Βουλγαρία να παραχωρήσει εδάφη, με την Ελλάδα να αποκτά τη Δυτική Θράκη. Τέλος, η Συνθήκη των Σεβρών διαμοίρασε την Οθωμανική Αυτοκρατορία και υπήρξε εξαιρετικά ευνοϊκή για την Ελλάδα, παραχωρώντας της τη Θράκη και τη διοίκηση της Σμύρνης. Από το συνέδριο προέκυψε και η Κοινωνία των Εθνών, ένας οργανισμός για τη διατήρηση της παγκόσμιας ειρήνης, ο οποίος όμως αποδείχθηκε αδύναμος.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας</p>
+    </footer>
+
+</body>
+</html>

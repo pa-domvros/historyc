@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ο Β’ Παγκόσμιος Πόλεμος: Τα αίτια & Η Εξέλιξη</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+        
+        ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p, .accordion-content ul {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    } else {
+                        accordionContent.style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ο Β’ ΠΑΓΚΟΣΜΙΟΣ ΠΟΛΕΜΟΣ</h1>
+        <h2>ΙΣΤΟΡΙΑ Γ’ ΓΥΜΝΑΣΙΟΥ</h2>
+    </header>
+
+    <main>
+        <section id="causes" class="content-block">
+            <h3>ΤΑ ΠΡΟΜΗΝΥΜΑΤΑ ΚΑΙ ΤΑ ΑΙΤΙΑ ΤΟΥ Β΄ ΠΑΓΚΟΣΜΙΟΥ ΠΟΛΕΜΟΥ</h3>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Χρονολόγιο Γεγονότων (1931-1939)</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><b>1931:</b> Η Ιαπωνία καταλαμβάνει την κινεζική επαρχία της Μαντζουρίας.</li>
+                            <li><b>1934:</b> Η χιτλερική Γερμανία εγκαταλείπει την Κοινωνία των Εθνών.</li>
+                            <li><b>1935:</b> Η Γερμανία επαναφέρει τη στρατιωτική θητεία παραβιάζοντας τη Συνθήκη των Βερσαλλιών.</li>
+                            <li><b>1936:</b> Η φασιστική Ιταλία καταλαμβάνει την Αιθιοπία και εγκαταλείπει την Κοινωνία των Εθνών.</li>
+                            <li><b>1936:</b> Η Γερμανία παραβιάζοντας την Συνθήκη των Βερσαλλιών καταλαμβάνει την αποστρατιωτικοποιημένη ζώνη της Ρηνανίας.</li>
+                            <li><b>1936:</b> Γερμανία και Ιταλία βοηθούν τον Φράνκο στον εμφύλιο της Ισπανίας.</li>
+                            <li><b>1936:</b> Χίτλερ – Μουσολίνι συνάπτουν τη συμμαχία "Άξονα" Ρώμης – Βερολίνου.</li>
+                            <li><b>1936:</b> Υπογραφή Αντιδιεθνιστικού Συμφώνου μεταξύ Γερμανίας, Ιταλίας και Ιαπωνίας με στόχο την καταπολέμηση του κομμουνισμού.</li>
+                            <li><b>1937:</b> Η Ιαπωνία ξεκινά πόλεμο με την Κίνα.</li>
+                            <li><b>1938:</b> Η Γερμανία καταλαμβάνει την Αυστρία.</li>
+                            <li><b>1938:</b> Υπογράφεται η Συμφωνία του Μονάχου, όπου Βρετανία και Γαλλία αποδέχονται την προσάρτηση της Δ. Τσεχοσλοβακίας στη Γερμανία.</li>
+                            <li><b>1939:</b> Ο Χίτλερ διαλύει την Τσεχοσλοβακία.</li>
+                            <li><b>1939:</b> Η Ιταλία καταλαμβάνει την Αλβανία.</li>
+                            <li><b>1939:</b> Ο Χίτλερ απαιτεί την Πολωνία, με τη Βρετανία και τη Γαλλία να απειλούν με πόλεμο.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Προεργασίες Πολέμου & Σύμφωνο Μολότωφ - Ρίμπεντροπ</button>
+                    <div class="accordion-content">
+                        <h4>Προεργασίες Πολέμου</h4>
+                        <p>Αγγλία, Γαλλία και Σοβιετική Ένωση δεν κατάφεραν να συμφωνήσουν σε κοινό τρόπο αντιμετώπισης του Χίτλερ. Έτσι, η Γερμανία προχώρησε στη σύναψη συμφώνου μη επίθεσης με τη Ρωσία για να εξασφαλίσει τα νώτα της, γνωστό ως Σύμφωνο Μολότοφ-Ρίμπεντροπ.</p>
+                        
+                        <h4>Σύμφωνο Μολότωφ - Ρίμπεντροπ</h4>
+                        <p>Το σύμφωνο αυτό υπογράφηκε στις 23 Αυγούστου 1939 στη Μόσχα. Ο Χίτλερ ήθελε να αποφύγει τον πόλεμο σε δύο μέτωπα, όπως στον Α' Παγκόσμιο Πόλεμο, και να εξασφαλίσει τη σοβιετική ουδετερότητα στην επικείμενη εισβολή στην Πολωνία. Από την πλευρά του, ο Στάλιν κέρδισε πολύτιμο χρόνο για να προετοιμάσει τον Κόκκινο Στρατό για μια πιθανή γερμανική επίθεση.</p>
+                        
+                        <h5>Περιεχόμενο του Συμφώνου</h5>
+                        <ul>
+                            <li>Οι δύο χώρες υποχρεώθηκαν να μην επιτεθεί η μία στην άλλη.</li>
+                            <li>Κάθε χώρα έπρεπε να παραμείνει ουδέτερη αν η άλλη αναμιγνυόταν σε πόλεμο.</li>
+                        </ul>
+
+                        <h5>Το Μυστικό Συμπληρωματικό Πρωτόκολλο</h5>
+                        <p>Αποφασίστηκε η δημιουργία γερμανικών και σοβιετικών σφαιρών επιρροής στην Ευρώπη:</p>
+                        <ul>
+                            <li>Η Πολωνία θα χωριζόταν μεταξύ των δύο χωρών.</li>
+                            <li>Οι βαλτικές χώρες (εκτός της Λιθουανίας) και η Φινλανδία θα ανήκαν στη σοβιετική σφαίρα επιρροής.</li>
+                            <li>Οι γερμανικές μειονότητες στις σοβιετικές σφαίρες επιρροής θα έπρεπε να τις εγκαταλείψουν.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">Βασικά Αίτια του Πολέμου</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Οι <b>ταπεινωτικοί όροι</b> που επιβλήθηκαν στα ηττημένα κράτη του Α΄ Παγκοσμίου Πολέμου, οι οποίοι προκάλεσαν οικονομική εξουθένωση και έθιξαν το εθνικό αίσθημα.</li>
+                            <li>Η <b>οξύτατη οικονομική κρίση</b> μετά το 1929, που δημιούργησε πρόσφορο έδαφος για την άνοδο ολοκληρωτικών καθεστώτων όπως του Μουσολίνι και του Χίτλερ.</li>
+                            <li>Ο <b>φόβος των Δυτικών Δυνάμεων απέναντι στη Σοβιετική Ένωση</b>, που τις οδήγησε να αντιμετωπίζουν με αδράνεια την επιθετικότητα της Γερμανίας, ελπίζοντας ότι θα λειτουργούσε ως ανάχωμα στον κομμουνισμό.</li>
+                            <li>Η <b>αδυναμία της Κοινωνίας των Εθνών</b> να λάβει αποτελεσματικά μέτρα για την αποτροπή του πολέμου.</li>
+                            <li>Η επιθυμία διαφόρων χωρών και εθνοτήτων για <b>αναθεώρηση των συνθηκών ειρήνης</b> που άφηναν ανικανοποίητα τα αιτήματά τους.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="war-evolution" class="content-block">
+            <h3>Η εξέλιξη του πολέμου</h3>
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1IWfqyffflZuRerwAFhA_LXgFnbQKzUpQ/preview" allow="autoplay" allowfullscreen></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας, 2025</p>
+    </footer>
+
+</body>
+</html>

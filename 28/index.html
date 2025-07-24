@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ενότητα 43</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+        
+        header h2 {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p, .accordion-content ul {
+            padding: 15px 0;
+            margin: 0;
+        }
+        
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+
+                    document.querySelectorAll('.accordion-header').forEach(h => {
+                        if (h !== header) {
+                            h.classList.remove('active');
+                            h.nextElementSibling.style.maxHeight = 0;
+                        }
+                    });
+
+                    if (!isActive) {
+                        header.classList.add('active');
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        header.classList.remove('active');
+                        accordionContent.style.maxHeight = 0;
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                            feedback.textContent = 'Λάθος απάντηση. Το σωστό επισημαίνεται με πράσινο.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου</h1>
+        <h2>ΕΝΟΤΗΤΑ 43: Η Ελλάδα του Μεσοπολέμου & η Δικτατορία της 4ης Αυγούστου</h2>
+    </header>
+
+    <main>
+        <section id="unit-43" class="content-block">
+            <h3>Η Ελλάδα του Μεσοπολέμου (1923-1936)</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Β΄ Ελληνική Δημοκρατία</li>
+                    <li>Θεόδωρος Πάγκαλος</li>
+                    <li>Ιδιώνυμο</li>
+                    <li>Κίνημα του 1935</li>
+                    <li>Παλινόρθωση</li>
+                    <li>Ιωάννης Μεταξάς</li>
+                    <li>Δικτατορία 4ης Αυγούστου</li>
+                    <li>Ε.Ο.Ν.</li>
+                </ul>
+            </div>
+
+            <h4>Η Β΄ Ελληνική Δημοκρατία και η περίοδος της αστάθειας (1924-1928)</h4>
+            <p>Μετά τη Μικρασιατική Καταστροφή και την αποχώρηση του βασιλιά, η Ελλάδα οδηγήθηκε στην αβασίλευτη δημοκρατία. Με πρόταση του Αλέξανδρου Παπαναστασίου, η Βουλή ανακήρυξε τη Δημοκρατία στις 25 Μαρτίου 1924, απόφαση που επικυρώθηκε με δημοψήφισμα. Η πρώτη περίοδος (1924-1928) ήταν εξαιρετικά ασταθής, με το νέο πολίτευμα να αντιμετωπίζει κυβερνητική αστάθεια, την επιρροή στρατιωτικών που θαύμαζαν τα φασιστικά καθεστώτα της Ευρώπης και την ενίσχυση του εργατικού κινήματος (ίδρυση ΓΣΕΕ και ΚΚΕ). Η αστάθεια κορυφώθηκε με τη δικτατορία του Θεόδωρου Πάγκαλου το 1925, η οποία ανετράπη το επόμενο έτος από τον Γεώργιο Κονδύλη. Ο Κονδύλης προκήρυξε εκλογές που οδήγησαν στον σχηματισμό οικουμενικής κυβέρνησης (χωρίς το ΚΚΕ), η οποία ψήφισε το νέο δημοκρατικό Σύνταγμα του 1927.</p>
+            
+            <h4>Η Βενιζελική Τετραετία (1928-1932)</h4>
+            <p>Το 1928, οι Φιλελεύθεροι του Ελευθερίου Βενιζέλου κέρδισαν τις εκλογές, εγκαινιάζοντας μια περίοδο σταθερότητας και μεταρρυθμίσεων. Η κυβέρνηση εστίασε στην οικονομική ανάπτυξη, την εδραίωση της δημοκρατίας και μια φιλόδοξη εκπαιδευτική μεταρρύθμιση που περιλάμβανε την κατασκευή χιλιάδων νέων σχολείων και την εισαγωγή της δημοτικής γλώσσας. Στην εξωτερική πολιτική, επιτεύχθηκε η προσέγγιση με τις γειτονικές χώρες, με αποκορύφωμα την υπογραφή του ελληνοτουρκικού συμφώνου φιλίας το 1930. Ωστόσο, το 1929 ψηφίστηκε το «ιδιώνυμο», ένας νόμος που ποινικοποιούσε τις ανατρεπτικές ιδέες, ενώ οι επιπτώσεις της παγκόσμιας οικονομικής κρίσης του 1929 οδήγησαν τον Βενιζέλο να κηρύξει την Ελλάδα σε πτώχευση το 1932.</p>
+
+            <h4>Η πορεία προς τη Δικτατορία (1933-1936)</h4>
+            <p>Η περίοδος μετά το 1932 χαρακτηρίστηκε από ακραία πολιτική πόλωση. Το 1933, τα αντιβενιζελικά κόμματα κέρδισαν τις εκλογές, οδηγώντας σε μια αποτυχημένη απόπειρα πραξικοπήματος από βενιζελικούς αξιωματικούς. Η ένταση κλιμακώθηκε με την απόπειρα δολοφονίας κατά του Βενιζέλου. Την 1η Μαρτίου 1935, εκδηλώθηκε νέο, ευρύτερο κίνημα από βενιζελικούς, το οποίο όμως κατεστάλη από τον Γεώργιο Κονδύλη. Ακολούθησαν διώξεις και εκτελέσεις βενιζελικών, ενώ ο Κονδύλης ανέτρεψε την κυβέρνηση Τσαλδάρη, επέβαλε δικτατορία και επανέφερε τον βασιλιά Γεώργιο Β΄ (Παλινόρθωση).</p>
+
+            <h4>Η Δικτατορία της 4ης Αυγούστου</h4>
+            <p>Μετά την Παλινόρθωση, ο βασιλιάς Γεώργιος Β΄ παραχώρησε αμνηστία, αλλά οι εκλογές του 1936 οδήγησαν σε πολιτικό αδιέξοδο, με βενιζελικούς και αντιβενιζελικούς να ισοψηφούν και το ΚΚΕ να αναδεικνύεται σε ρυθμιστικό παράγοντα. Σε αυτό το κλίμα, ο βασιλιάς διόρισε πρωθυπουργό τον Ιωάννη Μεταξά. Επικαλούμενοι τον «κομμουνιστικό κίνδυνο», μετά από μια αιματηρή διαδήλωση στη Θεσσαλονίκη τον Μάιο, ο Μεταξάς και ο βασιλιάς κήρυξαν δικτατορία στις 4 Αυγούστου 1936. Το καθεστώς του Μεταξά, αν και επιθυμούσε να μιμηθεί τα φασιστικά πρότυπα της Ιταλίας και της Γερμανίας, δεν απέκτησε ποτέ μαζική λαϊκή υποστήριξη. Ίδρυσε την Εθνική Οργάνωση Νεολαίας (Ε.Ο.Ν.), χρησιμοποίησε την προπαγάνδα και έλαβε ορισμένα κοινωνικά μέτρα, αλλά το κύριο έργο του ήταν η σκληρή καταδίωξη των πολιτικών του αντιπάλων, κυρίως των κομμουνιστών. Στην εξωτερική πολιτική, παρά τις ιδεολογικές του συμπάθειες προς τη Γερμανία, ακολούθησε αγγλόφιλη πολιτική λόγω της πίεσης του αγγλόφιλου βασιλιά Γεωργίου Β΄.</p>
+        </section>
+
+        <section id="quiz-section-43" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποια κυβέρνηση εισηγήθηκε την ψήφιση του δημοκρατικού Συντάγματος του 1927;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η κυβέρνηση του Θεόδωρου Πάγκαλου</button>
+                        <button class="option" data-correct="true">Η οικουμενική κυβέρνηση μετά την πτώση του Πάγκαλου</button>
+                        <button class="option" data-correct="false">Η κυβέρνηση του Ελευθερίου Βενιζέλου (1928-1932)</button>
+                        <button class="option" data-correct="false">Η κυβέρνηση του Παναγή Τσαλδάρη</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιο γεγονός χρησιμοποιήθηκε ως άμεση αφορμή για την κήρυξη της δικτατορίας της 4ης Αυγούστου;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Το κίνημα του 1935</button>
+                        <button class="option" data-correct="false">Η πτώχευση της Ελλάδας το 1932</button>
+                        <button class="option" data-correct="true">Η επίκληση του «κομμουνιστικού κινδύνου» μετά από διαδήλωση στη Θεσσαλονίκη</button>
+                        <button class="option" data-correct="false">Το ελληνοτουρκικό σύμφωνο φιλίας</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η Β' Ελληνική Δημοκρατία ανακηρύχθηκε το 1923, αμέσως μετά την πρόταση του Αλ. Παπαναστασίου.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Το καθεστώς της 4ης Αυγούστου είχε ευρεία λαϊκή υποστήριξη, παρόμοια με τα φασιστικά καθεστώτα της Ιταλίας και της Γερμανίας.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                 <div class="question-block">
+                    <p>3. Η κυβέρνηση Βενιζέλου την περίοδο 1928-1932 υπέγραψε σύμφωνο φιλίας με την Τουρκία.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-43" class="content-block">
+            <h3>Περίληψη Ενότητας 43</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Πολιτικής Ιστορίας του Μεσοπολέμου</button>
+                    <div class="accordion-content">
+                        <p>Η πολιτική ζωή της Ελλάδας στον Μεσοπόλεμο ήταν ταραχώδης. Η Β' Ελληνική Δημοκρατία, που ιδρύθηκε το 1924, σημαδεύτηκε από συνεχή αστάθεια, στρατιωτικά κινήματα και τη δικτατορία του Πάγκαλου. Η τετραετία 1928-1932 υπό τον Βενιζέλο έφερε μια περίοδο σταθερότητας και σημαντικών μεταρρυθμίσεων, αλλά η παγκόσμια οικονομική κρίση ανέτρεψε την πρόοδο. Η επακόλουθη πολιτική πόλωση μεταξύ βενιζελικών και αντιβενιζελικών, τα αποτυχημένα πραξικοπήματα και η παλινόρθωση της μοναρχίας το 1935, οδήγησαν σε ένα πολιτικό αδιέξοδο. Αυτό το αδιέξοδο εκμεταλλεύτηκαν ο βασιλιάς Γεώργιος Β' και ο Ιωάννης Μεταξάς για να επιβάλουν τη δικτατορία της 4ης Αυγούστου 1936, ένα αυταρχικό καθεστώς που, αν και εμπνευσμένο από τον φασισμό, δεν κατάφερε να αποκτήσει ποτέ μαζική κοινωνική βάση.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Ποιες ήταν οι κύριες προκλήσεις που αντιμετώπισε η Β' Ελληνική Δημοκρατία στα πρώτα της χρόνια (1924-1928);</button>
+                    <div class="accordion-content">
+                        <p>Οι κύριες προκλήσεις ήταν τρεις: α) η έντονη κυβερνητική αστάθεια που εμπόδιζε τη χάραξη μακροπρόθεσμης πολιτικής, β) η ύπαρξη στρατιωτικών που επηρεάζονταν από τα αυταρχικά καθεστώτα της Ιταλίας και της Γερμανίας και παρενέβαιναν στην πολιτική ζωή (όπως ο Πάγκαλος), και γ) η ενίσχυση του εργατικού κινήματος και του ΚΚΕ, που το κράτος αντιμετώπιζε με καχυποψία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποιοι ήταν οι βασικοί άξονες της πολιτικής του Ελευθερίου Βενιζέλου την περίοδο 1928-1932;</button>
+                    <div class="accordion-content">
+                        <p>Οι τέσσερις βασικοί άξονες ήταν: α) η οικονομική ανάπτυξη και η προσπάθεια εκσυγχρονισμού, β) η εδραίωση των δημοκρατικών θεσμών, γ) μια ευρεία εκπαιδευτική μεταρρύθμιση με έμφαση στην πρωτοβάθμια και τεχνική εκπαίδευση και την κατασκευή νέων σχολείων, και δ) μια ειρηνική εξωτερική πολιτική με στόχο την προσέγγιση με τις γειτονικές χώρες, κυρίως την Τουρκία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Γιατί το καθεστώς της 4ης Αυγούστου, παρότι μιμούνταν τα φασιστικά πρότυπα, διέφερε από αυτά της Ιταλίας και της Γερμανίας;</button>
+                    <div class="accordion-content">
+                        <p>Η θεμελιώδης διαφορά ήταν ότι στην Ελλάδα δεν υπήρχε ένα μαζικό φασιστικό κόμμα που να αποτελεί τη βάση του καθεστώτος, όπως συνέβη στην Ιταλία με τους Φασίστες και στη Γερμανία με τους Ναζί. Η δικτατορία του Μεταξά επιβλήθηκε «από τα πάνω», από τον βασιλιά και τον στρατό, και δεν κατάφερε ποτέ, παρά τις προσπάθειες (Ε.Ο.Ν., προπαγάνδα), να αποκτήσει ουσιαστική κοινωνική στήριξη και να μετατραπεί σε ένα μαζικό κίνημα.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας, 2025</p>
+    </footer>
+
+</body>
+</html>

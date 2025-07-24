@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ενότητα 39</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+        
+        .accordion-content ul {
+            padding: 15px 0 15px 20px;
+            margin: 0;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .flip-card-container.auto-height {
+            position: relative;
+            height: auto;
+            min-height: 0;
+        }
+        
+        .flip-card.auto-height {
+            position: relative;
+            min-height: 250px;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+
+                    // Close all accordions first
+                    document.querySelectorAll('.accordion-header').forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.style.maxHeight = 0;
+                    });
+
+                    // If the clicked one was not active, open it
+                    if (!isActive) {
+                        header.classList.add('active');
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    }
+                });
+            });
+
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                const frontButton = flipCard.querySelector('.flip-card-front .flip-button');
+                const backButton = flipCard.querySelector('.flip-card-back .flip-button');
+                
+                function flip() {
+                   flipCard.classList.toggle('flipped');
+                }
+
+                if(frontButton) frontButton.addEventListener('click', flip);
+                if(backButton) backButton.addEventListener('click', flip);
+            });
+            
+            function resizeFlipCards() {
+                document.querySelectorAll('.flip-card-container.auto-height').forEach(container => {
+                    const frontHeight = container.querySelector('.flip-card-front').scrollHeight;
+                    const backHeight = container.querySelector('.flip-card-back').scrollHeight;
+                    const maxHeight = Math.max(frontHeight, backHeight);
+                    container.style.height = maxHeight + 'px';
+                });
+            }
+
+            resizeFlipCards();
+            window.addEventListener('resize', resizeFlipCards);
+
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            correctAnswer.classList.add('correct');
+                            feedback.textContent = 'Λάθος απάντηση. Το σωστό επισημαίνεται με πράσινο.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου</h1>
+        <h2>ΕΝΟΤΗΤΑ 39: Εξελίξεις σε Ελλάδα και Τουρκία μετά τον μικρασιατικό πόλεμο</h2>
+    </header>
+
+    <main>
+        <section id="unit-39" class="content-block">
+            <h3>Εξελίξεις σε Ελλάδα και Τουρκία μετά τον μικρασιατικό πόλεμο</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Κίνημα 1922</li>
+                    <li>Νικόλαος Πλαστήρας</li>
+                    <li>Ανακωχή των Μουδανιών</li>
+                    <li>Δίκη των έξι</li>
+                    <li>Συνθήκη της Λοζάνης</li>
+                    <li>Ανταλλαγή πληθυσμών</li>
+                </ul>
+            </div>
+
+            <h4>Ελλάδα: Το κίνημα του 1922</h4>
+            <p>Στις αρχές Σεπτεμβρίου του 1922 ξέσπασε κίνημα στη Χίο και στη Μυτιλήνη, όπου βρίσκονταν μονάδες του ελληνικού στρατού που επέστρεφαν από τη Μικρά Ασία. Όσοι συμμετείχαν σε αυτό αξίωναν την παραίτηση του βασιλιά Κωνσταντίνου, τη διάλυση της Βουλής (στην οποία τα φιλοβασιλικά κόμματα διέθεταν πλειοψηφία), τον σχηματισμό νέας κυβέρνησης που θα είχε την εμπιστοσύνη της Αντάντ, καθώς και την ενίσχυση του μετώπου στη Θράκη, ώστε η Ελλάδα να αποφύγει και άλλες εδαφικές απώλειες. Με επικεφαλής τους συνταγματάρχες Νικόλαο Πλαστήρα και Στυλιανό Γονατά, περίπου 12.000 αξιωματικοί και στρατιώτες, αποβιβάστηκαν, λίγο αργότερα, στο Λαύριο, στο νοτιότερο άκρο της Αττικής, και άρχισαν να βαδίζουν προς την Αθήνα. Ο βασιλιάς Κωνσταντίνος, βλέποντας ότι δεν είχε καμία δυνατότητα αντίστασης, εγκατέλειψε τη χώρα. Βασιλιάς έγινε ο γιος του Γεώργιος Β΄. Φτάνοντας στην Αθήνα, οι κινηματίες εγκατέστησαν επαναστατική κυβέρνηση.</p>
+
+            <div class="image-gallery">
+                <figure>
+                    <img src="1.jpg" alt="Τμήματα του επαναστατημένου στρατού στην Αθήνα (Σεπτέμβριος 1922)." class="responsive-image">
+                    <figcaption>1. Τμήματα του επαναστατημένου στρατού στην Αθήνα (Σεπτέμβριος 1922). Στο κέντρο διακρίνεται ο Νικόλαος Πλαστήρας.</figcaption>
+                </figure>
+                <figure>
+                    <img src="2.jpg" alt="Έλληνες πρόσφυγες εγκαταλείπουν την ανατολική Θράκη (Νοέμβριος 1922)." class="responsive-image">
+                    <figcaption>2. Έλληνες πρόσφυγες εγκαταλείπουν την ανατολική Θράκη (Νοέμβριος 1922).</figcaption>
+                </figure>
+            </div>
+            
+            <h4>Η ανακωχή των Μουδανιών</h4>
+            <p>Μετά την ήττα στη Μικρά Ασία, φαινόταν πλέον εξαιρετικά δύσκολο για την Ελλάδα να διατηρήσει την Α. Θράκη. Αρχικά, η επαναστατική κυβέρνηση δεν φάνηκε πρόθυμη να υποχωρήσει. Μάλιστα, για να αντιμετωπίσει ενδεχόμενη νέα τουρκική επίθεση, αναδιοργάνωσε ταχύτατα τον ελληνικό στρατό στη Θράκη. Τελικά, όμως, υπό το βάρος των κεμαλικών απειλών για νέο πόλεμο και των αφόρητων πιέσεων της Αγγλίας η Ελλάδα αποδέχτηκε την ανακωχή των Μουδανιών (Οκτώβριος 1922) με την οποία η Α. Θράκη ενσωματωνόταν στην Τουρκία. Η εκκένωση της περιοχής από τον ελληνικό στρατό και τον ντόπιο ελληνικό πληθυσμό ολοκληρώθηκε στα μέσα Νοεμβρίου 1922.</p>
+
+            <h4>Ελλάδα: Η «δίκη των έξι»</h4>
+            <p>Η επαναστατική κυβέρνηση σύστησε έκτακτο στρατοδικείο προκειμένου να καταλογιστούν ευθύνες για την ήττα στη Μικρά Ασία. Σε αυτό παραπέμφθηκαν οκτώ κορυφαία στελέχη (πρωθυπουργοί, υπουργοί, στρατιωτικοί ηγέτες) της βασιλικής παράταξης: Δ. Γούναρης, Ν. Στράτος, Π. Πρωτοπαπαδάκης, Γ. Μπαλτατζής, Ν. Θεοτόκης, Γ. Χατζανέστης, Μ. Γούδας και Ξ. Στρατηγός. Τον Νοέμβριο του 1922 καταδικάστηκαν σε θάνατο και εκτελέστηκαν οι έξι πρώτοι αυτή ήταν η «δίκη των έξι».</p>
+            
+            <div class="flip-card-container auto-height">
+                <div class="flip-card auto-height">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h5>1. Η ελληνοτουρκική σύμβαση υποχρεωτικής ανταλλαγής των πληθυσμών</h5>
+                            <p>Τραγική [-] για τους άνω του ενός εκατομμυρίου έλληνες πρόσφυγες και τις περιουσίες τους, αλλά και πλέον συμφέρουσα λύση, εν όψει της κατηγορηματικής αρνήσεως της τουρκικής πλευράς να δεχθεί την επιστροφή τους, ήταν η Συμφωνία της υποχρεωτικής ανταλλαγής πληθυσμών που υπογράφτηκε στη Λωζάνη στις 30 Ιανουαρίου 1923. Το υποχρεωτικό της μετακινήσεως σήμαινε ότι πολλοί από αυτούς θα μπορούσαν να εγκατασταθούν στα οικήματα και τις γεωργικές εκτάσεις των 400.000 περίπου μουσουλμάνων, ελλήνων πολιτών, που βάσει της Συμφωνίας έπρεπε να ταξιδέψουν προς την αντίθετη κατεύθυνση εξίσου τραγικά θύματα και αυτοί –που κανείς σχεδόν στην Ελλάδα δεν φαίνεται να τους θυμάται- ενός πολέμου για τον οποίον δεν έφεραν καμμία ευθύνη και στου οποίου τη διεξαγωγή δεν είχαν κανενός είδους συμμετοχή.<br><em>Γ. Γιανουλόπουλος, «Η ευγενής μας τύφλωσις...»</em></p>
+                            <button class="flip-button">Διάβασε την Ανάλυση</button>
+                        </div>
+                        <div class="flip-card-back">
+                            <h5>Ανάλυση Πηγής</h5>
+                            <p>Ο ιστορικός Γ. Γιανουλόπουλος χαρακτηρίζει τη συμφωνία ανταλλαγής πληθυσμών μεταξύ Ελλάδας και Τουρκίας «τραγική [...] αλλά και πλέον συμφέρουσα λύση». Σε συναισθηματικό επίπεδο, η απόφαση περί ανταλλαγής ήταν πραγματικά τραγική για όσους Έλληνες και Τούρκους την υπέστησαν. Εξετάζοντας, ωστόσο, κανείς με νηφαλιότητα την κατάσταση διαπιστώνει ότι ήταν όντως η «πλέον συμφέρουσα λύση», από τη στιγμή που το κεμαλικό καθεστώς δεν αποδεχόταν την παραμονή ελληνικών πληθυσμών στην Τουρκία. Με άλλα λόγια η ανταλλαγή ήταν μια σκληρή αλλά αναπόφευκτη λύση ενός δύσκολου προβλήματος.</p>
+                            <button class="flip-button">Πίσω στην Πηγή</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η συνθήκη της Λοζάνης (1923)</h4>
+            <p>Παράλληλα, άρχισαν στη Λοζάνη της Ελβετίας διαβουλεύσεις για την υπογραφή μιας νέας συνθήκης ειρήνης. Εκπρόσωπος της Ελλάδας σε αυτές ορίστηκε, από την επαναστατική κυβέρνηση, ο Ελευθέριος Βενιζέλος. Μετά από πολύμηνες συζητήσεις υπογράφτηκε, στις 24 Ιουλίου 1923, η συνθήκη της Λοζάνης, με την οποία επισημοποιήθηκε η τουρκική κυριαρχία στη Μικρά Ασία και στην Α. Θράκη, ενώ παραχωρήθηκαν στην Τουρκία και η Ίμβρος με την Τένεδο. Επίσης, στη συνθήκη της Λοζάνης ενσωματώθηκε ελληνοτουρκική σύμβαση ανταλλαγής πληθυσμών (Ιανουάριος 1923), σύμφωνα με την οποία όλοι οι ορθόδοξοι χριστιανοί της Τουρκίας έπρεπε να μετοικήσουν στην Ελλάδα και όλοι οι μουσουλμάνοι της Ελλάδας να ακολουθήσουν τον αντίστροφο δρόμο. Εξαιρέθηκαν το Πατριαρχείο Κωνσταντινουπόλεως και οι Έλληνες της Κωνσταντινούπολης, της Ίμβρου και της Τενέδου (125.000 τότε), καθώς και οι μουσουλμάνοι της Δ. Θράκης (118.000 τότε).</p>
+
+        </section>
+
+        <section id="quiz-section-39" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποιοι ήταν οι επικεφαλής του κινήματος του 1922;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Δ. Γούναρης και Γ. Χατζανέστης</button>
+                        <button class="option" data-correct="true">Νικόλαος Πλαστήρας και Στυλιανός Γονατάς</button>
+                        <button class="option" data-correct="false">Ελευθέριος Βενιζέλος και Γεώργιος Β'</button>
+                        <button class="option" data-correct="false">Μ. Γούδας και Ξ. Στρατηγός</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Τι προέβλεπε η ανακωχή των Μουδανιών (Οκτώβριος 1922) για την Ανατολική Θράκη;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Την παραμονή του ελληνικού στρατού στην περιοχή</button>
+                        <button class="option" data-correct="false">Τη διεξαγωγή δημοψηφίσματος</button>
+                        <button class="option" data-correct="true">Την ενσωμάτωσή της στην Τουρκία</button>
+                        <button class="option" data-correct="false">Την παραχώρησή της στην Αγγλία</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Το κίνημα του 1922 ξέσπασε στην Αθήνα.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Στη «δίκη των έξι» καταδικάστηκαν σε θάνατο και εκτελέστηκαν έξι ηγετικά στελέχη της βασιλικής παράταξης.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                 <div class="question-block">
+                    <p>3. Με τη συνθήκη της Λοζάνης, όλοι οι μουσουλμάνοι της Ελλάδας υποχρεώθηκαν να μετοικήσουν στην Τουρκία.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-39" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Η Συνθήκη της Λοζάνης (1923)</button>
+                    <div class="accordion-content">
+                        <p>Παράλληλα με τις εσωτερικές εξελίξεις στην Ελλάδα, ξεκίνησαν διαπραγματεύσεις για μια νέα συνθήκη ειρήνης στη Λοζάνη της Ελβετίας, με τον Ελευθέριο Βενιζέλο να εκπροσωπεί την Ελλάδα. Οι συζητήσεις κατέληξαν στην υπογραφή της συνθήκης της Λοζάνης στις 24 Ιουλίου 1923.</p>
+                        <p>Οι κύριοι όροι της συνθήκης περιλάμβαναν:</p>
+                        <ul>
+                            <li>Την επισημοποίηση της τουρκικής κυριαρχίας στη Μικρά Ασία και την Ανατολική Θράκη.</li>
+                            <li>Την παραχώρηση των νησιών Ίμβρος και Τένεδος στην Τουρκία.</li>
+                            <li>Την ενσωμάτωση της ελληνοτουρκικής σύμβασης για την υποχρεωτική ανταλλαγή πληθυσμών, που είχε υπογραφεί τον Ιανουάριο του 1923. Σύμφωνα με αυτή, όλοι οι ορθόδοξοι χριστιανοί της Τουρκίας θα μετοικούσαν στην Ελλάδα και όλοι οι μουσουλμάνοι της Ελλάδας στην Τουρκία.</li>
+                            <li>Την εξαίρεση από την ανταλλαγή του Πατριαρχείου Κωνσταντινουπόλεως, των Ελλήνων της Κωνσταντινούπολης, της Ίμβρου και της Τενέδου, καθώς και των μουσουλμάνων της Δυτικής Θράκης.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Ποια ήταν τα βασικά αιτήματα του κινήματος του 1922 και ποια η κατάληξή του;</button>
+                    <div class="accordion-content">
+                        <p>Τα βασικά αιτήματα του κινήματος ήταν η παραίτηση του βασιλιά Κωνσταντίνου, η διάλυση της Βουλής, ο σχηματισμός νέας κυβέρνησης που θα είχε την εμπιστοσύνη της Αντάντ, και η ενίσχυση του μετώπου στη Θράκη για να αποφευχθούν νέες εδαφικές απώλειες. Η κατάληξή του ήταν η παραίτηση του βασιλιά Κωνσταντίνου, η ανάρρηση στον θρόνο του γιου του Γεωργίου Β΄ και η εγκατάσταση επαναστατικής κυβέρνησης υπό τους Πλαστήρα και Γονατά.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποιος ήταν ο σκοπός της «δίκης των έξι»;</button>
+                    <div class="accordion-content">
+                        <p>Σκοπός της «δίκης των έξι» ήταν ο καταλογισμός ευθυνών για τη στρατιωτική ήττα στη Μικρά Ασία. Η επαναστατική κυβέρνηση συνέστησε έκτακτο στρατοδικείο, το οποίο καταδίκασε σε θάνατο και εκτέλεσε έξι από τα οκτώ κορυφαία στελέχη της προηγούμενης φιλοβασιλικής κυβέρνησης.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Ποιοι πληθυσμοί εξαιρέθηκαν από την υποχρεωτική ανταλλαγή που προέβλεπε η Συνθήκη της Λοζάνης;</button>
+                    <div class="accordion-content">
+                        <p>Από την υποχρεωτική ανταλλαγή πληθυσμών εξαιρέθηκαν το Πατριαρχείο Κωνσταντινουπόλεως, οι Έλληνες της Κωνσταντινούπολης, της Ίμβρου και της Τενέδου (περίπου 125.000 άνθρωποι τότε), καθώς και οι μουσουλμάνοι της Δυτικής Θράκης (περίπου 118.000 άνθρωποι τότε).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας, 2025</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ενότητα 44</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p, .accordion-content ul {
+            padding: 15px 0;
+            margin: 0;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+        
+        .flip-card-container.auto-height {
+            position: relative;
+            height: auto;
+            min-height: 0;
+        }
+        
+        .flip-card.auto-height {
+            position: relative;
+        }
+        
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const isActive = header.classList.contains('active');
+
+                    document.querySelectorAll('.accordion-header').forEach(h => {
+                        if (h !== header) {
+                            h.classList.remove('active');
+                            h.nextElementSibling.style.maxHeight = 0;
+                        }
+                    });
+
+                    if (!isActive) {
+                        header.classList.add('active');
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        header.classList.remove('active');
+                        accordionContent.style.maxHeight = 0;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                const flipButtons = flipCard.querySelectorAll('.flip-button');
+                flipButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const cardContainer = button.closest('.flip-card-container');
+                        cardContainer.querySelector('.flip-card').classList.toggle('flipped');
+                    });
+                });
+            });
+            
+            function resizeFlipCards() {
+                document.querySelectorAll('.flip-card-container.auto-height').forEach(container => {
+                    const card = container.querySelector('.flip-card');
+                    if (!card.classList.contains('flipped')) {
+                        const frontHeight = container.querySelector('.flip-card-front').scrollHeight;
+                         container.style.height = frontHeight + 'px';
+                    } else {
+                        const backHeight = container.querySelector('.flip-card-back').scrollHeight;
+                        container.style.height = backHeight + 'px';
+                    }
+                });
+            }
+
+            // Initial resize and on flip
+            document.querySelectorAll('.flip-button').forEach(button => {
+                button.addEventListener('click', () => {
+                     setTimeout(resizeFlipCards, 310); // After transition
+                });
+            });
+            window.addEventListener('load', resizeFlipCards);
+            window.addEventListener('resize', resizeFlipCards);
+            
+
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                            feedback.textContent = 'Λάθος απάντηση. Το σωστό επισημαίνεται με πράσινο.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου</h1>
+        <h2>ΕΝΟΤΗΤΑ 44: Το προσφυγικό ζήτημα στην Ελλάδα κατά τον Μεσοπόλεμο</h2>
+    </header>
+
+    <main>
+        <section id="unit-44" class="content-block">
+            <h3>Το προσφυγικό ζήτημα στην Ελλάδα κατά τον Μεσοπόλεμο</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Προσφυγικό ζήτημα</li>
+                    <li>Επιτροπή Αποκαταστάσεως Προσφύγων (ΕΑΠ)</li>
+                    <li>Προσφυγικοί συνοικισμοί</li>
+                    <li>Γηγενείς</li>
+                    <li>Εθνική ομοιογένεια</li>
+                    <li>Ρεμπέτικο τραγούδι</li>
+                </ul>
+            </div>
+
+            <h4>Η αποκατάσταση των προσφύγων</h4>
+            <p>Ένα από τα σημαντικότερα θέματα που είχε να αντιμετωπίσει η ελληνική κοινωνία του Μεσοπολέμου ήταν το προσφυγικό ζήτημα, δηλαδή η στέγαση και η επαγγελματική αποκατάσταση των προσφύγων. Το ελληνικό κράτος απευθύνθηκε στην Κοινωνία των Εθνών (ΚτΕ), η οποία βοήθησε την Ελλάδα να συνάψει δάνειο και ίδρυσε την Επιτροπή Αποκαταστάσεως Προσφύγων (ΕΑΠ), έναν αυτόνομο οργανισμό που θα δρούσε με τη συνεργασία του ελληνικού κράτους. Η ΕΑΠ λειτούργησε από το 1923 έως το 1930 και ασχολήθηκε κυρίως με την αποκατάσταση των προσφύγων στην ύπαιθρο. Περίπου 750.000 πρόσφυγες οδηγήθηκαν στη Μακεδονία και στη Θράκη, γιατί εκεί υπήρχαν διαθέσιμες γαίες αλλά και για να εξασφαλιστεί η αριθμητική υπεροχή του ελληνικού στοιχείου σε αυτές τις περιοχές. Η αποκατάσταση των προσφύγων στις πόλεις ήταν κυρίως έργο του ελληνικού κράτους, που δημιούργησε προσφυγικούς συνοικισμούς (Καισαριανή, Βύρωνας, Νέα Ιωνία στην Αθήνα και Κοκκινιά στον Πειραιά). Οι πλούσιοι πρόσφυγες προτίμησαν περιοχές της αρεσκείας τους (Νέα Σμύρνη, Καλλίπολη του Πειραιά). Τέλος, όσοι φτωχοί πρόσφυγες δεν εξασφάλισαν κάποια από τις κατοικίες που έδινε το κράτος συνέχισαν να μένουν για πολλά χρόνια σε άθλια οικήματα στους προσφυγικούς συνοικισμούς.</p>
+            
+            <div class="image-gallery">
+                <figure>
+                    <img src="1.jpg" alt="Προσφυγικός καταυλισμός στην Κοκκινιά το 1929." class="responsive-image">
+                    <figcaption>1. Προσφυγικός καταυλισμός στην Κοκκινιά (σημερινή Νίκαια του Πειραιά) το 1929.</figcaption>
+                </figure>
+                <figure>
+                    <img src="2.jpg" alt="Γυναίκες πρόσφυγες εργάζονται σε νηματουργείο." class="responsive-image">
+                    <figcaption>2. Γυναίκες πρόσφυγες εργάζονται σε νηματουργείο.</figcaption>
+                </figure>
+            </div>
+            
+            <h4>Οι σχέσεις γηγενών και προσφύγων</h4>
+            <p>Παρά τα κρατικά μέτρα, τα προβλήματα δεν έλειπαν, καθώς συχνά η στάση των γηγενών Ελλήνων απέναντι στους πρόσφυγες ήταν αρνητική. Οι πρόσφυγες πήραν γη που πολλοί γηγενείς θεωρούσαν δική τους και πρόσφεραν την εργασία τους φτηνά πιέζοντας προς τα κάτω τις αμοιβές και των ντόπιων. Ακόμη, οι πρόσφυγες ήταν στη συντριπτική τους πλειονότητα βενιζελικοί κι αυτό τους έφερνε σε αντίθεση με την αντιβενιζελική Παλαιά Ελλάδα. Τέλος, πολλοί γηγενείς θεωρούσαν τους πρόσφυγες παράδοξους, καθώς είχαν πρωτάκουστα ονόματα, έτρωγαν άγνωστα φαγητά και οι γυναίκες τους εργάζονταν σε ξένες δουλειές. Το αποτέλεσμα ήταν η λέξη «πρόσφυγas» να είναι για χρόνια απαξιωτικός χαρακτηρισμός μεταξύ των γηγενών Ελλήνων.</p>
+            
+            <div class="flip-card-container auto-height">
+                <div class="flip-card auto-height">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h5>Πηγή 1: Ο αγώνας των προσφύγων να ριζώσουν στην Ελλάδα</h5>
+                            <p>Όλη αυτή η περιοχή λέγεται ανέκαθεν Ανάβυσσος. [..] Το τι τραβούσαμε δε λέγεται. Ούτε ο Χριστός δεν υπόφερε έτσι. [..] Νερό δεν είχαμε. Ψωμί αγοράζαμε από το Λαύριο. Έπρεπε να το παραγγείλουμε και να το πληρώσουμε μια μέρα πιο μπροστά. Την άλλη μέρα μας το έφερναν με τα γαϊδούρια, μπαγιάτικο και κομματιασμένο. Οι ντόπιοι αλβανόφωνοι Καλυβιώτες που είχαν χτήματα στην Ανάβυσσο μας έβριζαν Τούρκους. Θέλαμε ένα τσαμπί σταφύλι να δροσιστούμε και δε μας έδιναν [-]. Ο τσιφλικούχος [...] μας απαγόρεψε την καλλιέργεια. Διαμαρτυρηθήκαμε [...] Ο τσιφλικούχος έφερε χωροφύλακες [...] και μας χτύπησαν. Μ' έβαλαν κι εμένα φυλακή.<br><em>Αρχείο Προφορικής Παράδοσης Κέντρου Μικρασιατικών Σπουδών.</em></p>
+                            <button class="flip-button">Διάβασε την Ανάλυση</button>
+                        </div>
+                        <div class="flip-card-back">
+                            <h5>Ανάλυση Πηγής</h5>
+                            <p>Η προφορική μαρτυρία ενός πρόσφυγα από τη Μικρά Ασία που εγκαταστάθηκε στην Ανάβυσσο αναδεικνύει τις τεράστιες δυσκολίες προσαρμογής. Πέρα από τις αντικειμενικές ελλείψεις βασικών αγαθών όπως η στέγη, το νερό και η τροφή, οι πρόσφυγες αντιμετώπισαν και την εχθρότητα του ντόπιου πληθυσμού. Είναι ιδιαίτερα αποκαλυπτικό το γεγονός ότι οι γηγενείς, αν και οι ίδιοι ήταν αλβανόφωνοι Έλληνες, αποκαλούσαν τους Μικρασιάτες πρόσφυγες «Τούρκους», δείχνοντας το βάθος της πολιτισμικής απόστασης και της καχυποψίας.</p>
+                            <button class="flip-button">Πίσω στην Πηγή</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η επίδραση της άφιξης των προσφύγων</h4>
+            <p><strong>Σε πολιτικό επίπεδο</strong>, η συγκέντρωση της πλειονότητας των Ελλήνων μέσα στα όρια της Ελλάδας σήμανε την εγκατάλειψη της Μεγάλης Ιδέας. Χάρη στην εγκατάσταση των προσφύγων στη Μακεδονία και στη Θράκη ενισχύθηκε όχι μόνο η ελληνική παρουσία σε αυτές τις περιοχές αλλά και η εθνική ομοιογένεια της Ελλάδας. Πολιτικά, οι πρόσφυγες τάχθηκαν στον χώρο του βενιζελισμού, ενώ αργότερα, αρκετοί από αυτούς έγιναν σοσιαλιστές και κομμουνιστές και διακρίθηκαν στους κοινωνικούς αγώνες.</p>
+            <p><strong>Σε οικονομικό επίπεδο</strong>, η αγροτική οικονομία αναζωογονήθηκε, καθώς οι πρόσφυγες αξιοποίησαν ακαλλιέργητες εκτάσεις εφαρμόζοντας και νέες καλλιεργητικές μεθόδους. Η συγκέντρωση πολλών από αυτούς στα αστικά κέντρα πρόσφερε νέες δυνατότητες στο εμπόριο και στη βιομηχανία. Οι περισσότεροι γνώριζαν κάποια τέχνη και, έχοντας μεγάλη ανάγκη από χρήματα, εργάζονταν ακόμη και με χαμηλές αμοιβές. Όσοι διέθεταν κεφάλαιο ασχολήθηκαν με το εμπόριο και τη βιοτεχνία, όπου αρκετοί διέπρεψαν.</p>
+            <p><strong>Σε κοινωνικό επίπεδο</strong>, οι πρόσφυγες έφεραν στην κοινωνία της Ελλάδας τον τρόπο ζωής τους, τις συνήθειές τους, τη μουσική τους (ρεμπέτικο τραγούδι), την κουζίνα τους. Καθώς πολλές από τις γυναίκες πρόσφυγες υποχρεώθηκαν να εργαστούν και αρκετές από τις γηγενείς έκαναν το ίδιο, τα στερεότυπα που ήθελαν τη γυναίκα κλεισμένη στο σπίτι και υποχείριο του άντρα άρχισαν να κλονίζονται. Τέλος, οι πρόσφυγες έδωσαν νέα πνοή στα Γράμματα και στις Τέχνες, με σημαντικούς λογοτέχνες όπως ο Γιώργος Σεφέρης, ο Ηλίας Βενέζης και η Διδώ Σωτηρίου να είναι Μικρασιάτες.</p>
+
+        </section>
+
+        <section id="quiz-section-44" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποιος οργανισμός ιδρύθηκε από την Κοινωνία των Εθνών για την αποκατάσταση των προσφύγων στην ύπαιθρο;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Το Υπουργείο Προνοίας</button>
+                        <button class="option" data-correct="true">Η Επιτροπή Αποκαταστάσεως Προσφύγων (ΕΑΠ)</button>
+                        <button class="option" data-correct="false">Ο Ελληνικός Ερυθρός Σταυρός</button>
+                        <button class="option" data-correct="false">Το Ταμείο Παρακαταθηκών και Δανείων</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιος από τους παρακάτω ΔΕΝ ήταν λόγος έντασης μεταξύ γηγενών και προσφύγων;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ο ανταγωνισμός για τη γη</button>
+                        <button class="option" data-correct="false">Οι διαφορετικές πολιτικές πεποιθήσεις</button>
+                        <button class="option" data-correct="true">Οι διαφορετικές θρησκευτικές πεποιθήσεις</button>
+                        <button class="option" data-correct="false">Η πίεση προς τα κάτω των μισθών</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η αποκατάσταση των προσφύγων στις πόλεις ήταν κυρίως έργο της ΕΑΠ.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Οι πρόσφυγες στην πλειονότητά τους υποστήριζαν πολιτικά τον βενιζελισμό.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                 <div class="question-block">
+                    <p>3. Η άφιξη των προσφύγων οδήγησε στην ενίσχυση της Μεγάλης Ιδέας.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-44" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <p>Το προσφυγικό ζήτημα αποτέλεσε τη μεγαλύτερη πρόκληση για την Ελλάδα του Μεσοπολέμου. Η αποκατάσταση των προσφύγων οργανώθηκε με τη βοήθεια της Κοινωνίας των Εθνών, που ίδρυσε την Επιτροπή Αποκαταστάσεως Προσφύγων (ΕΑΠ) για την εγκατάσταση στην ύπαιθρο, και από το ελληνικό κράτος, που δημιούργησε συνοικισμούς στις πόλεις. Η εγκατάσταση, ειδικά στη Μακεδονία και τη Θράκη, στόχευε στην ενίσχυση της εθνικής ομοιογένειας. Η συνύπαρξη με τους γηγενείς ήταν δύσκολη, με εντάσεις που προέκυπταν από οικονομικούς, πολιτικούς και πολιτισμικούς λόγους. Παρά τις δυσκολίες, η άφιξη των προσφύγων μεταμόρφωσε την Ελλάδα: οδήγησε στην οριστική εγκατάλειψη της Μεγάλης Ιδέας, αναζωογόνησε την οικονομία, και πλούτισε την κοινωνική και πολιτιστική ζωή με νέες συνήθειες, μουσικές όπως το ρεμπέτικο, και σπουδαίους λογοτέχνες.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Ποιους τρόπους χρησιμοποίησε το ελληνικό κράτος και η διεθνής κοινότητα για την αποκατάσταση των προσφύγων;</button>
+                    <div class="accordion-content">
+                        <p>Το ελληνικό κράτος απευθύνθηκε στην Κοινωνία των Εθνών (ΚτΕ), η οποία βοήθησε στη σύναψη δανείου και ίδρυσε την Επιτροπή Αποκαταστάσεως Προσφύγων (ΕΑΠ). Η ΕΑΠ ανέλαβε κυρίως την αγροτική αποκατάσταση, εγκαθιστώντας πρόσφυγες σε Μακεδονία και Θράκη όπου υπήρχαν διαθέσιμες γαίες. Το ίδιο το ελληνικό κράτος ανέλαβε κυρίως την αστική αποκατάσταση, δημιουργώντας νέους προσφυγικούς συνοικισμούς σε πόλεις όπως η Αθήνα και ο Πειραιάς (π.χ. Καισαριανή, Κοκκινιά).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποιες ήταν οι κυριότερες αιτίες των προστριβών μεταξύ των γηγενών και των προσφύγων;</button>
+                    <div class="accordion-content">
+                        <p>Οι κυριότερες αιτίες ήταν:<br><b>- Οικονομικές:</b> Οι πρόσφυγες έλαβαν γη που πολλοί ντόπιοι διεκδικούσαν, ενώ η προσφορά φθηνής εργασίας από τους πρόσφυγες πίεζε τους μισθούς των γηγενών προς τα κάτω.<br><b>- Πολιτικές:</b> Η συντριπτική πλειοψηφία των προσφύγων ήταν βενιζελικοί, γεγονός που τους έφερνε σε σύγκρουση με τους πληθυσμούς της αντιβενιζελικής Παλαιάς Ελλάδας.<br><b>- Πολιτισμικές:</b> Οι γηγενείς θεωρούσαν τους πρόσφυγες "παράδοξους" λόγω των διαφορετικών ονομάτων, της κουζίνας τους και του γεγονότος ότι οι γυναίκες τους εργάζονταν, κάτι που ερχόταν σε αντίθεση με τα παραδοσιακά πρότυπα. Αυτό οδήγησε σε απαξιωτικούς χαρακτηρισμούς όπως "τουρκόσποροι".</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Να αξιολογήσετε τη συνολική συμβολή των προσφύγων στην ελληνική κοινωνία του Μεσοπολέμου.</button>
+                    <div class="accordion-content">
+                        <p>Η συμβολή των προσφύγων ήταν καταλυτική και πολύπλευρη. Σε πολιτικό επίπεδο, η παρουσία τους σταθεροποίησε την ελληνική κυριαρχία στη Βόρεια Ελλάδα και οδήγησε στην εθνική ομοιογένεια και την εγκατάλειψη της Μεγάλης Ιδέας. Στην οικονομία, έδωσαν τεράστια ώθηση στην αγροτική παραγωγή με νέες καλλιέργειες και παρείχαν άφθονο εργατικό δυναμικό για τη βιομηχανία, ενώ πολλοί διέπρεψαν ως επιχειρηματίες. Κοινωνικά και πολιτιστικά, ανανέωσαν την κοινωνία με τις συνήθειές τους, τη μουσική (ρεμπέτικο), την κουζίνα, ενώ άλλαξαν τα πρότυπα για τη θέση της γυναίκας και ανέδειξαν μια ολόκληρη γενιά σπουδαίων λογοτεχνών και καλλιτεχνών.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    footer>
+        <p>Δημιουργία / Επιμέλεια Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας, 2025</p>
+    </footer>
+
+</body>
+</html>

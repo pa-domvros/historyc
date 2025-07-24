@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Κεφάλαιο 8 - Ο Μικρασιατικός Πόλεμος</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: var(--off-white); color: var(--text-color); text-align: justify; }
+        header { background: var(--coffee); color: var(--off-white); padding: 1rem 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { margin-bottom: 0.5rem; }
+        main { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+        .content-block { background: var(--beige); padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h3, h4 { color: var(--coffee); border-bottom: 2px solid var(--light-coffee); padding-bottom: 5px; margin-bottom: 15px; text-align: left; }
+        .key-terms ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; text-align: left; }
+        .key-terms li { background: var(--off-white); padding: 8px 15px; border-radius: 5px; font-weight: bold; color: var(--text-color); }
+        .accordion-item { border: 1px solid var(--light-coffee); margin-bottom: 10px; border-radius: 5px; overflow: hidden; }
+        .accordion-header { background-color: var(--light-coffee); color: var(--off-white); padding: 12px 15px; width: 100%; text-align: left; border: none; outline: none; cursor: pointer; font-size: 1.1em; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease; }
+        .accordion-header:hover { background-color: var(--coffee); }
+        .accordion-header::after { content: '\002B'; font-weight: bold; font-size: 1.2em; }
+        .accordion-header.active::after { content: '\2212'; }
+        .accordion-content { padding: 0 15px; background-color: var(--beige); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-content p, .accordion-content ul { padding: 15px 0; margin: 0; }
+        .quiz-container { background: var(--off-white); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .quiz-container.true-false-quiz { background: var(--beige); border: 1px solid var(--light-coffee); }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .question-block p { font-weight: bold; margin-bottom: 10px; text-align: left; }
+        .options button { display: block; width: 100%; padding: 10px 15px; margin-bottom: 8px; border: 1px solid var(--light-coffee); border-radius: 5px; background-color: var(--beige); color: var(--text-color); cursor: pointer; text-align: left; font-size: 1em; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .options button:hover { background-color: #e0e0d0; }
+        .options button.correct { background-color: #d4edda; border-color: #28a745; color: #155724; }
+        .options button.incorrect { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .feedback { margin-top: 10px; font-weight: bold; font-size: 0.9em; text-align: left; }
+        footer { text-align: center; padding: 20px; margin-top: 30px; background: var(--coffee); color: var(--off-white); box-shadow: 0 -2px 5px rgba(0,0,0,0.2); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = "0";
+                    }
+                });
+            });
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        options.forEach(opt => { opt.disabled = true; });
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) { correctAnswer.classList.add('correct'); }
+                            feedback.textContent = 'Λάθος απάντηση.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ 8: Ο ΜΙΚΡΑΣΙΑΤΙΚΟΣ ΠΟΛΕΜΟΣ (1919 -1922)</h2>
+    </header>
+    <main>
+        <section id="unit-35" class="content-block">
+            <h3>35. Οι διεκδικήσεις της Αντάντ και της Ελλάδας στην Οθωμανική Αυτοκρατορία</h3>
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Συνέδριο του Παρισιού</li>
+                    <li>Ελευθέριος Βενιζέλος</li>
+                    <li>Απόβαση στη Σμύρνη</li>
+                    <li>Διεκδικήσεις</li>
+                </ul>
+            </div>
+            <h4>Εξελίξεις μετά τη συνθηκολόγηση του Σουλτάνου</h4>
+            <p>Μετά την ήττα της Οθωμανικής Αυτοκρατορίας, ελληνικές δυνάμεις συμμετείχαν στην κατάληψη της Κωνσταντινούπολης από την Αντάντ. Ο Έλληνας πρωθυπουργός, Ελευθέριος Βενιζέλος, απέστειλε υπόμνημα στο Συνέδριο της Ειρήνης στο Παρίσι (Δεκέμβριος 1918), διεκδικώντας μια ευρεία ζώνη εδαφών στη Δυτική Μικρά Ασία με κέντρο τη Σμύρνη, την Ανατολική Θράκη, καθώς και τα νησιά Ίμβρο και Τένεδο. Παράλληλα, η Ελλάδα συμμετείχε στην εκστρατεία της Αντάντ στην Ουκρανία εναντίον των Μπολσεβίκων.</p>
+            <p>Η Βρετανία υποστήριξε τις ελληνικές θέσεις, καθώς μια ισχυρή Ελλάδα στην περιοχή θα εξυπηρετούσε τα στρατηγικά της συμφέροντα, περιορίζοντας τις ιταλικές φιλοδοξίες και παρέχοντας στήριξη στον έλεγχο των Στενών. Έτσι, τον Απρίλιο του 1919, το Συμβούλιο του Παρισιού έδωσε εντολή στην Ελλάδα να αποβιβάσει στρατεύματα στη Μικρά Ασία. Στις 2 Μαΐου 1919, ο ελληνικός στρατός αποβιβάστηκε στη Σμύρνη, καταλαμβάνοντας την πόλη και μια ευρύτερη περιοχή 17.000 τετραγωνικών χιλιομέτρων. Η απόβαση προκάλεσε την έντονη ενόχληση της Ιταλίας, η οποία διεκδικούσε τα ίδια εδάφη.</p>
+        </section>
+
+        <section id="unit-36" class="content-block">
+            <h3>36. Ο Ελληνισμός της Δυτικής Μικράς Ασίας και του Πόντου</h3>
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Χάτι Χουμαγιούν</li>
+                    <li>Ελληνισμός της Σμύρνης</li>
+                    <li>Ελληνισμός του Πόντου</li>
+                    <li>Τάγματα εργασίας</li>
+                    <li>Διωγμοί</li>
+                    <li>Ποντοαρμενικό κράτος</li>
+                </ul>
+            </div>
+
+            <h4>Ο Ελληνισμός της Δυτικής Μικράς Ασίας</h4>
+            <p>Από τα μέσα του 19ου αιώνα, πολλοί Έλληνες μετανάστευσαν στη Μικρά Ασία, ελκυόμενοι από τις οικονομικές ευκαιρίες και τις μεταρρυθμίσεις του Χάτι Χουμαγιούν. Αν και οι μουσουλμάνοι αποτελούσαν την πλειονότητα, οι ελληνορθόδοξες κοινότητες είχαν έντονη οικονομική και πνευματική παρουσία, ιδιαίτερα στη Σμύρνη, όπου οι Έλληνες ήταν πλειοψηφία. Ασχολούνταν κυρίως με το εμπόριο και τις επιχειρήσεις, ενώ λειτουργούσαν πολυάριθμα ελληνικά σχολεία και τυπογραφεία που εξέδιδαν βιβλία και εφημερίδες.</p>
+
+            <h4>Ο Ελληνισμός του Πόντου</h4>
+            <p>Παρόμοια, στον Πόντο, ο Ελληνισμός ζούσε οργανωμένος σε ακμάζουσες ελληνορθόδοξες κοινότητες. Μεγάλα εμπορικά κέντρα όπως η Τραπεζούντα, η Κερασούντα και η Σαμψούντα ήταν εστίες ελληνικής δραστηριότητας. Το «Φροντιστήριον της Τραπεζούντας», που ιδρύθηκε στα τέλη του 17ου αιώνα, αποτέλεσε το σημαντικότερο κέντρο της ελληνικής παιδείας στην περιοχή.</p>
+
+            <h4>Οι διωγμοί του Μικρασιατικού Ελληνισμού</h4>
+            <p>Οι διωγμοί κατά του ελληνικού πληθυσμού ξεκίνησαν με την ενίσχυση του τουρκικού εθνικισμού και την προσπάθεια της Γερμανίας να κυριαρχήσει στην οθωμανική οικονομία. Με το ξέσπασμα του Α' Παγκοσμίου Πολέμου, περίπου 150.000 Έλληνες εκτοπίστηκαν βίαια στην ενδοχώρα, με το πρόσχημα της στρατιωτικής ασφάλειας. Παράλληλα, άνδρες άνω των 45 ετών επιστρατεύονταν στα διαβόητα "τάγματα εργασίας", όπου χιλιάδες εξοντώθηκαν από τις κακουχίες και την εξαντλητική εργασία σε λατομεία και δημόσια έργα.</p>
+            
+            <h4>Η κίνηση αυτονόμησης στον Πόντο</h4>
+            <p>Μετά το τέλος του πολέμου, και με βάση την αρχή της αυτοδιάθεσης των λαών, εκδηλώθηκε κίνημα για την αυτονόμηση του Πόντου. Τον Ιανουάριο του 1920, ιδρύθηκε ένα ομόσπονδο Ποντοαρμενικό κράτος, το οποίο αναγνωρίστηκε από τη Συνθήκη των Σεβρών. Ωστόσο, η ύπαρξή του ήταν βραχύβια, καθώς διαλύθηκε από τις δυνάμεις του Κεμάλ τον Νοέμβριο του 1920.</p>
+        </section>
+        
+        <section id="unit-37" class="content-block">
+            <h3>37. Το Τουρκικό Εθνικό Κίνημα</h3>
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Μουσταφά Κεμάλ</li>
+                    <li>Εθνικό Συμβόλαιο</li>
+                    <li>Μεγάλη Εθνοσυνέλευση</li>
+                    <li>Άγκυρα</li>
+                    <li>Κοσμικό κράτος</li>
+                </ul>
+            </div>
+            <h4>Οι απαρχές του κινήματος</h4>
+            <p>Η ήττα της Οθωμανικής Αυτοκρατορίας στον Α' Παγκόσμιο Πόλεμο και η παρουσία στρατευμάτων της Αντάντ προκάλεσαν αισθήματα ταπείνωσης στους τουρκικούς πληθυσμούς. Αρκετοί στρατιωτικοί αρνήθηκαν να παραδοθούν. Ανάμεσά τους, ο Μουσταφά Κεμάλ άρχισε να οργανώνει ένα κίνημα αντίστασης σε περιοχές που δεν ελέγχονταν από την Αντάντ. Τον Ιούνιο του 1919, στην Αμάσεια του Πόντου, ο Κεμάλ και οι συνεργάτες του έθεσαν ως στόχο τη δημιουργία ενός εθνικού τουρκικού κράτους, εγκαταλείποντας την ιδέα της πολυεθνικής αυτοκρατορίας.</p>
+            <p>Στα συνέδρια του Ερζερούμ και της Σεβάστειας το καλοκαίρι του 1919, ο Κεμάλ αναδείχθηκε ηγέτης του κινήματος και τέθηκαν οι βάσεις του "Εθνικού Συμβολαίου", της ιδρυτικής διακήρυξης του τουρκικού εθνικισμού. Ως έδρα του κινήματος ορίστηκε η Άγκυρα.</p>
+            
+            <h4>Η ίδρυση του νέου τουρκικού κράτους</h4>
+            <p>Στις εκλογές του Ιανουαρίου 1920, οι κεμαλικοί κέρδισαν την πλειοψηφία και η νέα οθωμανική Βουλή υιοθέτησε το Εθνικό Συμβόλαιο. Ως αντίδραση, οι Βρετανοί διέλυσαν τη Βουλή τον Μάρτιο του 1920. Ο Κεμάλ απάντησε συγκαλώντας στην Άγκυρα την Α' Μεγάλη Εθνοσυνέλευση, η οποία ψήφισε νέο Σύνταγμα. Με αυτό, η χώρα ονομάστηκε Τουρκία, καθιερώθηκε το κοσμικό κράτος καταργώντας τον θρησκευτικό χαρακτήρα της εξουσίας και ορίστηκε η Εθνοσυνέλευση ως η μοναδική νομοθετική εξουσία. Ο Κεμάλ αναδείχθηκε αρχηγός του κράτους και πρωθυπουργός. Αφού διέλυσε το Ποντοαρμενικό κράτος τον Νοέμβριο του 1920, έστρεψε την προσοχή του στη Μικρά Ασία.</p>
+            
+            <section id="quiz-section-37" class="content-block">
+                <h3>Δοκίμασε τις γνώσεις σου!</h3>
+                <div class="quiz-container">
+                    <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                    <div class="question-block">
+                        <p>1. Ποιος ήταν ο ηγέτης του τουρκικού εθνικού κινήματος;</p>
+                        <div class="options">
+                            <button class="option" data-correct="true">Μουσταφά Κεμάλ</button>
+                            <button class="option" data-correct="false">Ο Σουλτάνος</button>
+                            <button class="option" data-correct="false">Ελευθέριος Βενιζέλος</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+                <div class="quiz-container true-false-quiz">
+                    <h4>Άσκηση Σωστού/Λάθους</h4>
+                    <div class="question-block">
+                        <p>1. Ο στόχος του Κεμάλ ήταν η διατήρηση της πολυεθνικής Οθωμανικής Αυτοκρατορίας.</p>
+                        <div class="options">
+                            <button class="option" data-correct="false">Σωστό</button>
+                            <button class="option" data-correct="true">Λάθος</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                     <div class="question-block">
+                        <p>2. Το νέο σύνταγμα που ψηφίστηκε στην Άγκυρα καθιέρωνε το κοσμικό κράτος.</p>
+                        <div class="options">
+                            <button class="option" data-correct="true">Σωστό</button>
+                            <button class="option" data-correct="false">Λάθος</button>
+                        </div>
+                        <div class="feedback"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας</p>
+    </footer>
+
+</body>
+</html>

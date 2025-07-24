@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 38</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+        
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Source Comparison (	Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .flip-card-front h5, .flip-card-back h5 {
+                font-size: 1.2em;
+            }
+
+            .flip-card-front p, .flip-card-back p {
+                font-size: 0.85em;
+            }
+
+            .options button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .responsive-image.last-image {
+                max-width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.style.maxHeight = null;
+                        }
+                    });
+
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = null;
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            flipCard.classList.toggle('flipped');
+                        });
+                    });
+                }
+            });
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΕΝΟΤΗΤΑ 38: Ο μικρασιατικός πόλεμος (1919-1922)</h2>
+    </header>
+
+    <main>
+        <section id="unit-38" class="content-block">
+            <h3>38. Ο μικρασιατικός πόλεμος (1919-1922)</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Ύπατος Αρμοστής</li>
+                    <li>Αριστείδης Στεργιάδης</li>
+                    <li>Συνθήκη των Σεβρών</li>
+                    <li>Κεμαλικό κίνημα</li>
+                    <li>Δημήτριος Γούναρης</li>
+                    <li>Εκλογές 1920</li>
+                    <li>Ποταμός Σαγγάριος</li>
+                    <li>Δημοκρατικό Μανιφέστο</li>
+                    <li>Μικρασιατική Καταστροφή</li>
+                </ul>
+            </div>
+
+            <h4>Η ελληνική διοίκηση της Μικράς Ασίας</h4>
+            <p>Παράλληλα με την απόβαση του ελληνικού στρατού στη Σμύρνη, εγκαταστάθηκε στην πόλη και η ελληνική διοίκηση. Επικεφαλής ορίστηκε ο ύπατος αρμοστής (γενικός διοικητής) Αριστείδης Στεργιάδης, έμπιστος τόσο του Βενιζέλου όσο και των Βρετανών, με εντολή να αντιμετωπίζει ισότιμα όλους τους κατοίκους. Ήταν μια πολιτική που δεν γινόταν πολλές φορές αποδεκτή από την ελληνική στρατιωτική ηγεσία, τον μητροπολίτη Σμύρνης Χρυσόστομο και από ορισμένους Μικρασιάτες Έλληνες, γεγονός που, σε συνδυασμό με τον αυταρχικό χαρακτήρα του Στεργιάδη, έκανε τον ύπατο αρμοστή αντιπαθή σε αρκετούς Έλληνες. Πάντως, οι ελληνικές αρχές επιτέλεσαν σημαντικό έργο στην οικονομία, στην εκπαίδευση, στην υγεία και ιδίως στην επανεγκατάσταση των Ελλήνων προσφύγων που είχαν διωχθεί παλαιότερα από τις οθωμανικές αρχές και τώρα επέστρεφαν.</p>
+
+            <h4>Οι επιχειρήσεις του ελληνικού στρατού έως το καλοκαίρι του 1920</h4>
+            <p>Ο ελληνικός στρατός κατέλαβε αρχικά τα εδάφη της Μικράς Ασίας για τα οποία είχε εντολή από την Αντάντ. Λίγο αργότερα, ο Βενιζέλος έλαβε από το συνέδριο του Παρισιού άδεια επέκτασης της ελληνικής ζώνης κατοχής. Έτσι, ο ελληνικός στρατός, αφού κατέλαβε, την άνοιξη του 1920, την Α. Θράκη, προέλασε, το καλοκαίρι του 1920, σε βάθος 100-150 χλμ. καταλαμβάνοντας μια ζώνη εδαφών στη Μ. Ασία κατά πολύ μεγαλύτερη από αυτή που όριζε η συνθήκη των Σεβρών (είχε υπογραφεί λίγο νωρίτερα).</p>
+            
+            <figure>
+                <img src="1.jpg" alt="Ελληνικές δυνάμεις στην ενδοχώρα της Μικράς Ασίας (καλοκαίρι 1921)." class="responsive-image">
+                <figcaption>1. Ελληνικές δυνάμεις στην ενδοχώρα της Μικράς Ασίας (καλοκαίρι 1921).</figcaption>
+            </figure>
+
+            <h4>Η απόρριψη της συνθήκης των Σεβρών από το τουρκικό κίνημα αντίστασης</h4>
+            <p>Οι ελληνικές επιτυχίες διευκόλυναν την Αντάντ να επιβάλει στον σουλτάνο τη συνθήκη των Σεβρών (καλοκαίρι 1920). Όμως, η απόλυτη απόρριψη της συνθήκης από τον Κεμάλ σε συνδυασμό με την ενίσχυση του τουρκικού εθνικού κινήματος αντίστασης έκαναν τους συμμάχους επιφυλακτικούς σχετικά με το κατά πόσο ο ελληνικός στρατός θα μπορούσε να επιβληθεί.</p>
+
+            <h4>Οι εκλογές του 1920 και η επάνοδος του Κωνσταντίνου</h4>
+            <p>Λίγες μέρες μετά την υπογραφή της συνθήκης των Σεβρών ο Βενιζέλος δέχτηκε στο Παρίσι δολοφονική επίθεση από Έλληνες φιλοβασιλικούς, αλλά διασώθηκε. Λίγο μετά, στη διάρκεια ταραχών που ξέσπασαν στην Αθήνα, δολοφονήθηκε από βενιζελικούς ο Ίων Δραγούμης, γνωστός αντιβενιζελικός. Επιστρέφοντας στην Ελλάδα, ο Βενιζέλος προκήρυξε εκλογές, κρίνοντας ότι μετά την επιτυχία των Σεβρών η συγκυρία ήταν ευνοϊκή για να τις κερδίσει. Υποτίμησε, όμως, το γεγονός ότι ένα σημαντικό τμήμα της ελληνικής κοινωνίας είχε κουραστεί από την πολεμική προσπάθεια που είχε ξεκινήσει χρόνια πριν με τους βαλκανικούς πολέμους. Σε αυτές τις συνθήκες δημιουργήθηκε μια αντιβενιζελική συμμαχία, με ηγέτη τον Δημήτριο Γούναρη, που υποσχόταν τον τερματισμό του πολέμου και την απαλλαγή από τη «βενιζελική τυραννία», όπως χαρακτήριζε τη διακυβέρνηση Βενιζέλου. Καθώς το πολιτικό κλίμα ήταν ήδη τεταμένο, ο αιφνίδιος θάνατος του Αλέξανδρου, που εκτελούσε χρέη βασιλιά, μετέτρεψε τις εκλογές σε άτυπο δημοψήφισμα για την επιστροφή ή όχι του εξόριστου Κωνσταντίνου στην Ελλάδα.</p>
+            <p>Στις εκλογές που έγιναν τον Νοέμβριο του 1920 οι Φιλελεύθεροι ηττήθηκαν. Αμέσως ο Βενιζέλος έφυγε από την Ελλάδα. Η νέα φιλοβασιλική κυβέρνηση οργάνωσε δημοψήφισμα για την επιστροφή ή όχι του Κωνσταντίνου. Το υπερβολικά υψηλό ποσοστό υπέρ του Κωνσταντίνου δημιούργησε βάσιμες υποψίες για νοθεία. Τον Δεκέμβριο του 1920 ο Κωνσταντίνος επανήλθε.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>1. Η απόφαση για συνέχιση του πολέμου μετά τον Νοέμβριο του 1920</h5>
+                                <p>Αν η επιστροφή του Κωνσταντίνου και οι μεταβολές στον κρατικό μηχανισμό ικανοποιούσαν δύο από τα αιτήματα που εμπεριείχε η λαϊκή ετυμηγορία της 1ης Νοεμβρίου, αγνοήθηκε εντελώς το βαθύτερο νόημά της, δηλ. η άρνηση του πολέμου και η προσδοκία της αποστράτευσης. Η αντιβενιζελική ηγεσία χειρίστηκε το μικρασιατικό ζήτημα σαν να μην υπήρχε άλλη επιλογή από τη συνέχιση και την κλιμάκωση της εκστρατείας. Παγιδεύθηκαν έτσι σε ένα αλυτρωτικό εγχείρημα, που τους ήταν ξένο.<br><em>Γ. Μαυρογορδάτος. «Οι πολιτικές εξελίξεις», Ιστορία του νέου ελληνισμού, Ελληνικά Γράμματα, Αθήνα 2003, τόμ. 6ος, σ. 27-28.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο σύγχρονος ιστορικός Γ. Μαυρογορδάτος σχολιάζει την απόφαση των φιλοβασιλικών ελληνικών κυβερνήσεων μετά τον Νοέμβριο του 1920 να συνεχίσουν την πολεμική προσπάθεια στη Μικρά Ασία, αν και φαίνεται ότι δεν πίστευαν στην επιτυχία του εγχειρήματος.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Διπλωματικές επιτυχίες του τουρκικού κινήματος αντίστασης</h4>
+            <p>Παράλληλα, οι Δυνάμεις της Αντάντ είχαν αρχίσει να επανεξετάζουν τη στάση τους διαβλέποντας τη δυνατότητα του κεμαλικού κινήματος να είναι ο νικητής της σύγκρουσης. Η επιστροφή του Κωνσταντίνου, πολέμιου της Αντάντ στα χρόνια του Α΄ Παγκόσμιου πολέμου, λειτούργησε ως πρόφαση για τις Δυνάμεις, ιδίως για τη Γαλλία και την Ιταλία, ώστε να αναθεωρήσουν τη στάση τους απέναντι στην Ελλάδα. Έτσι, ο Κεμάλ, αφού υπέγραψε συμφωνία συνεργασίας με τη Σοβιετική Ένωση (Μάρτιος 1921), προχώρησε στην υπογραφή σειράς συμφωνιών με τη Γαλλία (Μάρτιος και Οκτώβριος 1921) και την Ιταλία (Μάρτιος 1921) που προέβλεπαν την αποχώρηση των στρατευμάτων τους από τη Μικρά Ασία με αντάλλαγμα την παραχώρηση προνομίων και διευκολύνσεων από την κεμαλική Τουρκία. Μετά απ' αυτά, οι ελληνικές προσπάθειες είχαν πλέον μόνο την αγγλική στήριξη, και αυτή σε διπλωματικό, κυρίως, επίπεδο.</p>
+            
+            <figure>
+                <img src="2.jpg" alt="Χάρτης του μικρασιατικού πολέμου (1919-1922)." class="responsive-image">
+                <figcaption>2. Ο μικρασιατικός πόλεμος (1919-1922)</figcaption>
+            </figure>
+
+            <h4>Οι εξελίξεις έως τον Αύγουστο του 1922</h4>
+            <p>Η νέα φιλοβασιλική κυβέρνηση δεν τήρησε την προεκλογική της υπόσχεση για τερματισμό του πολέμου. Ο Κωνσταντίνος και η νέα πολιτική ηγεσία πίστευαν ότι η νίκη ήταν κοντά και γι' αυτό αποφάσισαν να συνεχίσουν τον πόλεμο. Μάλιστα, ο Κωνσταντίνος πήγε ο ίδιος στη Μικρά Ασία. Το καλοκαίρι του 1921, τα ελληνικά στρατεύματα πραγματοποίησαν μεγάλη επίθεση, που κόστισε χιλιάδες νεκρούς και τραυματίες, φτάνοντας μέχρι τον ποταμό Σαγγάριο, λίγα χιλιόμετρα πριν την Άγκυρα. Συνάντησαν, ωστόσο, ισχυρή αντίσταση και υποχώρησαν στη γραμμή που οριζόταν από τις πόλεις Εσκί Σεχίρ-Κιουτάχεια-Αφιόν Καραχισάρ. Εκεί παρέμεινε το μέτωπο τον επόμενο έναν χρόνο.</p>
+            <p>Όμως, οι όροι του παιχνιδιού είχαν αντιστραφεί. Ο Κεμάλ, ενισχυμένος οικονομικά, διπλωματικά και στρατιωτικά, εμφανιζόταν αδιάλλακτος. Την ίδια στιγμή στην Αθήνα ενισχύονταν οι αντιπολιτευτικές φωνές (ο Αλ. Παπαναστασίου και έξι συνεργάτες του δημοσίευσαν, τον Μάρτιο του 1922, το Δημοκρατικό Μανιφέστο, στο οποίο ασκούσαν κριτική στις βασιλικές επιλογές) και οξυνόταν η οικονομική κρίση. Σε αυτές τις συνθήκες, οι κυβερνήσεις της Αθήνας αναζητούσαν στο εξωτερικό διπλωματική και οικονομική στήριξη, αλλά δίχως αποτέλεσμα.</p>
+            <p>Στις 13 Αυγούστου εκδηλώθηκε η τελική τουρκική επίθεση. Λίγο μετά η ελληνική άμυνα κατέρρευσε και άρχισε η υποχώρηση. Στις 27 Αυγούστου οι κεμαλικοί μπήκαν στη Σμύρνη. Η πόλη παραδόθηκε στις φλόγες, οι Έλληνες και οι Αρμένιοι κάτοικοί της στη σφαγή. Η ήττα του ελληνικού στρατού σήμανε και το τέλος του μικρασιατικού ελληνισμού. Όσοι Έλληνες σώθηκαν πήραν τον δρόμο για την προσφυγιά.</p>
+
+            <figure>
+                <img src="3.jpg" alt="Έλληνες πρόσφυγες στην προκυμαία της Σμύρνης αναζητούν σωτηρία." class="responsive-image last-image">
+                <figcaption>3. Μετά την κατάληψη της Σμύρνης από τους κεμαλικούς, Έλληνες πρόσφυγες αναζητούν με αγωνία μέσο σωτηρίας. Πίσω τους διακρίνονται Τούρκοι ιππείς και πυρπολημένα κτίρια.</figcaption>
+            </figure>
+            
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>3. Στον δρόμο για την προσφυγιά</h5>
+                                <p>Λοιπόν ούλος αυτός ο κόσμος στοιβαγμένος στο μουράγιο και πάνω σε μαούνες. Άντροι, γέροι, γριές και γυναικόπαιδα, που είχανε παρατήσει τα καλά τους, και ξεμείνανε στο δρόμο, και τώρα εκεί μεροβραδιάζονταν εκεί πλαγιάζανε, άλλος μ' ένα χράμι που έφερε μαζί του, άλλος μ' ένα πάπλωμα ή με μια μπατανία. Χείλια τρεμοσαλεύανε από το παραμιλητό. Μάτια γουρλωμένα που αγναντεύανε τη Δευτέρα Παρουσία, τη συντέλεια του κόσμου. Μέρα, χαρά Θεού. Τέλη Αυγούστου, αρχές Σεπτέμβρη με το καινούριο.<br><em>Κοσμάς Πολίτης, Στου Χατζηφράγκου, Ερμής, Αθήνα 1990, σ. 146.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Η φωτογραφία μπορεί να εξεταστεί παράλληλα με την πηγή. Οι προσπάθειες των προσφύγων να εγκαταλείψουν την προκυμαία της Σμύρνης ώστε να διασωθούν υπήρξαν πραγματικά τραγικές, καθώς τα διαθέσιμα σκάφη δεν επαρκούσαν και οι κεμαλικοί είχαν ήδη καταλάβει την πόλη.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="quiz-section-1" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποιος ορίστηκε Ύπατος Αρμοστής (γενικός διοικητής) στην ελληνική διοίκηση της Σμύρνης;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ελευθέριος Βενιζέλος</button>
+                        <button class="option" data-correct="false">Δημήτριος Γούναρης</button>
+                        <button class="option" data-correct="true">Αριστείδης Στεργιάδης</button>
+                        <button class="option" data-correct="false">Ίων Δραγούμης</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιο γεγονός έδωσε το πρόσχημα στη Γαλλία και την Ιταλία να αλλάξουν στάση απέναντι στην Ελλάδα;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η υπογραφή της Συνθήκης των Σεβρών</button>
+                        <button class="option" data-correct="true">Η επάνοδος του Κωνσταντίνου</button>
+                        <button class="option" data-correct="false">Η προέλαση του ελληνικού στρατού στον Σαγγάριο</button>
+                        <button class="option" data-correct="false">Η δολοφονία του Ίωνα Δραγούμη</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Πότε εκδηλώθηκε η τελική τουρκική επίθεση που οδήγησε στην κατάρρευση του μετώπου;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Νοέμβριος 1920</button>
+                        <button class="option" data-correct="false">Μάρτιος 1921</button>
+                        <button class="option" data-correct="true">Αύγουστος 1922</button>
+                        <button class="option" data-correct="false">Οκτώβριος 1921</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η φιλοβασιλική κυβέρνηση που προέκυψε από τις εκλογές του 1920 τήρησε την υπόσχεσή της για άμεσο τερματισμό του πολέμου.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ο Ύπατος Αρμοστής Στεργιάδης είχε εντολή να αντιμετωπίζει ισότιμα όλους τους κατοίκους της περιοχής.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Το κεμαλικό κίνημα αποδέχτηκε πλήρως τη Συνθήκη των Σεβρών.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                 <div class="question-block">
+                    <p>4. Η Αγγλία ήταν η μόνη από τις Μεγάλες Δυνάμεις που συνέχισε να στηρίζει την Ελλάδα (σε διπλωματικό επίπεδο) μετά το 1921.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-1" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-1">
+                            <h4>Η Ελληνική Διοίκηση της Μ. Ασίας</h4>
+                            <p>Ύπατος Αρμοστής (επικεφαλής) ήταν ο Α. Στεργιάδης, με εντολή να αντιμετωπίζει όλους τους κάτοικους ισότιμα. Αυτή η πολιτική συνάντησε αντιδράσεις από την ελληνική στρατιωτική ηγεσία, τον μητροπολίτη Σμύρνης Χρυσόστομο και ορισμένους Μικρασιάτες Έλληνες. Παρ' όλα αυτά, οι ελληνικές αρχές επιτέλεσαν σημαντικό έργο στην οικονομία, την εκπαίδευση, την υγεία και στην επανεγκατάσταση Ελλήνων προσφύγων.</p>
+                            
+                            <h4>Οι επιχειρήσεις του ελληνικού στρατού ως το καλοκαίρι του 1920</h4>
+                            <p>Ο ελληνικός στρατός κατέλαβε τα εδάφη της Μ. Ασίας με εντολή της Αντάντ και αργότερα έλαβε άδεια για επέκταση. Το καλοκαίρι του 1920, κατέλαβε όλη την Α. Θράκη και προέλαυνε σε βάθος 100-150 χμ., καταλαμβάνοντας εδάφη μεγαλύτερα από αυτά που όριζε η Συνθήκη των Σεβρών. Οι ελληνικές επιτυχίες βοήθησαν την Αντάντ να επιβάλει τη συνθήκη, αλλά οι Δυνάμεις άρχισαν να αμφιβάλλουν για την τελική επιτυχία λόγω της απόρριψης της συνθήκης από τον Κεμάλ και της ενίσχυσης του εθνικού του κινήματος.</p>
+
+                            <h4>Οι εκλογές του 1920 και η επάνοδος του Κωνσταντίνου</h4>
+                            <p>Μετά από δολοφονική επίθεση κατά του Βενιζέλου στο Παρίσι και τη δολοφονία του Ίωνα Δραγούμη στην Αθήνα, ο Βενιζέλος προκήρυξε εκλογές. Μια ομάδα βασιλικών με αρχηγό τον Δ. Γούναρη υποσχόταν την παύση του πολέμου. Ο θάνατος του βασιλιά Αλέξανδρου έθεσε το ζήτημα της βασιλείας. Τον Νοέμβριο του 1920, οι Φιλελεύθεροι ηττήθηκαν, και μετά από δημοψήφισμα, ο Κωνσταντίνος επέστρεψε στην Ελλάδα.</p>
+
+                            <h4>Διπλωματικές Επιτυχίες του Τουρκικού Κινήματος Αντίστασης</h4>
+                            <p>Η επάνοδος του Κωνσταντίνου έδωσε στην Αντάντ το πρόσχημα να αλλάξει στάση. Ο Κεμάλ υπέγραψε συμφωνίες συνεργασίας με τη Σοβιετική Ένωση (Μάρτιος 1921), τη Γαλλία και την Ιταλία, οι οποίες απέσυραν τα στρατεύματά τους με αντάλλαγμα οικονομικά προνόμια. Μόνο η Αγγλία συνέχισε να στηρίζει την Ελλάδα σε διπλωματικό επίπεδο.</p>
+                            
+                            <h4>Οι εξελίξεις έως τον Αύγουστο του 1922</h4>
+                            <p>Η νέα φιλοβασιλική κυβέρνηση συνέχισε τον πόλεμο. Το καλοκαίρι του 1921, τα ελληνικά στρατεύματα έφτασαν μέχρι τον Σαγγάριο ποταμό αλλά υποχώρησαν. Ο Κεμάλ, ενισχυμένος, ήταν αδιάλλακτος. Στην Αθήνα, το Δημοκρατικό Μανιφέστο (Μάρτιος 1922) του Αλ. Παπαναστασίου ασκούσε κριτική, η οικονομική κρίση οξυνόταν και η αναζήτηση εξωτερικής στήριξης ήταν μάταιη. Στις 13 Αυγούστου 1922, ξεκίνησε η τελική τουρκική επίθεση, η ελληνική άμυνα κατέρρευσε και στις 27 Αυγούστου οι κεμαλικοί μπήκαν στη Σμύρνη, με αποτέλεσμα την πυρπόληση της πόλης και τη σφαγή Ελλήνων και Αρμενίων.</p>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Δοκιμάστε να ερμηνεύσετε την απόφαση των κυβερνήσεων μετά τον Νοέμβριο του 1920 να συνεχίσουν τον μικρασιατικό πόλεμο.</button>
+                    <div class="accordion-content">
+                        <p>Η αντιβενιζελική ηγεσία, παρά την προεκλογική υπόσχεση για τερματισμό του πολέμου, αποφάσισε να τον συνεχίσει. Πίστευαν ότι η νίκη ήταν κοντά και δεν ήθελαν να φανούν υπεύθυνοι για την απώλεια των εδαφών που είχαν κερδηθεί. Αγνοώντας την κόπωση του λαού, χειρίστηκαν το ζήτημα σαν να μην υπήρχε άλλη επιλογή από την κλιμάκωση της εκστρατείας, παγιδευόμενοι σε ένα εγχείρημα που αρχικά δεν υποστήριζαν.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Θεωρείτε ότι ο μικρασιατικός πόλεμος κρίθηκε αποκλειστικά σε στρατιωτικό επίπεδο; Να τεκμηριώσετε την απάντησή σας.</button>
+                    <div class="accordion-content">
+                        <p>Όχι, ο πόλεμος δεν κρίθηκε μόνο στο στρατιωτικό πεδίο. Οι διπλωματικοί παράγοντες ήταν καθοριστικοί. Η επάνοδος του Κωνσταντίνου αποξένωσε την Ελλάδα από τους Συμμάχους (Γαλλία, Ιταλία), οι οποίοι στράφηκαν προς τον Κεμάλ, παρέχοντάς του υποστήριξη. Ο Κεμάλ εξασφάλισε επίσης συμμαχία με τη Σοβιετική Ένωση. Έτσι, η Ελλάδα βρέθηκε διπλωματικά απομονωμένη, με μόνη τη μερική στήριξη της Βρετανίας. Παράλληλα, η εσωτερική πολιτική αστάθεια, ο Εθνικός Διχασμός και η οικονομική εξάντληση της χώρας υπονόμευσαν την πολεμική προσπάθεια, οδηγώντας στην τελική κατάρρευση.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+</body>
+</html>

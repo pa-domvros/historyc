@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 32</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        .map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+        
+        .flip-card-front ul, .flip-card-back ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = "0";
+                    }
+                });
+            });
+
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                flipCard.querySelectorAll('.flip-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        flipCard.classList.toggle('flipped');
+                    });
+                });
+            });
+
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                            feedback.textContent = 'Λάθος απάντηση.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΠΕΜΠΤΟ: Ο Α' ΠΑΓΚΟΣΜΙΟΣ ΠΟΛΕΜΟΣ ΚΑΙ ΟΙ ΑΜΕΣΕΣ ΕΠΙΠΤΩΣΕΙΣ ΤΟΥ</h2>
+    </header>
+
+    <main>
+        <section id="unit-32" class="content-block">
+            <h3>32. Η Ελλάδα στον Α΄ Παγκόσμιο πόλεμο - Ο Εθνικός Διχασμός</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Αντάντ</li>
+                    <li>Κεντρικές Δυνάμεις</li>
+                    <li>Εθνικός Διχασμός</li>
+                    <li>Προσωρινή Κυβέρνηση</li>
+                    <li>Επίστρατοι</li>
+                    <li>Εθνική Άμυνα</li>
+                    <li>Βουλή των Λαζάρων</li>
+                </ul>
+            </div>
+            
+            <p>Ο Α΄ Παγκόσμιος πόλεμος δίχασε την ελληνική ηγεσία και κοινωνία.</p>
+
+            <h4>Η θέση του Βενιζέλου</h4>
+            <p>Ο πρωθυπουργός Ελευθέριος Βενιζέλος, που θεωρούσε ότι οι Αγγλογάλλοι θα επικρατούσαν, έκρινε ότι η Ελλάδα θα έπρεπε να συμμαχήσει με την Αντάντ για να διαφυλάξει τα κέρδη της από τους βαλκανικούς πολέμους αλλά και να διευρύνει τα σύνορά της. Η θέση αυτή υποστηριζόταν από μεγάλα τμήματα των λαϊκών τάξεων, που εμπνέονταν από τη Μεγάλη Ιδέα, αλλά και από τη μεγαλοαστική τάξη, ιδίως της Διασποράς, που προσδοκούσε να ενταχθεί σε μια μεγάλη και ισχυρή Ελλάδα.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>1. Ο Ελευθέριος Βενιζέλος υποστηρίζει τη συμμαχία της Ελλάδας με την Αντάντ</h5>
+                                <p>Μέχρι σήμερον η πολιτική ημών συνίστατο εις διατήρησιν της ουδετερότητος [...]. Αλλ' ήδη καλούμεθα να μετάσχωμεν του πολέμου [...] επ' ανταλλάγμασι, τα οποία πραγματοποιούμενα θα δημιουργήσωσι μιαν Ελλάδα μεγάλην και ισχυράν, τοιαύτην οποίαν ουδ' οι μάλλον αισιόδοξοι ηδύναντο να φαντασθώσι καν προ ολίγων ακόμη ετών.<br><em>Ε. Βενιζέλος, Υπόμνημα προς τον βασιλιά Κωνσταντίνο, 11 Ιανουαρίου 1915.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Ελ. Βενιζέλος υποστήριζε την έξοδο της Ελλάδας στον Α΄ Παγκόσμιο πόλεμο στο πλευρό της Αντάντ. Κάνοντας μια απόλυτα πραγματιστική προσέγγιση της κατάστασης, ο Βενιζέλος τόνιζε ότι η Ελλάδα, προκειμένου μετά το τέλος του Α΄ Παγκόσμιου πολέμου να ενσωματώσει εδάφη της Οθωμανικής αυτοκρατορίας στα οποία άκμαζε ο ελληνισμός, δεν θα έπρεπε να διστάσει ακόμη και να παραχωρήσει την περιοχή της Καβάλας. Σύμφωνα με τον ιστορικό Γ.Θ. Μαυρογορδάτο, «στην περίπτωση αυτή η Ελλάδα θα έχανε 2.000 τ.χλμ. με πληθυσμό 30.000 Ελλήνων, αλλά θα κέρδιζε στη Μικρά Ασία 125.000 τ.χλμ. με ελληνικό πληθυσμό 800.000».</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η θέση του Κωνσταντίνου</h4>
+            <p>Ο βασιλιάς Κωνσταντίνος ήθελε την Ελλάδα σύμμαχο των Κεντρικών Δυνάμεων. Επειδή, όμως, η Οθωμανική αυτοκρατορία και η Βουλγαρία είχαν ήδη ταχθεί στο πλευρό της Γερμανίας, ο βασιλιάς υποστήριζε, σε συνεννόηση με τον Γερμανό αυτοκράτορα, τη «διαρκή ουδετερότητα» με το επιχείρημα ότι έτσι η Ελλάδα θα προστατευόταν από τον πόλεμο. Ήταν η πιο φιλική προς τη Γερμανία πολιτική που μπορούσε να ακολουθήσει η Ελλάδα. Οι απόψεις του Κωνσταντίνου έβρισκαν απήχηση σε μικροαστικά στρώματα που είχαν θορυβηθεί από την προοπτική ένταξης στο ελληνικό κράτος του ισχυρού εξωελλαδικού ελληνικού κεφαλαίου, το οποίο δύσκολα θα μπορούσαν να ανταγωνιστούν. Επίσης, οι βασιλικές θέσεις έβρισκαν σύμφωνα και τμήματα των λαϊκών τάξεων, που, λίγο μετά τους βαλκανικούς πολέμους, δεν επιθυμούσαν να πολεμήσουν και πάλι.</p>
+            
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>2. Η κωνσταντινική «ουδετερότητα»</h5>
+                                <p>Η [...] πολιτική της ουδετερότητας την οποία σταθερά πρόβαλλε [ενν. ο Κωνσταντίνος] μέχρι την αποπομπή του από τις δυνάμεις της Entente το καλοκαίρι του 1917, δεν αντιστοιχούσε, βεβαίως, σε κάποια διάθεση τηρήσεως ίσων αποστάσεων από τους δύο εμπολέμους συνασπισμούς. Ήταν απλώς η φιλογερμανικότερη δυνατή πολιτική που μπορούσε να ακολουθήσει μία χώρα της οποίας η γεωγραφική θέση την καθιστούσε όμηρο των διαθέσεων του πανίσχυρου βρετανικού στόλου που κυριαρχούσε τότε στην ανατολική Μεσόγειο. Σε συνεχή τηλεγραφική επικοινωνία με τον γυναικαδελφό του γερμανού αυτοκράτορα –ερήμην ακόμη και των αντιβενιζελικών κυβερνήσεών του- είχε εξασφαλίσει την πλήρη έγκριση του Βερολίνου στο ζήτημα αυτό [...].<br><em>Γ. Γιανουλόπουλος. «Η ευγενής μας τύφλωσις...»</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Κωνσταντίνος υποστήριζε ότι ο πόλεμος είχε πλέον κριθεί υπέρ της Γερμανίας και κατ' επέκταση ήταν προς όφελος της Ελλάδας να μη συμμαχήσει με την Αντάντ. Στην πραγματικότητα, όπως η επιστημονική έρευνα έχει πλέον σήμερα αποδείξει μετά από εξέταση των γερμανικών αρχείων, ο Κωνσταντίνος επικοινωνούσε συνεχώς, κατά τη διάρκεια αυτής της κρίσιμης περιόδου, με τον Γερμανό αυτοκράτορα, ζητώντάς του να εντάξει και την Ελλάδα στα ευρύτερα στρατιωτικά σχέδια της Γερμανίας.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η σύγκρουση Βενιζέλου-Κωνσταντίνου και η εμπλοκή της Ελλάδας</h4>
+            <p>Όταν η Αντάντ επιχείρησε να καταλάβει τα Δαρδανέλια (Φεβρουάριος 1915), ο Βενιζέλος έκρινε ότι η Ελλάδα θα έπρεπε να πάρει μέρος στην προσπάθειά της. Η άρνηση του Κωνσταντίνου οδήγησε τον πρωθυπουργό σε παραίτηση. Στις εκλογές που ακολούθησαν (Μάιος 1915) ο Βενιζέλος αναδείχτηκε νικητής. Όταν, όμως, κήρυξε την Ελλάδα σε επιστράτευση, ο βασιλιάς διαφώνησε και πάλι και τότε ο Βενιζέλος παραιτήθηκε για δεύτερη φορά. Ακολούθησαν νέες εκλογές (Δεκέμβριος 1915) από τις οποίες οι Φιλελεύθεροι απείχαν. Έτσι, η νέα κυβέρνηση που προέκυψε ήταν απολύτως πιστή στα Ανάκτορα. Παράλληλα, η Αντάντ, για να αντιμετωπίσει τη γερμανική επιρροή στα Βαλκάνια, αποβίβασε στρατεύματα στη Θεσσαλονίκη (Οκτώβριος 1915). Λίγο αργότερα, γερμανικά και βουλγαρικά στρατεύματα εισέβαλαν στην Α. Μακεδονία (Μάιος 1916). Οι ελληνικές δυνάμεις δεν αντέδρασαν, καθώς εφάρμοζαν τις εντολές του Κωνσταντίνου περί «ουδετερότητας». Έτσι, το Δ΄ Σώμα Στρατού διατάχτηκε να παραδοθεί δίχως να αντισταθεί, αιχμαλωτίστηκε και μεταφέρθηκε στη Γερμανία.</p>
+
+            <h4>Οι Επίστρατοι, το κίνημα της Εθνικής Άμυνας και η Προσωρινή Κυβέρνηση</h4>
+            <p>Μετά από αυτά, η Αντάντ απαίτησε από τον βασιλιά (Ιούνιος 1916) τον αφοπλισμό των ελληνικών ενόπλων δυνάμεων. Εκείνος αποδέχτηκε το αίτημα, αλλά, συγχρόνως, έδωσε εντολή οι έφεδροι που απολύονταν να οργανώνονται σε συνδέσμους. Έτσι δημιουργήθηκαν οι Επίστρατοι, μια φιλοβασιλική παραστρατιωτική οργάνωση. Σχεδόν παράλληλα, βενιζελικοί δημιούργησαν στη Μακεδονία μια οργάνωση, την Εθνική Άμυνα, και πραγματοποίησαν κίνημα στη Θεσσαλονίκη (Αύγουστος 1916) ζητώντας τη συμμετοχή της Ελλάδας στον πόλεμο στο πλευρό της Αντάντ. Μπροστά σε αυτές τις εξελίξεις, ο Βενιζέλος εγκατέστησε Προσωρινή Κυβέρνηση στη Θεσσαλονίκη και διέταξε επιστράτευση ώστε ελληνικά στρατεύματα να πολεμήσουν στο πλευρό της Αντάντ.</p>
+
+            <h4>Ο Εθνικός Διχασμός</h4>
+            <p>Έτσι, η πολιτική κρίση, που εκδηλώθηκε για πρώτη φορά με ένταση τον Φεβρουάριο του 1915 με τη μορφή διαφωνίας ανάμεσα στον πρωθυπουργό Βενιζέλο και τον βασιλιά Κωνσταντίνο, κλιμακωνόταν διαρκώς και είχε ως αποτέλεσμα, το καλοκαίρι του 1916, να διαμορφωθούν στην Ελλάδα δύο αντίπαλα κέντρα εξουσίας. Το φαινόμενο ονομάστηκε Εθνικός Διχασμός, αποτυπώθηκε γεωγραφικά στη διάσπαση σε «κράτος των Αθηνών» υπό τον Κωνσταντίνο και «κράτος της Θεσσαλονίκης» υπό τον Βενιζέλο και υπήρξε, ουσιαστικά, η πρώτη εμφύλια σύγκρουση στην Ελλάδα του 20ού αιώνα.</p>
+            
+            <div class="image-gallery">
+                <figure>
+                    <img src="1.jpg" alt="Οπαδοί του Βενιζέλου στη Θεσσαλονίκη" class="responsive-image">
+                    <figcaption>Εθνικός Διχασμός: οπαδοί του Βενιζέλου στη Θεσσαλονίκη στις 6 Μαΐου 1917.</figcaption>
+                </figure>
+                <figure>
+                    <img src="2.jpg" alt="Οπαδοί του Κωνσταντίνου στη Βέρνη" class="responsive-image">
+                    <figcaption>Οπαδοί του Κωνσταντίνου στη Βέρνη της Ελβετίας στις 21 Μαΐου 1917.</figcaption>
+                </figure>
+            </div>
+
+            <h4>Η επέμβαση της Αντάντ, η έξωση του Κωνσταντίνου και η ανάληψη της εξουσίας από τον Βενιζέλο</h4>
+            <p>Σε αυτό το πλαίσιο, η Αντάντ επιδίωξε να καταλάβει την Αθήνα, αλλά αποκρούστηκε από δυνάμεις πιστές στον βασιλιά. Τον Νοέμβριο του 1916 (Νοεμβριανά), το «κράτος των Αθηνών» εξαπέλυσε διώξεις σε βάρος βενιζελικών. Παράλληλα, η Αντάντ κατέλαβε τον Πειραιά, επιβάλλοντας αυστηρό αποκλεισμό στη «βασιλική» Ελλάδα, και αξίωσε την απομάκρυνση του Κωνσταντίνου, ο οποίος εξαναγκάστηκε να εγκαταλείψει τη χώρα (Ιούνιος 1917), αφήνοντας στον θρόνο τον γιο του Αλέξανδρο. Ο Βενιζέλος ήρθε στην Αθήνα, σχημάτισε νέα κυβέρνηση και κήρυξε τον πόλεμο στις Κεντρικές Δυνάμεις. Ελληνικά στρατεύματα πήραν μέρος στις τελευταίες μάχες στη Μακεδονία (1918). Επιπλέον, ο ΒενιZέλος επανέφερε τη Βουλή που είχε εκλεγεί τον Μάιο του 1915, η οποία ονομάστηκε Βουλή των Λαζάρων. Παράλληλα, απολύθηκαν χιλιάδες δημόσιοι υπάλληλοι και στρατιωτικοί που θεωρήθηκαν φιλοβασιλικοί, ενώ άλλοι εξορίστηκαν.</p>
+
+        </section>
+
+        <section id="quiz-section-32" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποια παράταξη υποστήριζε ο Ελευθέριος Βενιζέλος να συμμαχήσει η Ελλάδα στον Α' Παγκόσμιο Πόλεμο;</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Την Αντάντ.</button>
+                        <button class="option" data-correct="false">Τις Κεντρικές Δυνάμεις.</button>
+                        <button class="option" data-correct="false">Την Οθωμανική Αυτοκρατορία.</button>
+                        <button class="option" data-correct="false">Καμία, υποστήριζε την ουδετερότητα.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Πού εγκατέστησε ο Βενιζέλος την Προσωρινή Κυβέρνηση το 1916;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Στην Αθήνα.</button>
+                        <button class="option" data-correct="false">Στην Κρήτη.</button>
+                        <button class="option" data-correct="true">Στη Θεσσαλονίκη.</button>
+                        <button class="option" data-correct="false">Στον Πειραιά.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Πώς ονομάστηκε η φιλοβασιλική παραστρατιωτική οργάνωση που δημιουργήθηκε το 1916;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Εθνική Άμυνα.</button>
+                        <button class="option" data-correct="true">Επίστρατοι.</button>
+                        <button class="option" data-correct="false">Βουλή των Λαζάρων.</button>
+                        <button class="option" data-correct="false">Κράτος των Αθηνών.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Ο βασιλιάς Κωνσταντίνος επιθυμούσε τη συμμαχία της Ελλάδας με την Αντάντ.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                 <div class="question-block">
+                    <p>2. Ο Εθνικός Διχασμός οδήγησε στη δημιουργία δύο αντίπαλων κέντρων εξουσίας, στην Αθήνα και τη Θεσσαλονίκη.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Μετά την έξωση του Κωνσταντίνου, ο ΒενιZέλος επανέφερε τη Βουλή που είχε εκλεγεί τον Δεκέμβριο του 1915.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-32" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-32">
+                            <p>Η στάση της Ελλάδας στον Α' Παγκόσμιο Πόλεμο προκάλεσε τον Εθνικό Διχασμό, μια βαθιά σύγκρουση μεταξύ του πρωθυπουργού Ελευθερίου Βενιζέλου και του βασιλιά Κωνσταντίνου. Ο Βενιζέλος υποστήριζε την είσοδο της Ελλάδας στον πόλεμο στο πλευρό της Αντάντ, πιστεύοντας ότι αυτό θα εξασφάλιζε τα εδαφικά κέρδη από τους Βαλκανικούς Πολέμους και θα οδηγούσε σε περαιτέρω εδαφική επέκταση. Αντίθετα, ο Κωνσταντίνος, επηρεασμένος από τις γερμανικές του σχέσεις, προτιμούσε τη συμμαχία με τις Κεντρικές Δυνάμεις, αλλά λόγω της γεωγραφικής θέσης της χώρας, προέκρινε επίσημα μια φιλογερμανική «ουδετερότητα».</p>
+                            <p>Η διαφωνία τους κορυφώθηκε με δύο παραιτήσεις του Βενιζέλου μέσα στο 1915. Η κρίση οξύνθηκε όταν η Αντάντ αποβίβασε στρατεύματα στη Θεσσαλονίκη και γερμανοβουλγαρικές δυνάμεις εισέβαλαν στην Ανατολική Μακεδονία, με το ελληνικό Δ' Σώμα Στρατού να παραδίδεται χωρίς αντίσταση.</p>
+                            <p>Το 1916, η κατάσταση οδήγησε στη δημιουργία δύο αντίπαλων κρατών: το «κράτος των Αθηνών» υπό τον Κωνσταντίνο και το «κράτος της Θεσσαλονίκης» υπό την Προσωρινή Κυβέρνηση του Βενιζέλου, η οποία δημιουργήθηκε μετά το κίνημα της Εθνικής Άμυνας. Η Αντάντ επενέβη δυναμικά, επιβάλλοντας ναυτικό αποκλεισμό στην Αθήνα και τελικά εξανάγκασε τον Κωνσταντίνο σε εξορία τον Ιούνιο του 1917. Ο Βενιζέλος επέστρεψε στην Αθήνα, ενοποίησε τη χώρα, κήρυξε τον πόλεμο στις Κεντρικές Δυνάμεις και επανέφερε τη Βουλή του Μαΐου 1915 («Βουλή των Λαζάρων»), ενώ προχώρησε σε εκκαθαρίσεις των αντιπάλων του στον κρατικό μηχανισμό.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Ποια επιχειρήματα χρησιμοποίησε ο Ελευθέριος Βενιζέλος προκειμένου να πείσει τον Κωνσταντίνο για την ανάγκη συμμαχίας της Ελλάδας με την Αντάντ;</button>
+                    <div class="accordion-content">
+                        <p>Ο Ελευθέριος Βενιζέλος υποστήριξε ότι η συμμετοχή στον πόλεμο στο πλευρό της Αντάντ θα προσέφερε στην Ελλάδα πρωτοφανή εδαφικά ανταλλάγματα. Θεωρούσε ότι αυτή η συμμαχία θα δημιουργούσε μια "μεγάλη και ισχυράν" Ελλάδα, κάτι που ούτε οι πιο αισιόδοξοι δεν μπορούσαν να φανταστούν λίγα χρόνια πριν. Πίστευε ότι με τη νίκη των Αγγλογάλλων, η Ελλάδα θα μπορούσε όχι μόνο να διαφυλάξει τα κέρδη των Βαλκανικών Πολέμων αλλά και να διευρύνει σημαντικά τα σύνορά της, ενσωματώνοντας περιοχές με ακμαίο ελληνισμό, κυρίως από την Οθωμανική Αυτοκρατορία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποιοι παράγοντες έκαναν τον Κωνσταντίνο να επιλέξει και να υποστηρίξει την πολιτική της ουδετερότητας;</button>
+                    <div class="accordion-content">
+                        <p>Ο βασιλιάς Κωνσταντίνος επέλεξε την πολιτική της «ουδετερότητας» για διάφορους λόγους. Πρώτον, επιθυμούσε τη συμμαχία με τις Κεντρικές Δυνάμεις, αλλά επειδή η Βουλγαρία και η Οθωμανική Αυτοκρατορία είχαν ήδη ταχθεί με τη Γερμανία, η ουδετερότητα ήταν η πιο φιλογερμανική πολιτική που μπορούσε να ακολουθήσει η Ελλάδα. Δεύτερον, βρισκόταν σε συνεχή συνεννόηση με τον Γερμανό αυτοκράτορα, ο οποίος ενέκρινε αυτή τη στάση. Τρίτον, η γεωγραφική θέση της Ελλάδας την καθιστούσε ευάλωτη στον πανίσχυρο βρετανικό στόλο, γεγονός που καθιστούσε την ανοιχτή συμμαχία με τη Γερμανία επικίνδυνη. Τέλος, η πολιτική του έβρισκε απήχηση σε μερίδα του λαού που δεν ήθελε νέο πόλεμο και σε μικροαστικά στρώματα που φοβόντουσαν τον οικονομικό ανταγωνισμό από τον εξωελλαδικό ελληνισμό.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Κατά μία άποψη ο Διχασμός ήταν απλώς σύγκρουση δύο ηγετών που δεν ήθελαν να υποχωρήσουν για λόγους κύρους. Αποδέχεστε αυτή την ερμηνεία;</button>
+                    <div class="accordion-content">
+                        <p>Η ερμηνεία ότι ο Εθνικός Διχασμός ήταν απλώς μια σύγκρουση κύρους μεταξύ Βενιζέλου και Κωνσταντίνου είναι υπεραπλουστευτική. Αν και η προσωπική αντιπαράθεση των δύο ηγετών έπαιξε ρόλο, ο Διχασμός είχε βαθιές κοινωνικές και ιδεολογικές ρίζες. Οι δύο πλευρές εκπροσωπούσαν διαφορετικές αντιλήψεις για το μέλλον της χώρας. Η παράταξη του Βενιζέλου (μεγαλοαστική τάξη, λαϊκά στρώματα εμπνευσμένα από τη Μεγάλη Ιδέα) οραματιζόταν μια μεγάλη, σύγχρονη Ελλάδα, ενσωματωμένη στη Δύση. Η παράταξη του Κωνσταντίνου (μικροαστοί, λαϊκά στρώματα που φοβόντουσαν τον πόλεμο) ήταν πιο συντηρητική και εσωστρεφής. Οι φωτογραφίες της εποχής, που δείχνουν μαζικές διαδηλώσεις υποστήριξης και για τους δύο, αποδεικνύουν ότι ο Διχασμός δεν ήταν απλώς μια διαφωνία κορυφής, αλλά διαπερνούσε ολόκληρη την ελληνική κοινωνία, καθιστώντας τον την πρώτη εμφύλια σύγκρουση του 20ού αιώνα στην Ελλάδα.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+</body>
+</html>

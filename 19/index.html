@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ενότητα 31 - Α' Παγκόσμιος Πόλεμος</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .responsive-image.map-image {
+            max-width: 80%;
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p, .accordion-content ul {
+            padding: 15px 0;
+            margin: 0;
+        }
+        
+        .accordion-content img {
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        /* Source Comparison (Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+            .responsive-image.map-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            otherHeader.nextElementSibling.style.maxHeight = 0;
+                        }
+                    });
+
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = 0;
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const cardContainer = button.closest('.flip-card-container');
+                            const card = cardContainer.querySelector('.flip-card');
+                            card.classList.toggle('flipped');
+                            // Adjust container height
+                            const activeSide = card.classList.contains('flipped') ? card.querySelector('.flip-card-back') : card.querySelector('.flip-card-front');
+                            cardContainer.style.minHeight = activeSide.scrollHeight + 40 + 'px'; // 40px for padding
+                        });
+                    });
+                }
+            });
+             // Set initial height for flip cards
+            document.querySelectorAll('.flip-card-container').forEach(container => {
+                const front = container.querySelector('.flip-card-front');
+                if (front) {
+                    container.style.minHeight = front.scrollHeight + 40 + 'px'; // 40px for padding
+                }
+            });
+
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        
+                        options.forEach(opt => {
+                            opt.disabled = true;
+                        });
+
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΕΒΔΟΜΟ: Ο Α΄ ΠΑΓΚΟΣΜΙΟΣ ΠΟΛΕΜΟΣ ΚΑΙ Η ΡΩΣΙΚΗ ΕΠΑΝΑΣΤΑΣΗ (1914-1918)</h2>
+    </header>
+
+    <main>
+        <section id="unit-31" class="content-block">
+            <h3>ΕΝΟΤΗΤΑ 31: Τα αίτια, η έκρηξη και τα μέτωπα του Α΄ Παγκόσμιου πολέμου</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Ιμπεριαλισμός</li>
+                    <li>Εθνικισμός</li>
+                    <li>Μιλιταρισμός</li>
+                    <li>Κεντρικές Δυνάμεις</li>
+                    <li>Τριπλή Συμμαχία</li>
+                    <li>Αντάντ</li>
+                    <li>Τριπλή Συνεννόηση</li>
+                    <li>Πόλεμος των χαρακωμάτων</li>
+                </ul>
+            </div>
+
+            <h4>Τα αίτια</h4>
+            <p>Η έκρηξη του Α΄ Παγκόσμιου πολέμου ήταν αποτέλεσμα της ταυτόχρονης δράσης τριών κυρίως παραγόντων: του ιμπεριαλισμού, του εθνικισμού και του μιλιταρισμού.</p>
+            <p>Ο <b>ιμπεριαλισμός</b> (η πολιτική επέκτασης των βιομηχανικά αναπτυγμένων κρατών σε βάρος άλλων κρατών) υπήρξε η κυριότερη αιτία του πολέμου. Καταλυτικός παράγοντας στάθηκε η επιθετική προσπάθεια της ταχύτατα αναπτυσσόμενης Γερμανίας να καλύψει τις ανάγκες της σε πρώτες ύλες, καύσιμα και αγορές μέσω της αναδιανομής του παγκόσμιου πλούτου και των αποικιών. Η πολιτική αυτή την έφερε γρήγορα αντιμέτωπη με τη Βρετανία και τη Γαλλία, τις χώρες που έλεγχαν τότε τις περισσότερες και πλουσιότερες αποικίες.</p>
+            <p>Ο <b>εθνικισμός</b> έπαιξε ουσιαστικό ρόλο στην ωρίμανση των συνθηκών που οδήγησαν στον πόλεμο. Σε μια Ευρώπη όπου οι πολιτικές αποφάσεις είχαν πάψει πλέον να αφορούν μόνο τους ηγέτες, οι συμπεριφορές των λαών είχαν βαρύτητα. Βεβαίως, εκτός από κάποιους φανατικούς, οι λαοί της Ευρώπης δεν επιθυμούσαν τον πόλεμο. Δεν ήταν, ωστόσο, και διατεθειμένοι να καταπνίξουν τα εθνικά τους αισθήματα για να διατηρηθεί η ειρήνη.</p>
+             <p>Ο <b>μιλιταρισμός</b> (ο υπερτονισμός των στρατιωτικών αξιών) ενισχυόταν διαρκώς, επιταχύνοντας την πορεία προς τον πόλεμο. Η ανάπτυξη της γερμανικής πολεμικής βιομηχανίας και η στρατιωτική ενίσχυση της Γερμανίας ώθησαν και τις άλλες ευρωπαϊκές Δυνάμεις στην κλιμάκωση των στρατιωτικών εξοπλισμών. Παράλληλα, όλο και πιο πολλές φωνές τόνιζαν τη σημασία και την αξία του πολέμου ως μέσου επίλυσης των διεθνών διαφορών.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container" style="min-height: 350px;">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>Τα αίτια του πολέμου: Ιμπεριαλισμός, Εθνικισμός, Μιλιταρισμός</h5>
+                                <p><b>Ιμπεριαλισμός:</b> Το βιομηχανικό δυναμικό κάθε έθνους αναγκάζεται να παράγει, να υπερπαράγει. Αυτή την υπερπαραγωγή πρέπει να τη διαθέσουμε. Κι έτσι ριχνόμαστε στις παγκόσμιες αγορές ενώ κλείνουμε τη δική μας αγορά με προστατευτικά μέτρα. [...] Έτσι με φυσική νομοτέλεια, η μία χώρα βαδίζει εναντίον της άλλης, συγκρούεται μαζί της. Ποια θα εξασφαλίσει την οριστική υπεροχή των εθνικών βιομηχανικών της προϊόντων και με ποιο τρόπο; [...] Μήπως με πόλεμο; Η Αγγλία και η Γερμανία αλληλοϋποβλέπονται ο πόλεμος είναι η μόνη τους λύση.</p>
+                                <p><b>Εθνικισμός:</b> Ο θρίαμβος των εθνών συνεπήρε ολόκληρη την Ευρώπη [...] Συγχρόνως το εθνικό συναίσθημα μετατράπηκε σιγά σιγά σε ένα αλαζονικό και απόλυτο πάθος, που δεν ικανοποιείται παρά μόνο με την εξύψωση ενός κράτους σε βάρος των άλλων.</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγών</h5>
+                                <p>Η σύγκρουση ανάμεσα στα ισχυρά κράτη είχε ξεκινήσει πολλά χρόνια πριν ως ένας ανελέητος οικονομικός πόλεμος για την κυριαρχία σε νέες αγορές. Ο εθνικισμός, ως αίσθημα αγάπης για την πατρίδα και μίσους για τους "άλλους", ήταν διάχυτος, κάνοντας πολλούς να πιστεύουν ότι ο πόλεμος ήταν αναγκαίος για την προάσπιση των εθνικών συμφερόντων. Τέλος, το πνεύμα του μιλιταρισμού, ιδιαίτερα στη Γερμανία, αποθέωνε την πειθαρχία και την υποταγή, θεωρώντας την ένοπλη σύγκρουση ως τον κύριο τρόπο επίλυσης των διακρατικών διαφορών. Αυτό δικαιολογούσε την κλιμάκωση των εξοπλισμών και τη στρατιωτικοποίηση της κοινωνίας και της οικονομίας.</p>
+                                <button class="flip-button">Πίσω στις Πηγές</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Τα αντίπαλα στρατόπεδα</h4>
+            <p>Σε αυτές τις συνθήκες σχηματίστηκαν στην Ευρώπη δύο στρατόπεδα: από τη μία, οι <b>Κεντρικές Δυνάμεις</b> ή <b>Τριπλή Συμμαχία</b> (Γερμανία, Αυστροουγγαρία, Ιταλία) και, από την άλλη, η Εγκάρδια ή <b>Τριπλή Συνεννόηση</b> (Entente Cordiale, Βρετανία, Γαλλία, Ρωσία). Η δεύτερη έγινε γνωστή ως <b>Αντάντ</b> (συνεννόηση στα γαλλικά).</p>
+           
+            <figure>
+                <img src="1.jpg" alt="Τα αντίπαλα στρατόπεδα του Α΄ Παγκόσμιου πολέμου, 1914." class="responsive-image map-image">
+                <figcaption>1. Τα αντίπαλα στρατόπεδα του Α΄ Παγκόσμιου πολέμου, 1914.</figcaption>
+            </figure>
+
+            <h4>Η αφορμή</h4>
+            <p>Η αφορμή για την κήρυξη του πολέμου δόθηκε όταν στο Σεράγεβο της Βοσνίας δολοφονήθηκε ο διάδοχος του αυστριακού θρόνου Φραγκίσκος Φερδινάνδος από έναν νεαρό Σέρβο εθνικιστή (Ιούνιος 1914). Σχεδόν αμέσως η Αυστροουγγαρία κήρυξε τον πόλεμο στη Σερβία (Ιούλιος 1914). Η Ρωσία και η Γαλλία εκδήλωσαν τη συμπαράστασή τους στη Σερβία, ενώ η Γερμανία τάχθηκε στο πλευρό της Αυστροουγγαρίας. Στα επόμενα τέσσερα χρόνια έγιναν συνολικά εξήντα κηρύξεις πολέμων. Αυτός ήταν ο Μεγάλος Πόλεμος ή Α΄ Παγκόσμιος πόλεμος, όπως ονομάστηκε αργότερα.</p>
+
+            <h4>Τα κύρια μέτωπα και ο πόλεμος των χαρακωμάτων</h4>
+            <p>Οι Γερμανοί εισέβαλαν στο Βέλγιο και κινήθηκαν προς το Παρίσι, αλλά αποκρούστηκαν από τον γαλλικό στρατό (μάχη του Μάρνη). Αμέσως, η Βρετανία κήρυξε τον πόλεμο στη Γερμανία. Γερμανοί και Γάλλοι έσκαψαν σε μια γραμμή εκατοντάδων χιλιομέτρων (δυτικό μέτωπο) χαρακώματα, όπου οι συνθήκες ζωής ήταν τραγικές. Παράλληλα, η ρωσική προέλαση στην Α. Πρωσία ανακόπηκε από γερμανικές δυνάμεις. Εκεί διαμορφώθηκε το ανατολικό μέτωπο. Στα τέλη του 1914 τα μέτωπα σταθεροποιήθηκαν.</p>
+
+            <div class="image-gallery">
+                <figure>
+                    <img src="2.jpg" alt="Στρατιώτες σε χαρακώματα." style="width: 70%; max-width: 70%; margin: auto; display: block;">
+                    <figcaption>2. Η ζωή στα χαρακώματα.</figcaption>
+                </figure>
+                <figure>
+                    <img src="3.jpg" alt="Εργάτριες σε εργοστάσιο πυρομαχικών." style="width: 70%; max-width: 70%; margin: auto; display: block;">
+                    <figcaption>3. Οι γυναίκες πήραν τις θέσεις των αντρών στα εργοστάσια, κάνοντας ένα βήμα προς τη χειραφέτησή τους.</figcaption>
+                </figure>
+            </div>
+             <div class="source-comparison">
+                <div class="flip-card-container" style="min-height: 280px;">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>Η ζωή στα χαρακώματα</h5>
+                                <p>«Τρως, πίνεις δίπλα στους νεκρούς, κοιμάσαι ανάμεσα στους ετοιμοθάνατους, γελάς και τραγουδάς συντροφιά με τα πτώματα [...]. Οι νεκροί ήταν χωμένοι στα τοιχώματα των χαρακωμάτων, κεφάλια, πόδια και κορμιά μισά, έτσι όπως τα είχανε παραμερίσει οι αξίνες και τα φτυάρια της ομάδας που έσκαβε».</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο πόλεμος των χαρακωμάτων, μια ιδιαίτερη μορφή πολεμικής σύγκρουσης, σφράγισε τον Α' Παγκόσμιο πόλεμο. Η εμπειρία ήταν τραγική και είχε βαριές συνέπειες όχι μόνο στη σωματική ακεραιότητα αλλά και στην ψυχική ισορροπία των πολεμιστών, που υποχρεώνονταν για μεγάλα χρονικά διαστήματα να παραμένουν αδρανείς αναμένοντας την πρωτοβουλία του αντιπάλου.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Συμμαχίες, ανακατατάξεις και η καμπή του 1917</h4>
+            <p>Τον Οκτώβριο του 1914, η <b>Οθωμανική αυτοκρατορία</b> μπήκε στον πόλεμο στο πλευρό των Κεντρικών Δυνάμεων. Το 1915, η <b>Βουλγαρία</b> συμμάχησε μαζί τους, κυριαρχώντας στα Βαλκάνια. Η Αντάντ, προσπαθώντας να βοηθήσει τη Ρωσία, οργάνωσε επιχείρηση κατάληψης των Δαρδανελίων που απέτυχε. Τότε, αποβίβασε στρατεύματα στη Θεσσαλονίκη (Οκτώβριος 1915), μεταφέροντας τον πόλεμο στην ουδέτερη ακόμη Ελλάδα. Παράλληλα, η <b>Ιταλία</b> εγκατέλειψε τους συμμάχους της και συμμάχησε με την Αντάντ με αντάλλαγμα εδαφικές υποσχέσεις.</p>
+            <p>Το 1917 αποτέλεσε έτος-καμπή. Στη Γαλλία, αντιπολεμικές ανταρσίες στο μέτωπο καταπνίγηκαν βίαια. Στη <b>Ρωσία</b>, η επανάσταση του Φεβρουαρίου ανέτρεψε τον τσάρο. Η νέα κυβέρνηση ανατράπηκε από τη σοσιαλιστική επανάσταση του Οκτωβρίου. Η σοσιαλιστική Ρωσία αποσύρθηκε από τον πόλεμο υπογράφοντας συνθήκη ειρήνης με τη Γερμανία (Μπρεστ-Λιτόφσκ, Μάρτιος 1918). Σχεδόν ταυτόχρονα, οι <b>ΗΠΑ</b> (Απρίλιος 1917) και η <b>Ελλάδα</b> (Ιούνιος 1917) εισήλθαν στον πόλεμο στο πλευρό της Αντάντ, επηρεάζοντας καταλυτικά την έκβασή του.</p>
+
+            <h4>Προς το τέλος του πολέμου</h4>
+            <p>Το φθινόπωρο του 1918, οι Κεντρικές Δυνάμεις και οι σύμμαχοί τους άρχισαν να συνθηκολογούν. Στη Γερμανία, σοσιαλιστική επανάσταση ανέτρεψε τον κάιζερ Γουλιέλμο Β΄. Ο πόλεμος άφησε πίσω του περίπου 8.000.000 νεκρούς, 20.000.000 τραυματίες και τεράστιες υλικές καταστροφές. Η Ευρώπη βγήκε από αυτόν αλλαγμένη, εξαντλημένη και με την παγκόσμια πρωτοκαθεδρία της κλονισμένη.</p>
+        </section>
+
+        <section id="quiz-section-31" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποια από τις παρακάτω χώρες ΔΕΝ ανήκε αρχικά στην Τριπλή Συνεννόηση (Αντάντ);</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Βρετανία</button>
+                        <button class="option" data-correct="false">Γαλλία</button>
+                        <button class="option" data-correct="true">Ιταλία</button>
+                        <button class="option" data-correct="false">Ρωσία</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιο γεγονός αποτέλεσε την αφορμή για την έκρηξη του Α' Παγκοσμίου Πολέμου;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η είσοδος της Οθωμανικής Αυτοκρατορίας στον πόλεμο.</button>
+                        <button class="option" data-correct="true">Η δολοφονία του διαδόχου της Αυστροουγγαρίας στο Σεράγεβο.</button>
+                        <button class="option" data-correct="false">Η γερμανική εισβολή στο Βέλγιο.</button>
+                        <button class="option" data-correct="false">Η Ρωσική Επανάσταση.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Ποια χώρα αποσύρθηκε από τον πόλεμο το 1918 μετά από δύο επαναστάσεις;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Γαλλία</button>
+                        <button class="option" data-correct="false">Αυστροουγγαρία</button>
+                        <button class="option" data-correct="true">Ρωσία</button>
+                        <button class="option" data-correct="false">Ιταλία</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Ο ιμπεριαλισμός, ο εθνικισμός και ο μιλιταρισμός ήταν τα κύρια αίτια του πολέμου.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Η Ιταλία πολέμησε σε όλη τη διάρκεια του πολέμου στο πλευρό των Κεντρικών Δυνάμεων.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Οι ΗΠΑ μπήκαν στον πόλεμο το 1917 στο πλευρό της Αντάντ.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-31" class="content-block">
+            <h3>Περισσότερες Πληροφορίες</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Περίληψη Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-31">
+                            <h4>Αίτια</h4>
+                            <ul>
+                                <li><b>Ιμπεριαλισμός:</b> υπήρξε η κυριότερη αιτία του πολέμου˙ επιθετική προσπάθεια της ταχύτατα αναπτυσσόμενης Γερμανίας να καλύψει τις ανάγκες της σε πρώτες ύλες, καύσιμα και αγορές μέσω της αναδιανομής του παγκόσμιου πλούτου και των αποικιών.</li>
+                                <li><b>Εθνικισμός:</b> έπαιξε ουσιαστικό ρόλο στην ωρίμανση των συνθηκών που οδήγησαν στον πόλεμο.</li>
+                                <li><b>Μιλιταρισμός:</b> ενισχυόταν διαρκώς επιταχύνοντας την πορεία προς τον πόλεμο.</li>
+                            </ul>
+                            <h4>Τα αντίπαλα στρατόπεδα</h4>
+                             <ul>
+                                <li><b>Κεντρικές Δυνάμεις ή Τριπλή Συμμαχία:</b> Γερμανία, Αυστροουγγαρία, Ιταλία.</li>
+                                <li><b>Εγκάρδια ή Τριπλή Συνεννόηση (Αντάντ):</b> Αγγλία, Γαλλία, Ρωσία.</li>
+                            </ul>
+                             <p><b>Αφορμή:</b> η δολοφονία του διαδόχου του Αυστριακού θρόνου Φραγκίσκου Φερδινάνδου από έναν Σέρβο εθνικιστή (Ιούλιος 1914).</p>
+                             <p><b>Έναρξη του πολέμου:</b> Η Αυστροουγγαρία κήρυξε τον πόλεμο στη Σερβία, ενώ η Γερμανία τάχθηκε με το πλευρό της Αυστροουγγαρίας.</p>
+                             <h4>Συμμαχίες και ανακατατάξεις</h4>
+                             <ul>
+                                <li>1914: Η Οθωμανική Αυτοκρατορία μπαίνει στον πόλεμο στο πλευρό των Κεντρικών Δυνάμεων.</li>
+                                <li>1915: Η Βουλγαρία συμμαχεί με τις Κεντρικές Δυνάμεις.</li>
+                                <li>Η Ιταλία εγκαταλείπει τη συμμαχία των Κεντρικών Δυνάμεων και συμμαχεί με την Αντάντ.</li>
+                                <li>Οκτώβριος 1915: Η Αντάντ αποβιβάζει στρατό στη Θεσ/νίκη.</li>
+                             </ul>
+                             <h4>Η καμπή του 1917</h4>
+                             <ul>
+                                <li>Ρωσία: Επανάσταση ανατρέπει τον τσάρο. Νέα σοσιαλιστική επανάσταση οδηγεί στην αποχώρηση της Ρωσίας από τον πόλεμο (Συνθήκη Μπρεστ-Λιτόφσκ, 3 Μαρτίου 1918).</li>
+                                <li>Η.Π.Α.: συμμαχούν με την Αντάντ (Απρίλιος 1917).</li>
+                                <li>Ιούνιος 1917: η Ελλάδα εισέρχεται στον πόλεμο στο πλευρό της Αντάντ.</li>
+                             </ul>
+                             <h4>Το τέλος του πολέμου</h4>
+                              <ul>
+                                <li>Φθινόπωρο 1918: Οι Κεντρικές Δυνάμεις και οι σύμμαχοί τους συνθηκολογούν.</li>
+                                <li>Στη Γερμανία ξεσπά σοσιαλιστική επανάσταση η οποία ανατρέπει τον κάιζερ.</li>
+                                <li><b>Τελικός Απολογισμός:</b> 8.000.000 νεκροί, 20.000.000 τραυματίες, τεράστιες υλικές καταστροφές.</li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">ΠΗΓΕΣ ΣΧΕΤΙΚΕΣ ΜΕ ΤΟΝ Α’ ΠΑΓΚΟΣΜΙΟ ΠΌΛΕΜΟ</button>
+                    <div class="accordion-content">
+                        <h4>Γερμανία: η ραγδαία οικονομική ανάπτυξη γίνεται η βάση της επιθετικότητας</h4>
+                        <p>Αυτό που έκανε τον κόσμο ακόμη πιο επικίνδυνο ήταν η σιωπηρή εξίσωση της απεριόριστης οικονομικής ανάπτυξης με την πολιτική ισχύ, που σιγά-σιγά έγινε ασυνείδητα αποδεκτή. Έτσι, ο Γερμανός αυτοκράτορας ζητούσε τη δεκαετία του 1890 «μια θέση στον ήλιο» για το κράτος του. [...] Απλώς εξέφραζε την αρχή της αναλογικής εκπροσώπησης: όσο πιο ισχυρή η οικονομία μιας χώρας, όσο μεγαλύτερος ο πληθυσμός της, τόσο ισχυρότερη η διεθνής θέση του κράτους-έθνους της. Θεωρητικά δεν υπάρχουν όρια στη θέση που μπορούσε να θεωρεί ότι τής αξίζει, όπως άλλωστε έλεγε η εθνικιστική φράση: “Heute Deutschland, morgen die ganze Welt” [«Σήμερα η Γερμανία, αύριο ο κόσμος όλος»].</p>
+                        
+                        <h4>Η θέση της Οκτωβριανής Επανάστασης στην Παγκόσμια Ιστορία</h4>
+                        <p>Η Οκτωβριανή Επανάσταση παρήγαγε ασύγκριτα το πιο εκπληκτικά οργανωμένο κίνημα στη σύγχρονη ιστορία. Η παγκόσμια επέκτασή της δεν έχει το όμοιό της στην Ιστορία από την εποχή των κατακτήσεων του Ισλάμ και μετά. Μέσα σε τριάντα με σαράντα χρόνια […], το ένα τρίτο της ανθρωπότητας βρέθηκε να ζει υπό καθεστώτα τα οποία προήλθαν άμεσα από τις Δέκα Μέρες που Συγκλόνισαν τον Κόσμο και το οργανωτικό πρότυπο του Λένιν, το Κομμουνιστικό Κόμμα.</p>
+
+                        <h4>Τα πέντε κύρια προβλήματα των νικητών του Α΄ Παγκοσμίου πολέμου</h4>
+                        <p>Στην ειρηνική διευθέτηση την οποία επέβαλαν οι μεγαλύτερες νικήτριες Δυνάμεις που επέζησαν του πολέμου [...] κυριάρχησαν πέντε προβλήματα. Το πιο άμεσο ήταν η κατάλυση τόσων πολλών καθεστώτων στην Ευρώπη και η ανάδυση στη Ρωσία ενός εναλλακτικού επαναστατικού καθεστώτος, των Μπολσεβίκων [...]. Το δεύτερο ήταν η ανάγκη ελέγχου της Γερμανίας [...]. Το τρίτο πρόβλημα αφορούσε στο χάρτη της Ευρώπης που έπρεπε να επαναχαραχθεί [...] σύμφωνα με την πεποίθηση ότι τα έθνη είχαν το δικαίωμα της «αυτοδιάθεσης». [...] Η τέταρτη δέσμη προβλημάτων αφορούσε στην εσωτερική πολιτική των χωρών που νίκησαν στον πόλεμο [...] και τις τριβές μεταξύ τους. Τελικά, οι νικήτριες δυνάμεις επιδίωξαν απελπισμένα να συνάψουν εκείνο το είδος ειρήνης που θα καθιστούσε αδύνατο ένα νέο πόλεμο [...]. Απέτυχαν σ’ αυτό κατά τον πιο θεαματικό τρόπο. Μέσα σε διάστημα είκοσι ετών, ο πόλεμος ξανάρχισε.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">Με μια ματιά</button>
+                    <div class="accordion-content">
+                       <img src="Ορισμοί Αίτια πολέμου.jpg" alt="Ορισμοί και αίτια του Α' Παγκοσμίου Πολέμου" style="width:80%;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις προς συζήτηση</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Αφού μελετήσετε την εικόνα 2 και το σχετικό παράθεμα, να περιγράψετε την καθημερινότητα στα χαρακώματα του Α΄ Παγκόσμιου πολέμου.</button>
+                    <div class="accordion-content">
+                        <p>Η ζωή στα χαρακώματα ήταν τραγική και απάνθρωπη. Οι στρατιώτες ζούσαν κυριολεκτικά δίπλα σε νεκρούς και ετοιμοθάνατους, σε συνθήκες απόλυτης αθλιότητας. Η παραμονή ήταν συχνά παρατεταμένη και αδρανής, περιμένοντας την επόμενη επίθεση, γεγονός που είχε καταστροφικές συνέπειες στη σωματική και ψυχική τους υγεία. Τα πτώματα ήταν συχνά ενσωματωμένα στα ίδια τα τοιχώματα των χαρακωμάτων, δημιουργώντας μια μακάβρια και εφιαλτική ατμόσφαιρα.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Πώς χρησιμοποιήθηκαν η επιστήμη και η τεχνολογία για στρατιωτικούς σκοπούς στη διάρκεια του Α΄ Παγκόσμιου πολέμου;</button>
+                    <div class="accordion-content">
+                        <p>Ο Α' Παγκόσμιος Πόλεμος είδε την πρωτοφανή χρήση της τεχνολογίας για πολεμικούς σκοπούς. Τα πολυβόλα και το πυροβολικό μεγάλου βεληνεκούς προκάλεσαν τεράστιες απώλειες και οδήγησαν στον πόλεμο των χαρακωμάτων. Εμφανίστηκαν νέα όπλα, όπως τα δηλητηριώδη αέρια (χλώριο, φωσγένιο, αέριο μουστάρδας), τα άρματα μάχης (tanks) για τη διάσπαση των εχθρικών γραμμών, τα αεροπλάνα για αναγνώριση και βομβαρδισμό, και τα υποβρύχια (U-boats) που έπλητταν εμπορικά και πολεμικά πλοία. Η πρόοδος στις επικοινωνίες (τηλέγραφος, τηλέφωνο) έπαιξε επίσης κρίσιμο ρόλο στο συντονισμό των στρατιωτικών επιχειρήσεων.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 33</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;
+            --beige: #F5F5DC;
+            --light-coffee: #C8B5AC;
+            --coffee: #6F4E37;
+            --text-color: #333333;
+        }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; margin: 0; padding: 0; background: var(--off-white); color: var(--text-color); text-align: justify; }
+        header { background: var(--coffee); color: var(--off-white); padding: 1rem 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { margin-bottom: 0.5rem; }
+        main { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
+        .content-block { background: var(--beige); padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h3, h4 { color: var(--coffee); border-bottom: 2px solid var(--light-coffee); padding-bottom: 5px; margin-bottom: 15px; text-align: left; }
+        .key-terms ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; text-align: left; }
+        .key-terms li { background: var(--off-white); padding: 8px 15px; border-radius: 5px; font-weight: bold; color: var(--text-color); }
+        .accordion-item { border: 1px solid var(--light-coffee); margin-bottom: 10px; border-radius: 5px; overflow: hidden; }
+        .accordion-header { background-color: var(--light-coffee); color: var(--off-white); padding: 12px 15px; width: 100%; text-align: left; border: none; outline: none; cursor: pointer; font-size: 1.1em; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease; }
+        .accordion-header:hover { background-color: var(--coffee); }
+        .accordion-header::after { content: '\002B'; font-weight: bold; font-size: 1.2em; }
+        .accordion-header.active::after { content: '\2212'; }
+        .accordion-content { padding: 0 15px; background-color: var(--beige); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .accordion-content p, .accordion-content ul { padding: 15px 0; margin: 0; }
+        .quiz-container { background: var(--off-white); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .quiz-container.true-false-quiz { background: var(--beige); border: 1px solid var(--light-coffee); }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .question-block p { font-weight: bold; margin-bottom: 10px; text-align: left; }
+        .options button { display: block; width: 100%; padding: 10px 15px; margin-bottom: 8px; border: 1px solid var(--light-coffee); border-radius: 5px; background-color: var(--beige); color: var(--text-color); cursor: pointer; text-align: left; font-size: 1em; transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .options button:hover { background-color: #e0e0d0; }
+        .options button.correct { background-color: #d4edda; border-color: #28a745; color: #155724; }
+        .options button.incorrect { background-color: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .feedback { margin-top: 10px; font-weight: bold; font-size: 0.9em; text-align: left; }
+        footer { text-align: center; padding: 20px; margin-top: 30px; background: var(--coffee); color: var(--off-white); box-shadow: 0 -2px 5px rgba(0,0,0,0.2); }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+                    } else {
+                        accordionContent.style.maxHeight = "0";
+                    }
+                });
+            });
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+                        options.forEach(opt => { opt.disabled = true; });
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) { correctAnswer.classList.add('correct'); }
+                            feedback.textContent = 'Λάθος απάντηση.';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΠΕΜΠΤΟ: Ο Α' ΠΑΓΚΟΣΜΙΟΣ ΠΟΛΕΜΟΣ ΚΑΙ ΟΙ ΑΜΕΣΕΣ ΕΠΙΠΤΩΣΕΙΣ ΤΟΥ</h2>
+    </header>
+    <main>
+        <section id="unit-33" class="content-block">
+            <h3>33. Η Ρωσική Επανάσταση</h3>
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Τσαρικό καθεστώς</li>
+                    <li>Δούμα</li>
+                    <li>Σοβιέτ</li>
+                    <li>Μπολσεβίκοι</li>
+                    <li>Λένιν</li>
+                    <li>Αστική Επανάσταση</li>
+                    <li>Οκτωβριανή Επανάσταση</li>
+                    <li>Συνθήκη Μπρεστ-Λιτόφσκ</li>
+                    <li>Κομμουνιστική Διεθνής</li>
+                </ul>
+            </div>
+
+            <h4>Η κρίση του τσαρικού καθεστώτος</h4>
+            <p>Στις αρχές του 20ού αιώνα, η Ρωσική Αυτοκρατορία βρισκόταν σε βαθιά κρίση. Το 85% του πληθυσμού ήταν αγρότες που ζούσαν σε άθλιες συνθήκες, οδηγώντας σε συχνές εξεγέρσεις με αίτημα τον αναδασμό της γης. Παρόμοια άσχημες ήταν και οι συνθήκες ζωής για τους εργάτες στις λίγες βιομηχανικές περιοχές της χώρας. Η κοινωνική ένταση κλιμακώθηκε μετά την ήττα στον ρωσοϊαπωνικό πόλεμο (1904-1905). Ως απάντηση στην επανάσταση του 1905, ο τσάρος Νικόλαος Β' θέσπισε ένα νομοθετικό σώμα, τη Δούμα, αλλά η επανάσταση καταπνίγηκε βίαια. <strong>Η συμμετοχή της Ρωσίας στον Α' Παγκόσμιο Πόλεμο επιδείνωσε την κατάσταση, παραλύοντας την οικονομία και φέρνοντας στρατιωτικές ήττες.</strong></p>
+
+            <h4>Η Αστική Επανάσταση του Φεβρουαρίου 1917</h4>
+            <p>Μια νέα επανάσταση τον Φεβρουάριο του 1917 ανέτρεψε τον τσάρο. Τη διακυβέρνηση ανέλαβε μια προσωρινή κυβέρνηση μετριοπαθών αστών, η οποία αναγνώρισε ορισμένα δικαιώματα και νομιμοποίησε τα σοβιέτ (συμβούλια εργατών και στρατιωτών). Ωστόσο, η κυβέρνηση αρνήθηκε να αποσύρει τη χώρα από τον πόλεμο και να προχωρήσει σε αναδασμό της γης, προκαλώντας τη λαϊκή δυσαρέσκεια.</p>
+
+            <h4>Η Σοσιαλιστική Οκτωβριανή Επανάσταση του 1917</h4>
+            <p>Εκμεταλλευόμενοι τη δυσαρέσκεια, οι Ρώσοι κομμουνιστές, γνωστοί ως Μπολσεβίκοι, με ηγέτη τον Βλαντίμιρ Λένιν, κέρδισαν την πλειοψηφία στα σοβιέτ. Στις 25-26 Οκτωβρίου 1917, οργάνωσαν νέα επανάσταση και κατέλαβαν την εξουσία. Τα βασικά τους αιτήματα ήταν η ανάληψη της εξουσίας από τα σοβιέτ, η διανομή της γης στους αγρότες και η άμεση αποχώρηση από τον πόλεμο. Η νέα κυβέρνηση έθεσε υπό κρατικό έλεγχο τις μεγάλες οικονομικές μονάδες, ανέθεσε τη διοίκηση των εργοστασίων στα σοβιέτ και <strong>αποχώρησε από τον πόλεμο με τη Συνθήκη του Μπρεστ-Λιτόφσκ (3 Μαρτίου 1918)</strong>, παραχωρώντας σημαντικά εδάφη στη Γερμανία.</p>
+
+            <h4>Ο εμφύλιος πόλεμος και η επίδραση στην Ευρώπη</h4>
+            <p>Η Οκτωβριανή Επανάσταση οδήγησε σε έναν σκληρό εμφύλιο πόλεμο μεταξύ των Μπολσεβίκων και των υποστηρικτών του τσάρου. Οι δυνάμεις της Αντάντ, συμπεριλαμβανομένης της Ελλάδας, επενέβησαν στρατιωτικά υπέρ των τσαρικών, αλλά τελικά οι Μπολσεβίκοι επικράτησαν. Η επανάσταση ενέπνευσε λαϊκές εξεγέρσεις σε όλη την Ευρώπη, όπως στη Γερμανία (Σπαρτακιστές) και την Ουγγαρία, αν και τελικά απέτυχαν. Παράλληλα, ιδρύθηκε στη Μόσχα η Κομμουνιστική Διεθνής (1919) και δημιουργήθηκαν κομμουνιστικά κόμματα σε πολλές χώρες, όπως το Σοσιαλιστικό Εργατικό Κόμμα Ελλάδος (ΣΕΚΕ) το 1918, ο πρόδρομος του ΚΚΕ.</p>
+        </section>
+
+        <section id="quiz-section-33" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Τι ήταν τα "σοβιέτ";</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ειδικές μονάδες του τσαρικού στρατού.</button>
+                        <button class="option" data-correct="true">Συμβούλια εργατών και στρατιωτών.</button>
+                        <button class="option" data-correct="false">Μεγάλα αγροκτήματα των γαιοκτημόνων.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιος ήταν ο ηγέτης των Μπολσεβίκων κατά την Οκτωβριανή Επανάσταση;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ο Τσάρος Νικόλαος Β'.</button>
+                        <button class="option" data-correct="true">Ο Βλαντίμιρ Λένιν.</button>
+                        <button class="option" data-correct="false">Ένας μετριοπαθής φιλελεύθερος αστός.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η προσωρινή κυβέρνηση που σχηματίστηκε μετά την Επανάσταση του Φεβρουαρίου 1917 απέσυρε αμέσως τη Ρωσία από τον Α' Παγκόσμιο Πόλεμο.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Οι Μπολσεβίκοι κατέλαβαν την εξουσία τον Οκτώβριο του 1917.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-33" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <p>Η Ρωσική Επανάσταση ήταν αποτέλεσμα της βαθιάς κρίσης του τσαρικού καθεστώτος, της εξαθλίωσης αγροτών και εργατών, και των στρατιωτικών ηττών στον Α' Παγκόσμιο Πόλεμο. Η πρώτη φάση, η Αστική Επανάσταση του Φεβρουαρίου 1917, ανέτρεψε τον τσάρο και έφερε στην εξουσία μια προσωρινή κυβέρνηση, η οποία όμως δεν ικανοποίησε τα λαϊκά αιτήματα για ειρήνη και διανομή γης. Η δεύτερη φάση, η Σοσιαλιστική Οκτωβριανή Επανάσταση, οργανώθηκε από τους Μπολσεβίκους του Λένιν, οι οποίοι κατέλαβαν την εξουσία με τα συνθήματα "όλη η εξουσία στα σοβιέτ" και "ειρήνη, ψωμί, γη". Η νέα κυβέρνηση απέσυρε τη Ρωσία από τον πόλεμο (Συνθήκη Μπρεστ-Λιτόφσκ), εθνικοποίησε την οικονομία και επικράτησε στον εμφύλιο πόλεμο που ακολούθησε. Η επανάσταση είχε τεράστια επίδραση στην Ευρώπη, εμπνέοντας επαναστατικά κινήματα και οδηγώντας στην ίδρυση κομμουνιστικών κομμάτων.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section-33" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Ποιοι παράγοντες οδήγησαν στην κρίση του τσαρικού καθεστώτος στις αρχές του 20ού αιώνα;</button>
+                    <div class="accordion-content">
+                        <p>Οι κύριοι παράγοντες ήταν οι άθλιες συνθήκες διαβίωσης της συντριπτικής πλειοψηφίας του πληθυσμού, που ήταν αγρότες και εργάτες, οι συχνές εξεγέρσεις με αίτημα τη διανομή της γης, η ήττα στον ρωσοϊαπωνικό πόλεμο που κλιμάκωσε την κοινωνική ένταση, και τελικά, η καταστροφική συμμετοχή της Ρωσίας στον Α' Παγκόσμιο Πόλεμο που παρέλυσε την οικονομία και προκάλεσε στρατιωτικές ήττες και τεράστια δυσαρέσκεια.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποια ήταν τα κύρια αιτήματα των Μπολσεβίκων και ποιες οι πρώτες πράξεις της κυβέρνησής τους μετά την Οκτωβριανή Επανάσταση;</button>
+                    <div class="accordion-content">
+                        <p>Τα κύρια αιτήματα των Μπολσεβίκων ήταν η κατάργηση της προσωρινής κυβέρνησης, η μεταβίβαση όλης της εξουσίας στα σοβιέτ, η διανομή της γης στους αγρότες και η άμεση αποχώρηση της Ρωσίας από τον πόλεμο. Οι πρώτες πράξεις της νέας κυβέρνησης ήταν να θέσει υπό κρατικό έλεγχο όλες τις μεγάλες οικονομικές μονάδες, να παραχωρήσει τη διοίκηση των εργοστασίων και των αγροκτημάτων στα σοβιέτ, και να υπογράψει τη Συνθήκη του Μπρεστ-Λιτόφσκ για να αποσύρει τη χώρα από τον πόλεμο.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας</p>
+    </footer>
+
+</body>
+</html>
