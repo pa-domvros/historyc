@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 4</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee); /* This is a dark brown */
+            color: var(--off-white);   /* This is an off-white/light gray */
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Styling for the main unit title in the header - REVISED and CHECKED */
+        header h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            /* Explicitly ensuring no properties cause hidden text */
+            color: inherit; /* Inherits color from header, which is --off-white */
+            white-space: normal; /* Allows text to wrap */
+            overflow: visible; /* Ensures all content is visible */
+            text-overflow: clip; /* No ellipsis, clip if necessary (shouldn't be needed with normal wrap) */
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--coffee); /* Ensure all headings use coffee color */
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid var(--coffee); /* Apply coffee border to images */
+        }
+
+        figure {
+            margin: 0; /* Reset default figure margin */
+        }
+
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: var(--coffee); /* Apply coffee color to captions */
+            margin-top: 10px;
+            text-align: center; /* Center align captions */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 1em;
+            color: var(--text-color);
+        }
+        ul li {
+            margin-bottom: 0.5em;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .summary-box {
+            background-color: var(--off-white);
+            border: 1px solid var(--light-coffee);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 3em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .summary-box h3 {
+            border-bottom: 1px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            color: var(--text-color);
+        }
+
+        .citation {
+            font-size: 0.85em;
+            color: #5C4033; /* Darker coffee for citations */
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Basic Modal for map markers (kept for consistency with Unit 1's script, though not used in Unit 4 content) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--off-white);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--light-coffee);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: var(--text-color);
+            text-align: left;
+        }
+        .modal-content p, .modal-content ul {
+            text-align: justify;
+        }
+        .modal-content ul li {
+            text-align: justify;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+                padding-right: 0;
+            }
+
+            .responsive-image.last-image {
+                max-width: 80%;
+            }
+            .accordion-header {
+                font-size: 1em;
+                padding: 10px 12px;
+            }
+            .accordion-content p {
+                padding: 10px 0;
+            }
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Ρύθμιση Modal (Κεντρική και ανθεκτική) ---
+            let infoModal = document.getElementById("infoModal");
+            let modalText = document.getElementById("modalText");
+            let closeModalButton;
+
+            // Ελέγχουμε αν το modal υπάρχει ήδη στο HTML, αλλιώς το δημιουργούμε δυναμικά
+            if (!infoModal) {
+                infoModal = document.createElement('div');
+                infoModal.id = 'infoModal';
+                infoModal.classList.add('modal');
+                infoModal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="modalText"></p>
+                    </div>
+                `;
+                document.body.appendChild(infoModal);
+                modalText = infoModal.querySelector('#modalText'); // Βρίσκουμε το modalText αφού δημιουργηθεί το modal
+            }
+            // Τώρα που το modal σίγουρα υπάρχει, βρίσκουμε το κουμπί κλεισίματος
+            closeModalButton = infoModal.querySelector('.close-button');
+
+            // Προσθέτουμε τον event listener για το κουμπί κλεισίματος
+            if (closeModalButton) {
+                closeModalButton.onclick = function() {
+                    infoModal.style.display = "none";
+                };
+            }
+
+            // Κλείσιμο modal όταν γίνεται κλικ έξω από το περιεχόμενο του
+            infoModal.addEventListener('click', (event) => {
+                if (event.target === infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+
+            // --- Βοηθητική συνάρτηση για άνοιγμα του modal ---
+            function openInfoModal(content, isHtml = false) {
+                if (isHtml) {
+                    modalText.innerHTML = content;
+                } else {
+                    modalText.textContent = content;
+                }
+                infoModal.style.display = "block";
+            }
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Close other open accordions in the same group (optional, but good practice for accordions)
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        const otherAccordionItem = otherHeader.parentElement;
+                        const otherAccordionContent = otherHeader.nextElementSibling;
+                        if (otherAccordionItem !== accordionItem && otherHeader.classList.contains('active') && otherHeader.closest('.accordion') === header.closest('.accordion')) {
+                            otherHeader.classList.remove('active');
+                            otherAccordionContent.style.maxHeight = 0;
+                            otherAccordionContent.style.overflow = 'hidden';
+                        }
+                    });
+
+                    // Toggle (open/close) the current accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 'fit-content';
+                            accordionContent.style.overflow = 'visible';
+                        }, 300); // Small delay to ensure scrollHeight is calculated
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                        accordionContent.style.overflow = 'hidden';
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 0;
+                        }, 10); // Small delay to "capture" scrollHeight
+                    }
+                });
+            });
+
+            // --- Λειτουργία Info Button (το μικρό i) - Not used in this unit, but kept for consistency ---
+            document.querySelectorAll('.info-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    openInfoModal(button.dataset.info);
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΕΝΟΤΗΤΑ 4: Η τελευταία φάση της γαλλικής επανάστασης και η εποχή του Ναπολέοντα (1795-1815)</h2>
+    </header>
+
+    <main>
+        <section id="unit-4-content" class="content-block">
+            <h3>Η τελευταία φάση της γαλλικής επανάστασης (1794-1799) και η εποχή του Ναπολέοντα (1799-1815)</h3>
+
+            <h4>Η τρίτη και τελευταία φάση της γαλλικής επανάστασης, 1794-1799</h4>
+            <p>Μετά την εκτέλεση του Ροβεσπιέρου, ο έλεγχος της Συμβατικής πέρασε στα χέρια των μετριοπαθών, των Θερμιδοριανών (από τον μήνα Θερμιδόρ, κατά τον οποίο επικράτησαν). Τα περισσότερα από τα ριζοσπαστικά μέτρα των Ορεινών καταργήθηκαν και η επανάσταση επέστρεψε στις αρχικές θέσεις της. Οι Θερμιδοριανοί ψήφισαν νέο σύνταγμα (1795). Σύμφωνα με αυτό, η άσκηση της εκτελεστικής εξουσίας ανατέθηκε σ' ένα πενταμελές συμβούλιο, το Διευθυντήριο. Αυτό, προκειμένου να αντιμετωπίσει τη δύσκολη κατάσταση, αναζήτησε τη στήριξη των στρατηγών που είχαν αναδειχθεί στα χρόνια της επανάστασης.</p>
+
+            <h4>Η εποχή του Ναπολέοντα, 1799-1815</h4>
+            <p>Τελικά, στις 9 Νοεμβρίου 1799 ο Ναπολέων Βοναπάρτης, αναμφισβήτητα ο πιο λαοφιλής, ο πιο ικανός, αλλά και ο πιο φιλόδοξος από τους Γάλλους στρατηγούς, κατέλαβε την εξουσία, με τη συγκατάθεση του Διευθυντηρίου. Έτσι, η μετριοπαθής αστική τάξη εμπιστεύτηκε έναν ηγέτη που έδειχνε ικανό να δημιουργήσει ένα σταθερό εσωτερικό καθεστώς και να κάνει σειρά πολέμων για την εδραίωση της γαλλικής κυριαρχίας στην Ευρώπη.</p>
+            <p>Αρχικά, ο Ναπολέων ανακηρύχθηκε Πρώτος Ύπατος (1799-1804) και αργότερα Αυτοκράτορας (1804-1815). Αν και το πολίτευμα τυπικά δεν άλλαξε, ο Ναπολέων κυβερνούσε ως απόλυτος μονάρχης. Ο νέος ηγέτης της Γαλλίας εφάρμοσε σειρά μεταρρυθμίσεων στη διοίκηση, στην εκπαίδευση και στην οικονομία, επιδιώκοντας να ελέγξει την κρατική μηχανή, αλλά και να την κάνει πιο αποτελεσματική. Το 1804 θεσπίστηκε ένας νέος νομολόγιος κώδικας, ο Ναπολεόντειος Κώδικας, στον οποίο διατηρούνταν, με τη μορφή νόμων, ορισμένες από τις αρχές της γαλλικής επανάστασης. Ο Ναπολεόντειος Κώδικας διαδόθηκε σε όλη την Ευρώπη από τις γαλλικές στρατιές και παραμένει μέχρι σήμερα η βάση του νομικού συστήματος τόσο της Γαλλίας όσο και πολλών άλλων ευρωπαϊκών κρατών.</p>
+            <p>Παράλληλα, η Γαλλία του Ναπολέοντα, αντιμέτωπη κατά καιρούς με όλες σχεδόν τις σημαντικές ευρωπαϊκές δυνάμεις, κατόρθωσε να θέσει υπό τον έλεγχό της, ένα μεγάλο μέρος της Ευρώπης. Ο Ναπολέων, εκτιμώντας ότι ο κύριος αντίπαλος ήταν η Αγγλία, εφάρμοσε, από το 1806, τον ηπειρωτικό αποκλεισμό, εμποδίζοντας τη διακίνηση αγγλικών εμπορευμάτων σε όλα τα ευρωπαϊκά λιμάνια. Σε αντίποινα, η Αγγλία εφάρμοσε θαλάσσιο αποκλεισμό σε βάρος της Γαλλίας, εμποδίζοντας πλοία τρίτων χωρών να πλησιάζουν τις γαλλικές ακτές.</p>
+
+            <figure>
+                <img src="1.jpg" alt="Ευρώπη το 1812" class="responsive-image">
+                <figcaption>Εικόνα 1: Η Ευρώπη το 1812, την εποχή της παντοδυναμίας του Ναπολέοντα.</figcaption>
+            </figure>
+
+            <p>Ο Ναπολέων, χάρη στις νίκες και στις κατακτήσεις του, δημιούργησε βασίλεια-δορυφόρους της Γαλλίας, σε πολλές περιοχές της Ευρώπης. Καθώς, όμως, η Γαλλία απαιτούσε φόρους για να καλύπτει τα τεράστια έξοδα των πολέμων, η γαλλική παρουσία αντιμετώπισε την αντίδραση των ευγενών και του ανώτερου κλήρου, που επιδίωκαν την επαναφορά της μοναρχίας και την αποκατάσταση των προνομίων τους, καθώς και σημαντικού μέρους των λαϊκών στρωμάτων, που ένιωσε να επιβαρύνεται οικονομικά και να βρίσκεται υπό ξένη κυριαρχία.</p>
+            <p>Το 1812 ο Ναπολέων αποφάσισε να επιτεθεί στη Ρωσία, με τη δικαιολογία ότι η τελευταία δεν εφάρμοζε αυστηρά τον ηπειρωτικό αποκλεισμό. Ο γαλλικός στρατός κατόρθωσε να φτάσει μέχρι τη Μόσχα, χωρίς, όμως, να θέσει υπό την κυριαρχία του τη Ρωσία. Λόγω του χειμώνα, των ασθενειών και των επιθέσεων, οι δυνάμες του Ναπολέοντα άρχισαν να υποχωρούν. Κατά την υποχώρηση, ένας νέος συνασπισμός ευρωπαϊκών κρατών (Αγγλία, Αυστρία, Πρωσία, Ρωσία, Ισπανία, Σουηδία, βασίλειο της Νεάπολης) κατάφερε καίριο πλήγμα στις γαλλικές δυνάμεις (μάχη της Λιψίας, 1813). Από ένα στράτευμα 600.000 περίπου ανδρών επέστρεψαν στη Γαλλία λιγότεροι από 100.000 άνδρες. Η ήττα των Γάλλων στο Βέλγιο, στη μάχη του Βατερλό (1815), σήμανε και το τέλος της κυριαρχίας του Ναπολέοντα.</p>
+
+            <figure>
+                <img src="2.jpg" alt="Ο Ναπολέων διασχίζει τις Άλπεις" class="responsive-image">
+                <figcaption>Εικόνα 2: Ζ.Λ. Νταβίντ, Ο Ναπολέων διασχίζει τις Άλπεις.</figcaption>
+            </figure>
+
+            <h3>Γαλλική επανάσταση και εποχή του Ναπολέοντα: μια αποτίμηση</h3>
+            <p>Η περίοδος 1789-1815 αποτελεί τομή στην ευρωπαϊκή αλλά και στην παγκόσμια ιστορία. Στη διάρκειά της:</p>
+            <ul>
+                <li>Η αστική τάξη της Γαλλίας κατέλαβε την εξουσία, δείχνοντας τον δρόμο και στις άλλες αστικές τάξεις της Ευρώπης.</li>
+                <li>Τα συμφέροντα της αστικής τάξης προωθήθηκαν αποφασιστικά και, χάρη σε μια σειρά από μεταρρυθμίσεις, η φιλελεύθερη οικονομία, η οικονομία της ελεύθερης αγοράς, κέρδισε έδαφος.</li>
+                <li>Οι αρχές του Διαφωτισμού έγιναν πολιτικά αιτήματα και, σε έναν βαθμό, δικαιώθηκαν.</li>
+                <li>Η απολυταρχία γκρεμίστηκε στη Γαλλία και κλονίστηκε στην υπόλοιπη Ευρώπη.</li>
+                <li>Αναπτύχθηκε η ιδέα ότι τα όρια του έθνους και του κράτους πρέπει να συμπίπτουν. Πολίτες και κράτος συνδέθηκαν μ' ένα πλέγμα δικαιωμάτων και υποχρεώσεων (π.χ. πολιτικά δικαιώματα-υποχρέωση στρατιωτικής θητείας). Έτσι γεννήθηκε η σύγχρονη έννοια της πατρίδας, στο πλαίσιο του έθνους-κράτους, που ενέπνεε αφοσίωση στους ανθρώπους.</li>
+                <li>Η εκκλησία διαχωρίστηκε, για πρώτη φορά στη νεότερη εποχή, από το κράτος.</li>
+                <li>Τα προνόμια των ευγενών και του κλήρου καταργήθηκαν και επικράτησε η αντίληψη ότι όλοι οι άνθρωποι γεννιόνταν έχοντας, τουλάχιστον θεωρητικά, τα ίδια δικαιώματα.</li>
+                <li>Ο λαός αναδείχτηκε σε κινητήρια δύναμη της ιστορίας και σε αποκλειστική πηγή εξουσίας με την καθιέρωση συνταγμάτων και την επικράτηση της αρχής της λαϊκής κυριαρχίας. Τα φυσικά δικαιώματα του Διαφωτισμού έγιναν πολιτικά δικαιώματα. Οι υπήκοοι έγιναν πολίτες.</li>
+                <li>Αναπτύχθηκαν ή αναδύθηκαν ιδέες και κινήματα που σφράγισαν την παγκόσμια ιστορία, όπως ο φιλελευθερισμός, ο εθνικισμός, ο κοινωνικός ριζοσπαστισμός και ο σοσιαλισμός (για τα οποία θα γίνει αναφορά παρακάτω).</li>
+            </ul>
+
+            <h4>1. Η γαλλική επανάσταση δίδαξε στους λαούς να αντιστέκονται στους τυράννους</h4>
+            <p>Η Ευρώπη δεν καταλαβαίνει ότι μπορεί να ζήσει χωρίς βασιλιάδες, χωρίς ευγενείς. Εμείς δεν καταλαβαίνουμε ότι μπορεί να ζήσει κανείς μαζί τους. Οι αξιότιμοι γείτονές μας απασχολούν [...] τον κόσμο με την υγεία του βασιλιά, με τις διασκεδάσεις και τα ταξίδια του. Εμείς πληροφορούμε τον κόσμο για τα ονόματα και τις αρετές των ηρώων που πέθαναν για τη λευτεριά [...] Εμείς του μαθαίνουμε ότι σήμανε η ώρα της εκτέλεσης των καταπιεστών.</p>
+            <p class="citation"><em>Ροβεσπιέρος, Λόγος στη Συμβατική Εθνοσυνέλευση, 7 Μαΐου 1794. Πηγή: Μ. Βερέτας (επιμ.), Μαρά, Σεν Ζιστ, Ροβεσπιέρος, Κείμενα, Σύγχρονη Εποχή, Αθήνα 1989, σ. 254.</em></p>
+
+            <h4>2. Ο Θεόδωρος Κολοκοτρώνης για τη γαλλική επανάσταση</h4>
+            <p>Η γαλλική επανάστασις και ο Ναπολέων έκαμαν, κατά την γνώμη μου, ν' ανοίξουν τα μάτια του κόσμου. Πρωτύτερα τα έθνη δεν εγνωρίζοντο, τους βασιλείς τους ενόμιζον ως θεούς της Γης, και ό,τι και αν έκαμναν, το έλεγαν καλά καμωμένο [..].</p>
+            <p class="citation"><em>Διήγησις συμβάντων της ελληνικής φυλής από τα 1770 έως τα 1836 (1851), τόμ. Γ΄, σ. 61.</em></p>
+
+            <h4>3. Η γαλλική επανάσταση γέννησε τον δημοκρατικό πατριωτισμό</h4>
+            <p>[...] Στα αριστοκρατικά κράτη, η λέξη πατρίδα δεν σημαίνει κάτι, παρά μόνο για τις οικογένειες των ευγενών, που έχουν την κυριαρχία. Μόνο στη δημοκρατία το κράτος είναι αληθινά η πατρίδα όλων των ανθρώπων που το συνθέτουν, και μπορεί να μετρήσει τόσους υπερασπιστές που ενδιαφέρονται για την υπόθεσή της όσους και πολίτες. Να ποια είναι η πηγή της ανωτερότητας των λεύτερων λαών απέναντι σε όλους τους άλλους.</p>
+            <p class="citation"><em>Ροβεσπιέρος, Λόγος στη Συμβατική Εθνοσυνέλευση, 17 Φεβρουαρίου 1794.<br>Πηγή: Μ. Βερέτας (επιμ.), Μαρά, Σεν Ζιστ, Ροβεσπιέρος, Κείμενα, Σύγχρονη Εποχή, Αθήνα 1989, σ. 234.</em></p>
+
+        </section>
+
+        <section id="summary-and-questions-section" class="content-block">
+
+            <figure>
+                <img src="3.jpg" alt="Ευρώπη το 1815" class="responsive-image">
+                <figcaption>Εικόνα 3: Η Ευρώπη το 1815, μετά την ήττα του Ναπολέοντα και το συνέδριο της Βιέννης.</figcaption>
+            </figure>
+
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-4">
+                            <h4>Το συνέδριο της Βιέννης</h4>
+                            <p>Οι νικητές του Ναπολέοντα συγκάλεσαν το συνέδριο της Βιέννης (Σεπτέμβριος 1814-Ιούνιος 1815). Κυρίως τους απασχόλησαν η επαναχάραξη των συνόρων, ώστε να εξασφαλίζεται μια βιώσιμη ισορροπία, η ανασυγκρότηση της απολυταρχίας και η καταστολή των επαναστατικών ιδεών. Στη Γαλλία εγκαθιδρύθηκε ξανά το πολίτευμα της βασιλείας και τα γαλλικά σύνορα επανήλθαν εκεί που ήταν το 1789. Τον Νοέμβριο του 1815 ιδρύθηκε η Ιερή Συμμαχία, από τη Ρωσία, την Αυστρία και την Πρωσία, χώρες-προπύργια της απολυταρχίας και της αντεπανάστασης. Οι περισσότεροι εκθρονισμένοι ηγεμόνες επανήλθαν στους θρόνους τους. Τα χρόνια που ακολούθησαν ονομάστηκαν εποχή της Παλινόρθωσης ή απλώς Παλινόρθωση (1815-1830). Αν και δόθηκε η εντύπωση πως οι προεπαναστατικοί θεσμοί ανασταίνονταν, οι αρχές της γαλλικής επανάστασης (ελευθερία, ισότητα, δικαίωμα εθνικής αυτοδιάθεσης) είχαν αποκτήσει, πλέον, τεράστια απήχηση στους ευρωπαϊκούς λαούς.</p>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Ολοκληρώνοντας το κεφάλαιο θυμόμαστε ότι...</h3>
+            <ul>
+                <li>ο Διαφωτισμός ήταν ένα πολύμορφο κίνημα μέσα από το οποίο διαμορφώθηκαν όλα τα διανοητικά όπλα που χρησιμοποιήθηκαν στις επαναστάσεις του 18ου και του 19ου αιώνα.</li>
+                <li>η αμερικανική επανάσταση, η πρώτη που έγινε στο όνομα του Διαφωτισμού, ήταν σημαντική όχι μόνο για την αμερικανική ήπειρο αλλά και για ολόκληρο τον πλανήτη.</li>
+                <li>η εποχή της γαλλικής επανάστασης και του Ναπολέοντα (1789-1815) συνιστά τομή στην ευρωπαϊκή και στην παγκόσμια ιστορία, καθώς κατά τη διάρκειά της άρχισαν να διαμορφώνονται οι παράγοντες που οδήγησαν στις επαναστάσεις του 19ου αιώνα και όχι μόνο.</li>
+            </ul>
+
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Να αναφέρετε τα γεγονότα της τελευταίας φάσης της γαλλικής επανάστασης (1795-1799).</button>
+                    <div class="accordion-content">
+                        <p>Μετά την εκτέλεση του Ροβεσπιέρου, οι μετριοπαθείς Θερμιδοριανοί ανέλαβαν τον έλεγχο της Συμβατικής Εθνοσυνέλευσης. Κατάργησαν πολλά από τα ριζοσπαστικά μέτρα των Ορεινών και η επανάσταση επέστρεψε στις αρχικές της θέσεις. Το 1795 ψήφισαν ένα νέο σύνταγμα, σύμφωνα με το οποίο η εκτελεστική εξουσία ανατέθηκε στο πενταμελές Διευθυντήριο. Το Διευθυντήριο, αντιμετωπίζοντας δυσκολίες, αναζήτησε τη στήριξη των στρατηγών που είχαν αναδειχθεί κατά τη διάρκεια της επανάστασης.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποιες ήταν οι κύριες μεταρρυθμίσεις του Ναπολέοντα και γιατί ήταν σημαντικές;</button>
+                    <div class="accordion-content">
+                        <p>Ο Ναπολέων εφάρμοσε μεταρρυθμίσεις στη διοίκηση, στην εκπαίδευση και στην οικονομία, με στόχο να ελέγξει και να κάνει πιο αποτελεσματική την κρατική μηχανή. Το 1804 θεσπίστηκε ο Ναπολεόντειος Κώδικας, ένας νέος νομικός κώδικας που διατηρούσε ορισμένες αρχές της γαλλικής επανάστασης ως νόμους. Ο κώδικας αυτός διαδόθηκε σε όλη την Ευρώπη και παραμένει η βάση του νομικού συστήματος πολλών ευρωπαϊκών κρατών μέχρι σήμερα. Οι μεταρρυθμίσεις αυτές συνέβαλαν στη δημιουργία ενός σταθερού εσωτερικού καθεστώτος στη Γαλλία.</p>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <button class="accordion-header">3. Ποια ήταν η σημασία της περιόδου 1789-1815 (Γαλλική Επανάσταση και εποχή Ναπολέοντα) για την ευρωπαϊκή και παγκόσμια ιστορία;</button>
+                    <div class="accordion-content">
+                        <p>Η περίοδος 1789-1815 αποτελεί τομή στην ευρωπαϊκή και παγκόσμια ιστορία. Κατά τη διάρκειά της, η αστική τάξη της Γαλλίας κατέλαβε την εξουσία, ανοίγοντας τον δρόμο για άλλες αστικές τάξεις στην Ευρώπη. Προωθήθηκαν αποφασιστικά τα συμφέροντα της αστικής τάξης και η φιλελεύθερη οικονομία κέρδισε έδαφος. Οι αρχές του Διαφωτισμού έγιναν πολιτικά αιτήματα και δικαιώθηκαν. Η απολυταρχία γκρεμίστηκε στη Γαλλία και κλονίστηκε στην υπόλοιπη Ευρώπη. Αναπτύχθηκε η σύγχρονη έννοια της πατρίδας και του έθνους-κράτους, με τους πολίτες να συνδέονται με δικαιώματα και υποχρεώσεις. Έγινε διαχωρισμός εκκλησίας-κράτους, καταργήθηκαν τα προνόμια ευγενών-κληρικών, και επικράτησε η αντίληψη της ισότητας των ανθρώπων. Ο λαός αναδείχτηκε σε κινητήρια δύναμη και πηγή εξουσίας, με τους υπηκόους να γίνονται πολίτες. Αναδύθηκαν ιδέες και κινήματα όπως ο φιλελευθερισμός, ο εθνικισμός, ο κοινωνικός ριζοσπαστισμός και ο σοσιαλισμός.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>

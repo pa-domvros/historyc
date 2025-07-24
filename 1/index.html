@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 1</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        /* Interactive Map Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .map-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--light-coffee);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid var(--off-white);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* General Info Button (i icon) - for figcaption */
+        .info-button {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Specific positioning for info-button inside figcaption */
+        figcaption .info-button {
+            top: 5px;
+            right: 5px;
+            transform: none;
+        }
+
+        .info-button:hover {
+            background-color: var(--coffee);
+        }
+
+        /* New: Analysis Button (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .analysis-button {
+            background: var(--coffee);
+            color: var(--off-white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease;
+            display: block;
+            width: fit-content;
+        }
+
+        .analysis-button:hover {
+            background-color: var(--light-coffee);
+        }
+
+        /* Timeline Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .timeline-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timeline-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .timeline-events {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .timeline-event {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .timeline-event:hover {
+            background-color: var(--coffee);
+        }
+
+        .timeline-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Source Comparison (	Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .coin-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+
+        /* Basic Modal for map markers */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--off-white);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--light-coffee);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .modal-content p, .modal-content ul {
+            text-align: justify;
+        }
+        .modal-content ul li {
+            text-align: justify;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+                padding-right: 25px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .image-gallery figcaption {
+                font-size: 0.8em;
+            }
+
+            .info-button {
+                width: 18px;
+                height: 18px;
+                font-size: 0.7em;
+            }
+
+            .analysis-button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+
+            .timeline-event {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .flip-card-front h5, .flip-card-back h5 {
+                font-size: 1.2em;
+            }
+
+            .flip-card-front p, .flip-card-back p {
+                font-size: 0.85em;
+            }
+
+            .options button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 15px;
+            }
+
+            .responsive-image.last-image {
+                max-width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Ρύθμιση Modal (Κεντρική και ανθεκτική) ---
+            let infoModal = document.getElementById("infoModal");
+            let modalText = document.getElementById("modalText");
+            let closeModalButton;
+
+            // Ελέγχουμε αν το modal υπάρχει ήδη στο HTML, αλλιώς το δημιουργούμε δυναμικά
+            if (!infoModal) {
+                infoModal = document.createElement('div');
+                infoModal.id = 'infoModal';
+                infoModal.classList.add('modal');
+                infoModal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="modalText"></p>
+                    </div>
+                `;
+                document.body.appendChild(infoModal);
+                modalText = infoModal.querySelector('#modalText'); // Βρίσκουμε το modalText αφού δημιουργηθεί το modal
+            }
+            // Τώρα που το modal σίγουρα υπάρχει, βρίσκουμε το κουμπί κλεισίματος
+            closeModalButton = infoModal.querySelector('.close-button');
+
+            // Προσθέτουμε τον event listener για το κουμπί κλεισίματος
+            if (closeModalButton) {
+                closeModalButton.onclick = function() {
+                    infoModal.style.display = "none";
+                };
+            }
+
+            // Κλείσιμο modal όταν γίνεται κλικ έξω από το περιεχόμενο του
+            infoModal.addEventListener('click', (event) => {
+                if (event.target === infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+
+            // --- Βοηθητική συνάρτηση για άνοιγμα του modal ---
+            function openInfoModal(content, isHtml = false) {
+                if (isHtml) {
+                    modalText.innerHTML = content;
+                } else {
+                    modalText.textContent = content;
+                }
+                infoModal.style.display = "block";
+            }
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Κλείσιμο άλλων ανοιχτών accordions στην ίδια ομάδα
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        const otherAccordionItem = otherHeader.parentElement;
+                        const otherAccordionContent = otherHeader.nextElementSibling;
+                        // Ελέγχουμε αν είναι διαφορετικό item ΚΑΙ στην ίδια ομάδα accordion (αν υπάρχει)
+                        if (otherAccordionItem !== accordionItem && otherHeader.classList.contains('active') && otherHeader.closest('.accordion') === header.closest('.accordion')) {
+                            otherHeader.classList.remove('active');
+                            otherAccordionContent.style.maxHeight = 0;
+                            otherAccordionContent.style.overflow = 'hidden'; // Ensure it's hidden
+                        }
+                    });
+
+                    // Εναλλαγή (άνοιγμα/κλείσιμο) του τρέχοντος accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Αρχικός υπολογισμός
+                        // Προσθήκη μικρής καθυστέρησης για να διασφαλιστεί ότι το scrollHeight έχει υπολογιστεί σωστά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 'fit-content'; // Ρύθμιση σε fit-content για πλήρη εμφάνιση
+                            accordionContent.style.overflow = 'visible'; // Να είναι ορατό όλο το περιεχόμενο
+                        }, 300); // Μικρή καθυστέρηση μετά το transition time του CSS
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Πρέπει να έχει την τρέχουσα τιμή πριν το κλείσιμο
+                        accordionContent.style.overflow = 'hidden'; // Κρύβουμε το overflow ξανά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 0; // Τώρα κλείνουμε
+                        }, 10); // Μικρή καθυστέρηση για να "συλλάβουμε" το scrollHeight
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            flipCard.classList.toggle('flipped');
+                        });
+                    });
+                }
+            });
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+
+                        // Απενεργοποιούμε όλες τις επιλογές μόλις επιλεγεί μία
+                        options.forEach(opt => {
+                            opt.classList.remove('correct', 'incorrect');
+                            opt.disabled = true;
+                        });
+                        feedback.textContent = ''; // Καθαρίζουμε προηγούμενο feedback
+
+                        // Εφαρμόζουμε το feedback για την τρέχουσα επιλογή
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            // Εμφανίζουμε τη σωστή απάντηση αν ήταν λάθος
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // --- Λειτουργία Map Markers ---
+            document.querySelectorAll('.map-marker').forEach(marker => {
+                marker.addEventListener('click', () => {
+                    openInfoModal(marker.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Timeline Events ---
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                event.addEventListener('click', () => {
+                    openInfoModal(event.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Info Button (το μικρό i) ---
+            document.querySelectorAll('.info-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Σταματάμε το event να επεκταθεί σε γονείς
+                    openInfoModal(button.dataset.info);
+                });
+            });
+
+            // Η λειτουργία εκτύπωσης έχει αφαιρεθεί, όπως ζητήθηκε.
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΠΡΩΤΟ: ΟΙ ΑΠΑΡΧΕΣ ΔΙΑΜΟΡΦΩΣΗΣ ΤΟΥ ΝΕΟΤΕΡΟΥ ΚΟΣΜΟΥ</h2>
+    </header>
+
+    <main>
+        <section id="unit-1" class="content-block">
+            <h3>1. Η εποχή του Διαφωτισμού</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Αγροτική Επανάσταση</li>
+                    <li>Βιομηχανική Επανάσταση</li>
+                    <li>Απόλυτη Μοναρχία</li>
+                    <li>Διαφωτισμός</li>
+                    <li>Φυσικά Δικαιώματα</li>
+                    <li>Κοινωνικό Συμβόλαιο</li>
+                    <li>Γενική Βούληση</li>
+                    <li>Διάκριση των Εξουσιών</li>
+                    <li>Φωτισμένη Δεσποτεία</li>
+                    <li>Ντεϊσμός</li>
+                    <li>Ανεξιθρησκία</li>
+                    <li>Φυσιοκρατία</li>
+                    <li>Οικονομικός Φιλελευθερισμός</li>
+                    <li>Εγκυκλοπαίδεια</li>
+                </ul>
+            </div>
+
+            <h4>Εξελίξεις στην Ευρώπη κατά τον 17ο και τον 18ο αιώνα</h4>
+            <p>Κατά τον 17ο και 18ο αιώνα συντελέστηκαν στην Ευρώπη σημαντικές μεταβολές. Σημειώθηκε θεαματική αύξηση του πληθυσμού. Παράλληλα, έγιναν μεταβολές στην αγροτική οικονομία (δημιουργία μεγάλων αγροκτημάτων, εφαρμογή νέων μεθόδων καλλιέργειας, επέκταση της χρήσης μηχανημάτων), προκειμένου να καλυφθούν οι ανάγκες του συνεχώς αυξανόμενου πληθυσμού. Αυτό το σημαντικό φαινόμενο ονομάστηκε, από τους ιστορικούς, αγροτική επανάσταση. Ακόμη, αναπτύχθηκε το εμπόριο ανάμεσα στην Ευρώπη, την Αφρική και την Αμερική (τριγωνικό εμπόριο), αλλά και στο εσωτερικό της ευρωπαϊκής ηπείρου, με αποτέλεσμα τη συσσώρευση κεφαλαίων στα χέρια Ευρωπαίων επιχειρηματιών. Η αύξηση της ζήτησης έφερε μεταβολές στη διαδικασία παραγωγής μεταποιημένων προϊόντων, με κυριότερη τη χρήση νέων μηχανών που είχαν μεγάλες δυνατότητες.</p>
+            <p>Έτσι, από τη μια πλευρά υπήρχαν επιχειρηματίες που διέθεταν κεφάλαια. Από την άλλη πλευρά, υπήρχαν χιλιάδες πρώην αγρότες, οι οποίοι, λόγω των μεταβολών που συνέβαιναν στην αγροτική οικονομία, είχαν μείνει δίχως εργασία και είχαν καταφύγει στις πόλεις αναζητώντας κάποιο εισόδημα. Οι δύο αυτοί παράγοντες οδήγησαν, χάρη και στην καταλυτική παρουσία ισχυρών μηχανών, στη δημιουργία μεγάλων εργοστασίων, δηλαδή στη γέννηση της βιομηχανίας, την εκβιομηχάνιση. Οι μεταβολές αυτές, που άρχισαν να συντελούνται στη Μ. Βρετανία γύρω στα 1750-1780, αποτέλεσαν την πρώτη φάση του φαινομένου που ονομάστηκε βιομηχανική επανάσταση.</p>
+
+            <figure>
+                <img src="1.jpg" alt="Εργοστάσιο υφαντουργίας στην Αγγλία (περίπου 1750)." class="responsive-image">
+                <figcaption>1. Εργοστάσιο υφαντουργίας στην Αγγλία (περίπου 1750).</figcaption>
+            </figure>
+
+            <p>Την ίδια στιγμή συντελούνταν κοινωνικές μεταβολές. Ομάδες της αστικής τάξης (βιομήχανοι, τραπεζίτες, μεγαλέμποροι) ενίσχυαν διαρκώς τη θέση τους. Οι αριστοκράτες αμύνονταν προσπαθώντας να διαφυλάξουν τα προνόμιά τους, με εξαίρεση τη Μ. Βρετανία όπου είχαν αρχίσει να ασχολούνται με τις νέου τύπου οικονομικές δραστηριότητες. Οι αγρότες, που ήταν η πλειονότητα του πληθυσμού, και τα ασθενέστερα κοινωνικά στρώματα των πόλεων ζούσαν σε άσχημες συνθήκες.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>1. Οι κοινωνικές επιπτώσεις της εκβιομηχάνισης</h5>
+                                <p>Οι εξελιγμένες μηχανές του Άρκραϊτ [Άγγλος βιομήχανος] απαιτούν λίγα χέρια, και μάλιστα μόνο παιδιά, με την επίβλεψη ενός επιστάτη. Ένα παιδί μπορεί να παράγει τόσο όσο μπορούσαν παλαιότερα δέκα ενήλικες, καμιά φορά και περισσότερο. Οι εξελιγμένες κλωστικές μηχανές, [...] απαιτούν μόνο έναν εργαζόμενο για να τις δουλέψει. Έτσι, σε διάστημα δέκα ετών, ο Ρίτσαρντ Άρκραϊτ, ένας πάμπτωχος άνθρωπος που είχε δεν είχε παρά πέντε λίρες όλες κι όλες, έχει αποκτήσει περιουσία που ξεπερνά τις είκοσι χιλιάδες λίρες. Την ίδια στιγμή, εκατοντάδες γυναίκες είναι υποχρεωμένες, όταν, βεβαίως, βρίσκουν δουλειά, να εργάζονται από το πρωί μέχρι το βράδυ, παράγοντας τεράστιες ποσότητες βαμβακερού υφάσματος για τέσσερις πέντε πένες [πένα: υποδιαίρεση της αγγλικής λίρας] την ημέρα, το πολύ. <br><em>Ralph Mather, Μια αντικειμενική παρουσίαση της ζωής των φτωχών κλωστών βαμβακιού στο Lancashire (1780).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Η βαθμιαία εξάπλωση της χρήσης μηχανών για την παραγωγή προϊόντων (εκμηχάνιση της παραγωγής) είχε, σε πρώτη φάση και μέχρι να κατασκευαστούν πολλά εργοστάσια, δύο άμεσα αποτελέσματα: πρώτον, περιορίστηκαν οι ανάγκες σε εργατικά χέρια και δεύτερον οι εργαζόμενοι δεν ήταν απαραίτητο να διαθέτουν ούτε μεγάλη σωματική δύναμη ούτε εξαιρετικές γνώσεις ή δεξιότητες. Έτσι, οι εργοδότες προτιμούσαν γυναίκες και παιδιά, που αμείβονταν λιγότερο. Παράλληλα, όμως, με την εξαθλίωση των ασθενέστερων κοινωνικών στρωμάτων, η εκμηχάνιση της παραγωγής γεννούσε μεγάλο πλούτο, που συγκεντρωνόταν στα χέρια λίγων επιχειρηματιών.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ενώ συνέβαιναν όλα τα παραπάνω, η πολιτική κατάσταση παρέμενε στάσιμη. Σε όλα σχεδόν τα κράτη της Ευρώπης η εξουσία ήταν συγκεντρωμένη στα χέρια του βασιλιά (απόλυτη μοναρχία). Εξαίρεση αποτελούσε η Μ. Βρετανία, όπου οι πιέσεις της αριστοκρατίας και των αστών είχαν οδηγήσει, στα τέλη του 17ου αιώνα (ένδοξη επανάσταση, 1688), στην αναγνώριση ορισμένων πολιτικών δικαιωμάτων στα μέλη των οικονομικά ισχυρότερων τάξεων.</p>
+            <p>Παράλληλα, η πρόοδος των φυσικών επιστημών, που είχε αρχίσει να γίνεται αισθητή από τον 17ο αιώνα, άνοιγε τον δρόμο για την απελευθέρωση από τις προλήψεις του Μεσαίωνα. Τώρα, κάποιοι διανοούμενοι επιχειρούσαν, βασισμένοι στη λογική, να ανακαλύψουν φυσικούς νόμους που πίστευαν ότι διέπουν τη λειτουργία του κόσμου. Πρωτοπόροι υπήρξαν ο Φράνσις Μπέικον (ή Βάκων, 1561-1626), που υποστήριξε ότι κάθε επιστημονική θέση πρέπει να επαληθεύεται με πείραμα για να γίνεται αποδεκτή, ο Ρενέ Ντεκάρτ (ή Καρτέσιος, 1596-1650), που τόνισε ότι η συστηματική αμφιβολία είναι ο μόνος δρόμος προς την αληθινή γνώση, ο Τζον Λοκ (1632-1704), που διατύπωσε τη θέση ότι οι άνθρωποι έχουν απαραβίαστα φυσικά δικαιώματα (ζωής, ελευθερίας, περιουσίας), και ο Ισαάκ Νιούτον (ή Νεύτων, 1642-1727), που εφαρμόζοντας την επαγωγική μέθοδο (διανοητική πορεία από το ειδικό στο γενικό) διατύπωσε τον νόμο της παγκόσμιας έλξης και υποστήριξε ότι το σύμπαν λειτουργεί με βάση φυσικούς νόμους.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>2. Ο ορθός λόγος εναντίον της προκατάληψης</h5>
+                                <p>Το πρώτο ήταν να μην παραδέχομαι ποτέ τίποτα για αληθινό, αν δεν το ξέρω ολοφάνερα για αληθινό δηλαδή ν' αποφεύγω προσεκτικά τη βιασύνη και την προκατάληψη, και να μην περιλαμβάνω στις κρίσεις μου τίποτα παραπάνω απ' ό,τι θα παρουσιάζεται στο νου τόσο ευδιάκριτα ώστε να μη μου δίνεται καμιά ευκαιρία ν' αμφιβάλλω γι' αυτό. <br><em>Ντεκάρτ, Λόγος περί της μεθόδου (1637), μτφρ. Χρ. Χρηστίδης, Παπαζήσης, Αθήνα 1976, σ. 19.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Ντεκάρτ (Καρτέσιος), θεμελιωτής της φιλοσοφικής αμφιβολίας, παρουσιάζει τις βασικές αρχές της μεθόδου του: ο άνθρωπος οφείλει να αμφιβάλλει για τα πάντα μπορεί να αποδεχτεί μόνο αυτό που αποδεικνύεται αληθινό, αφού ελεγχθεί με τη λογική. Οι θέσεις του συνοψίστηκαν στη φράση cogito ergo sum (αμφιβάλλω, άρα υπάρχω).</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Το κίνημα του Διαφωτισμού</h4>
+            <p>Η απόρριψη κάθε αυθεντίας, η κριτική κάθε υφιστάμενης γνώσης, η αποδοχή της λογικής ως του μόνου ασφαλούς τρόπου ερμηνείας του κόσμου και η πεποίθηση ότι ο άνθρωπος μπορεί να προοδεύει διαρκώς ήταν θέσεις που συμμερίζονταν πολλοί Ευρωπαίοι διανοούμενοι. Έτσι, διαμορφώθηκε βαθμιαία ένα κίνημα που ονομάστηκε Διαφωτισμός. Πρωτοεμφανίστηκε στην Αγγλία του τέλους του 17ου αιώνα, κορυφώθηκε στη Γαλλία του 18ου αιώνα και εξαπλώθηκε στην Ευρώπη και έξω απ' αυτήν. Οι εκπρόσωποί του ονομάστηκαν φιλόσοφοι ή διαφωτιστές. Κορυφαίοι ανάμεσά τους υπήρξαν οι Ρουσό, Βολτέρος, Ντιντερό, Μοντεσκιέ και Ντ' Αλαμπέρ.</p>
+
+            <div class="image-gallery">
+                <figure>
+                    <img src="2.jpg" alt="Προσωπογραφία του Ζαν-Ζακ Ρουσό.">
+                    <figcaption>2. Ρουσό</figcaption>
+                </figure>
+                <figure>
+                    <img src="3.jpg" alt="Προσωπογραφία του Βολτέρου.">
+                    <figcaption>3. Βολτέρος</figcaption>
+                </figure>
+            </div>
+
+            <h4>Διαφωτισμός και πολιτική</h4>
+            <p>Ο Διαφωτισμός υπήρξε κίνημα βαθύτατα πολιτικό, καθώς μέσα απ' αυτόν η κοινωνικά ανερχόμενη τότε αστική τάξη διαμόρφωσε τα πολιτικά επιχειρήματα που της ήταν αναγκαία για να διεκδικήσει τη συμμετοχή της στη λήψη των πολιτικών αποφάσεων. Τα φυσικά δικαιώματα αποτέλεσαν θεμελιώδη πολιτική έννοια του Διαφωτισμού και μια από τις θέσεις-εμβλήματα της αστικής τάξης. Για τους διαφωτιστές όλοι οι άνθρωποι έχουν, μόνο και μόνο επειδή είναι άνθρωποι, ορισμένα δικαιώματα (ζωής, ιδιοκτησίας, ισότητας απέναντι στον νόμο, ελευθερίας σκέψης και έκφρασης), τα οποία δεν μπορεί να καταργήσει καμιά εξουσία. Η ιδιαίτερη αναφορά στο δικαίωμα της ιδιοκτησίας απηχούσε, προφανώς, τις επιδιώξεις της ανερχόμενης αστικής τάξης. Η θεωρία του κοινωνικού συμβολαίου διατυπώθηκε από τον Τζον Λοκ. Σύμφωνα με αυτή, τα άτομα δέχτηκαν να παραχωρήσουν ορισμένες από τις ελευθερίες τους, προκειμένου να συμβιώσουν, και το κράτος εγγυήθηκε αυτή τη συμφωνία, το κοινωνικό συμβόλαιο. Αν το κράτος παραβεί τους όρους αυτού του κοινωνικού συμβολαίου και γίνει τυραννικό, τότε οι άνθρωποι έχουν το δικαίωμα της αντίστασης. Ο Ρουσό, πιο ριζοσπαστικός, υποστήριξε ότι η πολιτική εξουσία πρέπει να βρίσκεται στα χέρια του λαού κι όχι κάποιου ηγεμόνα. Η γενική βούληση, όρος που πρότεινε ο Ρουσό, είναι η σύνθεση των ατομικών βουλήσεων μέσα από την οποία εκφράζεται το δημόσιο συμφέρον. Η γενική βούληση εκφράζεται με τη συμμετοχή του λαού στη λήψη των αποφάσεων. Τέλος, η διάκριση των εξουσιών υπήρξε συμβολή του Μοντεσκιέ. Οι φορείς της εξουσίας θα πρέπει να είναι διαφορετικοί: η εκτελεστική εξουσία να ασκείται από το σώμα που εφαρμόζει τους νόμους (κυβέρνηση), η νομοθετική από το σώμα που θεσπίζει τους νόμους (βουλή) και η δικαστική από εκείνους που ελέγχουν την τήρηση των νόμων (δικαστές). Έτσι, πίστευαν οι υποστηρικτές της διάκρισης των εξουσιών, δεν θα ήταν εύκολο οι εκάστοτε φορείς της εκτελεστικής εξουσίας να συγκεντρώσουν τόση δύναμη ώστε να κάνουν κατάχρησηή της.</p>
+            <p>Οι θέσεις του Διαφωτισμού επηρέασαν, με διάφορους τρόπους, την πολιτική πραγματικότητα του 18ου αιώνα και πολλές από αυτές (π.χ. διάκριση των εξουσιών) αποτελούν θεμέλια των σύγχρονων δημοκρατιών. Ορισμένοι μονάρχες εφάρμοσαν κάποιες από τις ιδέες του Διαφωτισμού (περιορισμός των προνομίων των ανώτερων τάξεων, λήψη μέτρων κοινωνικής πρόνοιας, ενίσχυση των Γραμμάτων και των Τεχνών) για να κάνουν το κράτος τους πιο αποτελεσματικό και να ισχυροποιήσουν, έτσι, την εξουσία τους. Αυτή η παραλλαγή απόλυτης μοναρχίας ονομάστηκε φωτισμένη δεσποτεία. Κύριοι εκπρόσωποί της υπήρξαν ο Φρειδερίκος Β΄ της Πρωσίας, η Μαρία Θηρεσία της Αυστρίας, ο γιος της Ιωσήφ και η Αικατερίνη Β΄ της Ρωσίας. Πάντως, η καταλυτική δύναμη των πολιτικών ιδεών του Διαφωτισμού έμελλε να φανεί στις δύο μεγάλες επαναστάσεις του 18ου αιώνα, την αμερικανική και τη γαλλική.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>3. Διαφωτισμός και πολιτική</h5>
+                                <h6>α. Οι απόψεις του Τζον Λοκ</h6>
+                                <p>Αν ένας ηγεμόνας χρησιμοποιεί την εξουσία του εναντίον του λαού του [-], τότε ο λαός έχει το δικαίωμα να τον αντιμετωπίσει με βία. Ο σωστός τρόπος για να αντιμετωπιστεί η παράνομη βία της εξουσία είναι η βία. <br><em>Δύο δοκίμια περί διακυβερνήσεως (1689).</em></p>
+                                <h6>β. Οι απόψεις του Ζαν Ζακ Ρουσό</h6>
+                                <p>Οι φορείς της εκτελεστικής εξουσία δεν είναι αφέντες του λαού, μα υπάλληλοί του. Ο λαός πρέπει να μπορεί να τους διορίζει και να τους απολύει όποτε θέλει. Δεν υπάρχει θέμα να συμβληθούν με το λαό πρέπει να τον υπακούουν. <br><em>Το κοινωνικό συμβόλαιο (1762), μτφρ. Δ. Κωστελένος, Αναγνωστίδης, σ. 164.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Οι θέσεις του Λοκ περί πολιτικής βίας αποτέλεσαν ένα από τα κύρια πολιτικά όπλα της ένδοξης επανάστασης στην Αγγλία (1688), της αμερικανικής επανάστασης (1776-1783) και της γαλλικής επανάστασης (1789). Ο Ρουσό υποστηρίζει ότι σε μια αληθινή δημοκρατία ο λαός πρέπει να είναι ο απόλυτος κυρίαρχος του πολιτεύματος. Δεν είναι, βεβαίως, τυχαίο ότι τις απόψεις του υιοθέτησαν οι ριζοσπάστες Ιακωβίνοι, που κυριάρχησαν κατά τη δεύτερη φάση της γαλλικής επανάστασης.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>4. Ο Μοντεσκιέ και η διάκριση των εξουσιών</h5>
+                                <p>Υπάρχουν σε κάθε κράτος τρία είδη εξουσίας: η νομοθετική, η εκτελεστική που εξαρτάται από το δίκαιο των εθνών (εκτελεστική εξουσία), και η εκτελεστική που εξαρτάται από το αστικό δίκαιο (δικαστική εξουσία). [-] Δεν υπάρχει ελευθερία όταν συμπίπτουν στο ίδιο πρόσωπο ή στο ίδιο διοικητικό σώμα, η νομοθετική με την εκτελεστική δύναμη [..]. Δεν υπάρχει, επίσης, ελευθερία αν η δικαστική δύναμη δεν είναι χωρισμένη από τη νομοθετική και την εκτελεστική. [..] Όλα θα ήταν χαμένα αν ο ίδιος άνθρωπος ή το ίδιο σώμα [-], ασκούσε τις τρεις αυτές εξουσίες. <br><em>Το πνεύμα των νόμων (1748).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Η «διάκριση των εξουσιών» ήταν το μέτρο που πρότεινε ο Μοντεσκιέ προκειμένου να αντιμετωπιστεί η αυθαιρεσία που προέκυπτε ως αποτέλεσμα της συγκέντρωσης όλων των εξουσιών στα χέρια ενός απόλυτου μονάρχη.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Διαφωτισμός και θρησκεία</h4>
+            <p>Οι περισσότεροι διαφωτιστές υιοθετούσαν τον ντεϊσμό (βλέπε γλωσσάριο). Κάποιοι άλλοι ήταν άθεοι. Όλοι, όμως, ασκούσαν αυστηρή κριτική στην καθολική εκκλησία, κατηγορώντας τη για φανατισμό. Οι διαφωτιστές πίστευαν ότι μόνο η καθιέρωση της ανεξιθρησκίας θα απάλλασσε τους ανθρώπους από τη μισαλλοδοξία.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>5. Ο Βολτέρος για την ανεξιθρησκία</h5>
+                                <p>Απευθύνομαι σε σένα, Θεέ, που δημιούργησες όλα τα όντα. [...] Κάνε αυτοί που ανάβουν κεριά με το φως της ημέρας για να σε λατρέψουν να ανέχονται αυτούς που αρκούνται στο φως του ήλιου σου κάνε, αυτοί που φορούν άσπρο ράσο για να σου δείξουν την αγάπη τους να μη μισούν αυτούς που σε αγαπούν το ίδιο, φορώντας μαύρο ράσο. <br><em>Πραγματεία περί ανεξιθρησκίας (1763).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Βολτέρος υπήρθε ένας από τους συνεπέστερους επικριτές του θρησκευτικού φανατισμού, επιλογή για την οποία καταδιώχθηκε από την καθολική εκκλησία. Θεμέλιο της ευρωπαϊκής ενότητας κατά τον Μεσαίωνα, ο χριστιανισμός υφίσταται την επίθεση του φιλοσοφικού κινήματος. Η κοσμική έκφρασή του, ο κλήρος, γίνεται αντικείμενο των πρώτων επιθέσεων. Ιδιαίτερα ο Βολτέρος τού καταφέρει σκληρά πλήγματα εξαίροντας εναντίον του το πνεύμα της ανεξιθρησκίας. Αυτή η κριτική των κοσμικών πλευρών της χριστιανικής εκκλησίας πολύ σύντομα καταλήγει σε αμφισβήτηση των βασικών δογμάτων της θρησκείας. Από τα τέλη του 18ου αιώνα, λογική και χριστιανισμός εμφανίζονται ως στοιχεία ασυμβίβαστα.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Διαφωτισμός και εκπαίδευση</h4>
+            <p>Για τους διαφωτιστές η εκπαίδευση ήταν ένα από τα μέσα για τη διασφάλιση της συνεχούς προόδου του ανθρώπου. Στο πλαίσιο αυτό, ο Ρουσό, στο έργο του Αιμίλιος, υποστήριξε ότι η εκπαίδευση πρέπει να βασίζεται στην προσωπική αναζήτηση του διδασκόμενου. Ο δάσκαλος δεν πρέπει να λειτουργεί ως αυθεντία· χρειάζεται μόνο να θέτει ερωτήματα και να οδηγεί τον μαθητή στην ανακάλυψη απαντήσεων.</p>
+
+            <h4>Διαφωτισμός και οικονομικός φιλελευθερισμός</h4>
+            <p>Ορισμένοι Γάλλοι οικονομολόγοι υποστήριξαν ότι η οικονομία θα έπρεπε να αφεθεί να λειτουργήσει «φυσικά», δηλαδή δίχως τις κρατικές παρεμβάσεις του μερκαντιλισμού. Η αντίληψη αυτή ονομάστηκε φυσιοκρατία και οι υποστηρικτές της φυσιοκράτες. Αναπτύχθηκε στη Γαλλία και κύριος εκπρόσωπος ήταν ο οικονομολόγος Κενέ. Στην Αγγλία, η κριτική στον μερκαντιλισμό γέννησε τον οικονομικό φιλελευθερισμό, που υποστήριζε ότι το κράτος δεν πρέπει να επεμβαίνει παρά ελάχιστα στην οικονομική ζωή. Εισηγητής του υπήρξε ο Άνταμ Σμιθ με το έργο του Έρευνες για τη φύση και τα αίτια του πλούτου των εθνών (1776).</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>6. Ο Άνταμ Σμιθ και ο οικονομικός φιλελευθερισμός</h5>
+                                <p>Αυτά που πρέπει να κάνει το κράτος για να βοηθήσει τη μετάβαση από τη βαρβαρότητα στην ανώτατη βαθμίδα πλούτου δεν είναι πολλά, πέρα από το να διασφαλίζει την ειρήνη, να ζητά χαμηλούς φόρους και να φροντίζει η δικαστική εξουσία να είναι ανεκτή. Όλα τα υπόλοιπα θα προκύψουν με τη φυσική ροή των πραγμάτων. <br><em>Έρευνες για τη φύση και τα αίτια του πλούτου των εθνών (1776).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Άνταμ Σμιθ, θεμελιωτής του οικονομικού φιλελευθερισμού, υποστήριξε τη θέση ότι το κράτος πρέπει να παρεμβαίνει όσο το δυνατόν λιγότερο στην οικονομική ζωή.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η Εγκυκλοπαίδεια</h4>
+            <p>Οι ιδέες του Διαφωτισμού συνοψίστηκαν στην Εγκυκλοπαίδεια, ένα συλλογικό έργο 33 τόμων. Σε αυτό οι διαφωτιστές παρουσίασαν όλες τις νέες γνώσεις, καθώς και τις νέες ιδέες και αντιλήψεις για διάφορα οικονομικά, κοινωνικά, πολιτικά και άλλα θέματα. Πρωτεργάτες της Εγκυκλοπαίδειας ήταν οι Γάλλοι διαφωτιστές Ντιντερό και Ντ' Αλαμπέρ.</p>
+
+            <figure>
+                <img src="4.jpg" alt="Ο Ντ' Αλαμπέρ διαβάζει την Εγκυκλοπαίδεια στο σαλόνι της μαντάμ Ζοφρέν." class="responsive-image last-image">
+                <figcaption>4. Γκ. Λενονιέ, Ο Ντ' Αλαμπέρ (στο τραπέζι) διαβάζει την Εγκυκλοπαίδεια στο σαλόνι της μαντάμ Ζοφρέν: τα παρισινά σαλόνια υπήρξαν εστίες του Διαφωτισμού.</figcaption>
+            </figure>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>4. Εγκυκλοπαίδεια ή συστηματικό λεξικό των επιστημών, των τεχνών και των επαγγελμάτων</h5>
+                                <p>Η Εγκυκλοπαίδεια της εποχής του Διαφωτισμού υπήρξε ένα έργο που σκοπό είχε να εκλαϊκεύσει τις επιστημονικές και φιλοσοφικές κατακτήσεις του καιρού της. Εκδόθηκε στο Παρίσι κατά το διάστημα από το 1751 ως το 1772 αρχικά σε 17 τόμους με 11 επιπλέον τόμους που περιλάμβαναν αποκλειστικά πίνακες. Ακολούθησαν ένα συμπλήρωμα 5 τόμων και ένα ευρετήριο 2 τόμων. Μετά από ένα πρώτο διάστημα πρόχειρων προσπαθειών, ο εκδότης εμπιστεύθηκε τη διεύθυνση του έργου σε δύο από τις μεγαλύτερες φυσιογνωμίες του Διαφωτισμού, τον Ντιντερό και τον Ντ' Αλαμπέρ, οι οποίοι στάθηκαν -ιδίως ο πρώτος- οι πρωτεργάτες της Εγκυκλοπαίδειας μέχρι την έκδοση της. Όπως έγραψε χαρακτηριστικά ο Ντ' Αλαμπέρ στον Πρόλογο της Εγκυκλοπαίδειας, σκοπός του έργου ήταν «να εκθέσει στο μέτρο του δυνατού τη σειρά και τη συνάρτηση των γνώσεων [...] να περιλάβει κάθε επιστήμη και για κάθε τέχνη, ελευθέρια ή μηχανική, τις γενικές αρχές που αποτελούν τη βάση της, και τις πιο βασικές λεπτομέρειες που αποτελούν την ουσία και την υπόστασή της». Η Εγκυκλοπαίδεια υπήρξε η μεγαλύτερη συλλογική πνευματική και εκδοτική προσπάθεια του 18ου αιώνα, ένα από τα έργα-σύμβολα του Διαφωτισμού.</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Η Εγκυκλοπαίδεια υπήρξε ένα μνημειώδες έργο της εποχής του Διαφωτισμού, με στόχο την εκλαΐκευση της επιστημονικής και φιλοσοφικής γνώσης. Διευθύνθηκε από τους Ντιντερό και Ντ' Αλαμπέρ και αποτέλεσε σύμβολο του Διαφωτισμού, συγκεντρώνοντας τις γνώσεις και τις ιδέες της εποχής σε πολλαπλούς τόμους.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Η διάδοση των ιδεών του Διαφωτισμού</h4>
+            <p>Οι διαφωτιστικές ιδέες διαδόθηκαν, αρχικά, στα ανώτερα μορφωμένα κοινωνικά στρώματα. Πολλές, ωστόσο, από αυτές έγιναν δημοφιλείς μέσα από την κυκλοφορία εκλαϊκευτικών βιβλίων, τα οποία έφεραν σε επαφή ευρύτερα τμήματα της κοινωνίας με τον επιστημονικό λόγο. Σύντομα οι ιδέες αυτές ξεπέρασαν τα σύνορα της Γαλλίας και διαδόθηκαν σε ολόκληρη την Ευρώπη αλλά και έξω απ' αυτήν.</p>
+            <p>Αξίζει να επισημανθεί στους μαθητές ότι κατά την εποχή που εξετάζεται στην παρούσα διδακτική ενότητα οι άνθρωποι ενημερώνονταν μόνο από εφημερίδες και πολιτικά φυλλάδια. Καθώς, ωστόμο, πολλοί άνθρωποι δεν ήξεραν να διαβάζουν, οι κοινωνικές συναθροίσεις λειτουργούσαν και ως χώροι επεξεργασίας και διάδοσης ιδεών και αντιλήψεων.</p>
+        </section>
+
+        <section id="quiz-section-1" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποιο φαινόμενο ονομάστηκε «αγροτική επανάσταση» κατά τον 17ο και 18ο αιώνα;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η συσσώρευση κεφαλαίων στα χέρια των εμπόρων.</button>
+                        <button class="option" data-correct="true">Οι μεταβολές στην αγροτική οικονομία για την κάλυψη των αναγκών του αυξανόμενου πληθυσμού.</button>
+                        <button class="option" data-correct="false">Η ανάπτυξη του τριγωνικού εμπορίου.</button>
+                        <button class="option" data-correct="false">Η δημιουργία μεγάλων εργοστασίων.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιος από τους παρακάτω διανοούμενους τόνισε ότι η συστηματική αμφιβολία είναι ο μόνος δρόμος προς την αληθινή γνώση;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Φράνσις Μπέικον</button>
+                        <button class="option" data-correct="true">Ρενέ Ντεκάρτ.</button>
+                        <button class="option" data-correct="false">Τζον Λοκ</button>
+                        <button class="option" data-correct="false">Ισαάκ Νιούτον</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Ποια ήταν μια από τις θεμελιώδεις πολιτικές έννοιες του Διαφωτισμού;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Η απόλυτη μοναρχία</button>
+                        <button class="option" data-correct="true">Τα φυσικά δικαιώματα.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>4. Ποιος πρότεινε τη «διάκριση των εξουσιών»;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ζαν Ζακ Ρουσό</button>
+                        <button class="option" data-correct="false">Βολτέρος</button>
+                        <button class="option" data-correct="true">Μοντεσκιέ.</button>
+                        <button class="option" data-correct="false">Άνταμ Σμιθ</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>5. Ποιοι ήταν οι πρωτεργάτες της Εγκυκλοπαίδειας;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Τζον Λοκ και Βολτέρος</button>
+                        <button class="option" data-correct="true">Ντιντερό και Ντ' Αλαμπέρ.</button>
+                        <button class="option" data-correct="false">Ρουσό και Μοντεσκιέ</button>
+                        <button class="option" data-correct="false">Κενέ και Άνταμ Σμιθ</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η βιομηχανική επανάσταση ξεκίνησε στη Γαλλία γύρω στα 1750-1780.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Η απόλυτη μοναρχία ήταν το κυρίαρχο πολιτικό σύστημα σε όλα σχεδόν τα κράτη της Ευρώπης τον 17ο και 18ο αιώνα.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Ο Τζον Λοκ διατύπωσε τη θεωρία του κοινωνικού συμβολαίου.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>4. Η φωτισμένη δεσποτεία ήταν μια παραλλαγή της απόλυτης μοναρχίας όπου οι μονάρχες εφάρμοσαν ιδέες του Διαφωτισμού.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>5. Ο Άνταμ Σμιθ υποστήριξε ότι το κράτος πρέπει να παρεμβαίνει εκτενώς στην οικονομική ζωή.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-1" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-1">
+                            <h4>ΚΕΦΑΛΑΙΟ ΠΡΩΤΟ: ΟΙ ΑΠΑΡΧΕΣ ΔΙΑΜΟΡΦΩΣΗΣ ΤΟΥ ΝΕΟΤΕΡΟΥ ΚΟΣΜΟΥ</h4>
+                            <h5>1. Η εποχή του Διαφωτισμού</h5>
+                            <p>Στην Ευρώπη τον 17ο και 18ο αιώνα συντελούνται σημαντικές οικονομικές και κοινωνικές μεταβολές. Στις οικονομικές μεταβολές περιλαμβάνεται η θεαματική αύξηση του πληθυσμού, οι μεταβολές στην αγροτική οικονομία (αγροτική επανάσταση) με τη δημιουργία μεγάλων αγροκτημάτων, την επέκταση της χρήσης μηχανημάτων και την εφαρμογή νέων μεθόδων καλλιέργειας. Επίσης, η ανάπτυξη του τριγωνικού εμπορίου οδήγησε σε συσσώρευση κεφαλαίων και, σε συνδυασμό με την παρουσία άνεργων αγροτών που κατέφευγαν στις πόλεις, οδήγησε στην εκβιομηχάνιση και τη γέννηση της βιομηχανικής επανάστασης στη Μ. Βρετανία (1750-1780).</p>
+                            <p>Στις κοινωνικές μεταβολές, η αστική τάξη ενισχύει διαρκώς τη θέση της, ενώ οι αριστοκράτες προσπαθούν να διατηρήσουν τα προνόμιά τους. Αγρότες και ασθενέστερα κοινωνικά στρώματα των πόλεων ζουν σε άθλιες συνθήκες. Η πολιτική κατάσταση χαρακτηρίζεται από την απόλυτη μοναρχία στα περισσότερα κράτη, με εξαίρεση τη Μ. Βρετανία όπου αναγνωρίστηκαν δικαιώματα μετά την ένδοξη επανάσταση του 1688.</p>
+                            <p>Η πρόοδος των φυσικών επιστημών (Μπέικον, Ντεκάρτ, Λοκ, Νιούτον) άνοιξε το δρόμο για την απελευθέρωση από τις προλήψεις του Μεσαίωνα και τη βασισμένη στη λογική ανακάλυψη φυσικών νόμων.</p>
+                            <p>Ο Διαφωτισμός ήταν ένα σημαντικό πνευματικό και πολιτικό κίνημα που πρωτοεμφανίστηκε στην Αγγλία (τέλη 17ου αι.), κορυφώθηκε στη Γαλλία (18ος αι.) και εξαπλώθηκε ευρέως. Βασικές θέσεις των διαφωτιστών ήταν η απόρριψη κάθε αυθεντίας, η κριτική κάθε υφιστάμενης σκέψης, η αποδοχή της λογικής και η πεποίθηση για συνεχή πρόοδο του ανθρώπου. Ο Διαφωτισμός αξίωνε αλλαγές σε κοινωνικοπολιτικούς θεσμούς, εκπαίδευση και θρησκεία, τασσόμενος υπέρ της ατομικής ελευθερίας και ενάντια στην τυραννική διακυβέρνηση της εκκλησίας. Οι ιδέες του αποτέλεσαν θεμέλια των σύγχρονων δημοκρατιών και επηρέασαν τις μεγάλες επαναστάσεις του 18ου αιώνα (αμερικανική, γαλλική).</p>
+                            <p>Ορισμένοι μονάρχες εφάρμοσαν ιδέες του Διαφωτισμού (φωτισμένη δεσποτεία) για να ενισχύσουν την αποτελεσματικότητα και την εξουσία τους (Φρειδερίκος Β΄ Πρωσίας, Μαρία Θηρεσία Αυστρίας, Ιωσήφ, Αικατερίνη Β΄ Ρωσίας).</p>
+                            <p>Στην πολιτική, ο Διαφωτισμός ανέδειξε τα φυσικά δικαιώματα, τη θεωρία του Κοινωνικού Συμβολαίου (Τζον Λοκ), τη Γενική Βούληση (Ζαν Ζακ Ρουσό) και τη Διάκριση των εξουσιών (Μοντεσκιέ).</p>
+                            <p>Στη θρησκεία, οι διαφωτιστές υιοθέτησαν τον ντεϊσμό ή ήταν άθεοι, ασκώντας αυστηρή κριτική στην καθολική εκκλησία και προάγοντας την ανεξιθρησκία (Βολτέρος).</p>
+                            <p>Στην εκπαίδευση, ο Ζαν Ζακ Ρουσό υποστήριξε την εκπαίδευση ως μέσο συνεχούς προόδου, βασισμένη στην προσωπική αναζήτηση και την κατάργηση της αυθεντίας του δασκάλου (έργο «Αιμίλιος ή περί αγωγής»).</p>
+                            <p>Στην οικονομία, αναπτύχθηκε η φυσιοκρατία (Κενέ) και ο οικονομικός φιλελευθερισμός (Άνταμ Σμιθ), που υποστήριζαν την ελάχιστη κρατική παρέμβαση.</p>
+                            <p>Οι ιδέες του Διαφωτισμού συνοψίστηκαν στην Εγκυκλοπαίδεια, ένα συλλογικό έργο 33 τόμων με πρωτεργάτες τους Ντιντερό και Ντ' Αλαμπέρ, το οποίο εκλαΐκευσε τις επιστημονικές και φιλοσοφικές κατακτήσεις της εποχής.</p>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Να αναφέρετε τις σημαντικότερες οικονομικές και κοινωνικές μεταβολές που συντελέστηκαν στην Ευρώπη κατά τον 17ο και 18ο αιώνα.</button>
+                    <div class="accordion-content">
+                        <p>Οι σημαντικότερες οικονομικές μεταβολές ήταν η θεαματική αύξηση του πληθυσμού, οι μεταβολές στην αγροτική οικονομία (αγροτική επανάσταση) με τη δημιουργία μεγάλων αγροκτημάτων, την εφαρμογή νέων μεθόδων καλλιέργειας και την επέκταση της χρήσης μηχανημάτων, η ανάπτυξη του τριγωνικού εμπορίου και η συσσώρευση κεφαλαίων, καθώς και η εκβιομηχάνιση και η γέννηση της βιομηχανικής επανάστασης στη Μ. Βρετανία (1750-1780). Οι κοινωνικές μεταβολές περιλάμβαναν την ενίσχυση της αστικής τάξης, την προσπάθεια των αριστοκρατών να διατηρήσουν τα προνόμιά τους, και τις άσχημες συνθήκες διαβίωσης των αγροτών και των ασθενέστερων κοινωνικών στρωμάτων των πόλεων.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποια ήταν τα βασικά χαρακτηριστικά του Διαφωτισμού και ποιοι οι κύριοι εκπρόσωποί του;</button>
+                    <div class="accordion-content">
+                        <p>Βασικά χαρακτηριστικά του Διαφωτισμού ήταν η απόρριψη κάθε αυθεντίας, η κριτική κάθε υφιστάμενης γνώσης, η αποδοχή της λογικής ως του μόνου ασφαλούς τρόπου ερμηνείας του κόσμου και η πεποίθηση ότι ο άνθρωπος μπορεί να προοδεύει διαρκώς. Κύριοι εκπρόσωποί του ήταν οι Ρουσό, Βολτέρος, Ντιντερό, Μοντεσκιέ και Ντ' Αλαμπέρ.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Να αναλύσετε τις βασικές απόψεις που διατυπώθηκαν στο πλαίσιο του Διαφωτισμού για την πολιτική, τη θρησκεία, την εκπαίδευση και την οικονομία.</button>
+                    <div class="accordion-content">
+                        <p>Στην πολιτική, αναδείχθηκαν τα φυσικά δικαιώματα (ζωής, ιδιοκτησίας, ισότητας, ελευθερίας), η θεωρία του Κοινωνικού Συμβολαίου του Τζον Λοκ, η έννοια της Γενικής Βούλησης του Ζαν Ζακ Ρουσό και η Διάκριση των Εξουσιών του Μοντεσκιέ. Στη θρησκεία, κυριάρχησε ο ντεϊσμός και η αυστηρή κριτική στην καθολική εκκλησία, με τον Βολτέρο να προάγει την ανεξιθρησκία. Στην εκπαίδευση, ο Ρουσό υποστήριξε την εκπαίδευση ως μέσο συνεχούς προόδου, βασισμένη στην προσωπική αναζήτηση και την κατάργηση της αυθεντίας του δασκάλου. Στην οικονομία, αναπτύχθηκαν η φυσιοκρατία (Κενέ) και ο οικονομικός φιλελευθερισμός (Άνταμ Σμιθ), που υποστήριζαν την ελάχιστη κρατική παρέμβαση.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">4. Να αξιολογήσετε τη σημασία της παρέμβασης του Διαφωτισμού στο πλαίσιο των γενικότερων μεταβολών που συντελούνταν κατά τον 18ο αιώνα.</button>
+                    <div class="accordion-content">
+                        <p>Ο Διαφωτισμός υπήρξε καταλυτικής σημασίας για τις μεταβολές του 18ου αιώνα. Παρείχε τα ιδεολογικά και πολιτικά επιχειρήματα στην ανερχόμενη αστική τάξη για να διεκδικήσει τη συμμετοχή της στη λήψη των πολιτικών αποφάσεων. Οι ιδέες του για τα φυσικά δικαιώματα, το κοινωνικό συμβόλαιο, τη γενική βούληση και τη Διάκριση των εξουσιών αποτέλεσαν τα θεμέλια των σύγχρονων δημοκρατιών. Επίσης, η κριτική του στη θρησκευτική μισαλλοδοξία και η έμφαση στην εκπαίδευση ως μέσο προόδου συνέβαλαν στην απελευθέρωση από τις προλήψεις και στην πνευματική αφύπνιση. Ακόμη και η "φωτισμένη δεσποτεία" αποτελεί ένδειξη της επιρροής του, καθώς κάποιοι μονάρχες προσπάθησαν να υιοθετήσουν αυτές τις ιδέες για να ισχυροποιήσουν τα κράτη τους. Τέλος, η Εγκυκλοπαίδεια συνέβαλε στη διάδοση και εκλαΐκευση της γνώσης, φέρνοντας τις διαφωτιστικές ιδέες σε ευρύτερα κοινωνικά στρώματα.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>
