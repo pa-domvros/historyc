@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ενότητα 10 - Ελληνική επανάσταση και Ευρώπη</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.half-size { /* Changed from quarter-size */
+            max-width: 50%; /* Doubled from 25% to 50% */
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Interactive Map Section */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .map-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--light-coffee);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid var(--off-white);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* General Info Button (i icon) - for figcaption */
+        .info-button {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Specific positioning for info-button inside figcaption */
+        figcaption .info-button {
+            top: 5px;
+            right: 5px;
+            transform: none;
+        }
+
+        .info-button:hover {
+            background-color: var(--coffee);
+        }
+
+        /* Analysis Button */
+        .analysis-button {
+            background: var(--coffee);
+            color: var(--off-white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease;
+            display: block;
+            width: fit-content;
+        }
+
+        .analysis-button:hover {
+            background-color: var(--light-coffee);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timeline-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .timeline-events {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .timeline-event {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .timeline-event:hover {
+            background-color: var(--coffee);
+        }
+
+        .timeline-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Source Comparison (Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .coin-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+
+        /* Basic Modal for map markers */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--off-white);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--light-coffee);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .modal-content p, .modal-content ul {
+            text-align: justify;
+        }
+        .modal-content ul li {
+            text-align: justify;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+                padding-right: 25px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .image-gallery figcaption {
+                font-size: 0.8em;
+            }
+
+            .info-button {
+                width: 18px;
+                height: 18px;
+                font-size: 0.7em;
+            }
+
+            .analysis-button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+
+            .timeline-event {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .flip-card-front h5, .flip-card-back h5 {
+                font-size: 1.2em;
+            }
+
+            .flip-card-front p, .flip-card-back p {
+                font-size: 0.85em;
+            }
+
+            .options button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 15px;
+            }
+
+            .responsive-image.half-size { /* Adjusted for mobile */
+                max-width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Ρύθμιση Modal (Κεντρική και ανθεκτική) ---
+            let infoModal = document.getElementById("infoModal");
+            let modalText = document.getElementById("modalText");
+            let closeModalButton;
+
+            // Ελέγχουμε αν το modal υπάρχει ήδη στο HTML, αλλιώς το δημιουργούμε δυναμικά
+            if (!infoModal) {
+                infoModal = document.createElement('div');
+                infoModal.id = 'infoModal';
+                infoModal.classList.add('modal');
+                infoModal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="modalText"></p>
+                    </div>
+                `;
+                document.body.appendChild(infoModal);
+                modalText = infoModal.querySelector('#modalText'); // Βρίσκουμε το modalText αφού δημιουργηθεί το modal
+            }
+            // Τώρα που το modal σίγουρα υπάρχει, βρίσκουμε το κουμπί κλεισίματος
+            closeModalButton = infoModal.querySelector('.close-button');
+
+            // Προσθέτουμε τον event listener για το κουμπί κλεισίματος
+            if (closeModalButton) {
+                closeModalButton.onclick = function() {
+                    infoModal.style.display = "none";
+                };
+            }
+
+            // Κλείσιμο modal όταν γίνεται κλικ έξω από το περιεχόμενο του
+            infoModal.addEventListener('click', (event) => {
+                if (event.target === infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+
+            // --- Βοηθητική συνάρτηση για άνοιγμα του modal ---
+            function openInfoModal(content, isHtml = false) {
+                if (isHtml) {
+                    modalText.innerHTML = content;
+                } else {
+                    modalText.textContent = content;
+                }
+                infoModal.style.display = "block";
+            }
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Κλείσιμο άλλων ανοιχτών accordions στην ίδια ομάδα
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        const otherAccordionItem = otherHeader.parentElement;
+                        const otherAccordionContent = otherHeader.nextElementSibling;
+                        // Ελέγχουμε αν είναι διαφορετικό item ΚΑΙ στην ίδια ομάδα accordion (αν υπάρχει)
+                        if (otherAccordionItem !== accordionItem && otherHeader.classList.contains('active') && otherHeader.closest('.accordion') === header.closest('.accordion')) {
+                            otherHeader.classList.remove('active');
+                            otherAccordionContent.style.maxHeight = 0;
+                            otherAccordionContent.style.overflow = 'hidden'; // Ensure it's hidden
+                        }
+                    });
+
+                    // Εναλλαγή (άνοιγμα/κλείσιμο) του τρέχοντος accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Αρχικός υπολογισμός
+                        // Προσθήκη μικρής καθυστέρησης για να διασφαλιστεί ότι το scrollHeight έχει υπολογιστεί σωστά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 'fit-content'; // Ρύθμιση σε fit-content για πλήρη εμφάνιση
+                            accordionContent.style.overflow = 'visible'; // Να είναι ορατό όλο το περιεχόμενο
+                        }, 300); // Μικρή καθυστέρηση μετά το transition time του CSS
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Πρέπει να έχει την τρέχουσα τιμή πριν το κλείσιμο
+                        accordionContent.style.overflow = 'hidden'; // Κρύβουμε το overflow ξανά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 0; // Τώρα κλείνουμε
+                        }, 10); // Μικρή καθυστέρηση για να "συλλάβουμε" το scrollHeight
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            flipCard.classList.toggle('flipped');
+                        });
+                    });
+                }
+            });
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+
+                        // Απενεργοποιούμε όλες τις επιλογές μόλις επιλεγεί μία
+                        options.forEach(opt => {
+                            opt.classList.remove('correct', 'incorrect');
+                            opt.disabled = true;
+                        });
+                        feedback.textContent = ''; // Καθαρίζουμε προηγούμενο feedback
+
+                        // Εφαρμόζουμε το feedback για την τρέχουσα επιλογή
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            // Εμφανίζουμε τη σωστή απάντηση αν ήταν λάθος
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // --- Λειτουργία Map Markers ---
+            document.querySelectorAll('.map-marker').forEach(marker => {
+                marker.addEventListener('click', () => {
+                    openInfoModal(marker.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Timeline Events ---
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                event.addEventListener('click', () => {
+                    openInfoModal(event.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Info Button (το μικρό i) ---
+            document.querySelectorAll('.info-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Σταματάμε το event να επεκταθεί σε γονείς
+                    openInfoModal(button.dataset.info);
+                });
+            });
+
+            // Η λειτουργία εκτύπωσης έχει αφαιρεθεί, όπως ζητήθηκε.
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΔΕΥΤΕΡΟ: Η ΕΛΛΗΝΙΚΗ ΕΠΑΝΑΣΤΑΣΗ ΚΑΙ Η ΔΗΜΙΟΥΡΓΙΑ ΤΟΥ ΕΛΛΗΝΙΚΟΥ ΚΡΑΤΟΥΣ</h2>
+    </header>
+
+    <main>
+        <section id="unit-10" class="content-block">
+            <h3>ΕΝΟΤΗΤΑ 10: Ελληνική επανάσταση και Ευρώπη</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Ανατολικό Ζήτημα</li>
+                    <li>Παλινόρθωση</li>
+                    <li>Πράξη Προστασίας</li>
+                    <li>Κόμματα (Αγγλικό, Γαλλικό, Ρωσικό)</li>
+                    <li>Φιλελληνισμός</li>
+                    <li>Ιουλιανή Συνθήκη του Λονδίνου (1827)</li>
+                    <li>Ναυμαχία του Ναβαρίνου (1827)</li>
+                    <li>Συνθήκη της Αδριανούπολης (1829)</li>
+                    <li>Πρωτόκολλο της Ανεξαρτησίας (1830)</li>
+                </ul>
+            </div>
+
+            <h4>Ελληνική επανάσταση και ευρωπαϊκή διπλωματία (1821-1826)</h4>
+            <p>Οι Έλληνες προσπάθησαν να εξασφαλίσουν, από την αρχή τη επανάστασης, τη συμπαράσταση των Ευρωπαίων, τόσο των ηγετών όσο και των λαών. Στις πρώτες προκηρύξεις του Αγώνα αλλά και στη Διακήρυξη της Α΄ Εθνοσυνέλευσης τονιζόταν ότι η ελληνική επανάσταση δεν είχε στόχο την κοινωνική ανατροπή, αλλά ότι ήταν ένας εθνικός αγώνας με αποκλειστική επιδίωξη την ελευθερία.</p>
+            <p>Η διεθνής συγκυρία, ωστόσο, ήταν δυσμενής. Οι ευρωπαϊκές δυνάμεις (Αγγλία, Ρωσία, Αυστρία, Πρωσία) μόλις είχαν νικήσει τον Ναπολέοντα και προσπαθούσαν να διαμορφώσουν ισορροπίες που θα απέτρεπαν πολέμους μεγάλης κλίμακας στο μέλλον. Η Ευρώπη βίωνε την Παλινόρθωση. Σε αυτές τις συνθήκες, η ελληνική επανάσταση ήταν για τους Ευρωπαίους διπλωμάτες ένα ακόμη πρόβλημα, μία από τις συνιστώσες του ανατολικού ζητήματος.</p>
+            <p>Κατά τα δύο πρώτα χρόνια της Επανάστασης (1821-1822) οι Δυνάμεις (Αγγλία, Ρωσία, Αυστρία, Γαλλία, Πρωσία) κράτησαν σταθερά αρνητική στάση απέναντί της. Η πολιτική τους καθορίστηκε, εκτός από τα επιμέρους συμφέροντα κάθε χώρας, από την κοινή επιθυμία τους να εμποδίσουν τη διάλυση του οθωμανικού κράτους, γεγονός που φοβούνταν ότι θα προκαλούσε νέες διενέξεις μεταξύ τους. Έτσι, όταν αμέσως μετά την κήρυξη της επανάστασης στις Ηγεμονίες, ο ηγέτης της Αλέξανδρος Υψηλάντης προσπάθησε να επιτύχει την υποστήριξη της Ρωσίας, η τελευταία όχι μόνο δεν ανταποκρίθηκε αλλά και καταδίκασε την ελληνική επανάσταση. Χρειάστηκαν καίριες παρεμβάσεις του Ι. Καποδίστρια, τότε υπουργού Εξωτερικών της Ρωσίας, για να διαμορφωθεί μια κάπως πιο ευνοϊκή για τους επαναστατημένους Έλληνες ρωσική και ευρωπαϊκή πολιτική.</p>
+
+            <figure>
+                <img src="1.jpg" alt="Οι επαναστατημένοι Έλληνες απευθύνονται στην Ευρώπη." class="responsive-image">
+                <figcaption>1. Οι επαναστατημένοι Έλληνες απευθύνονται στην Ευρώπη.</figcaption>
+            </figure>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>1. Προς τους εν Πάτραις προξένους των ξένων επικρατειών</h5>
+                                <p>«Ημείς, το Ελληνικόν έθνος των Χριστιανών, βλέποντες ότι μας καταφρονεί το οθωμανικόν γένος και σκοπεύει τον όλεθρον εναντίον μας [...], απεφασίσαμεν σταθερώς ή ν' αποθάνωμεν όλοι, ή να ελευθερωθώμεν. Και τούτου ένεκα βαστούμεν τα όπλα εις χείρας, ζητούντες τα δικαιώματά μας. Όντες λοιπόν βέβαιοι, ότι όλα τα χριστιανικά βασίλεια γνωρίζουν τα δίκαιά μας, και όχι μόνον δεν θέλουν μας εναντιωθή αλλά και θέλουν μας συνδράμη, και ότι έχουν εις μνήμην, ότι οι ένδοξοι πρόγονοί μας εφάνησαν ποτέ ωφέλιμοι εις την ανθρωπότητα, διά τούτο ειδοποιούμεν την Εκλαμπρότητά σας και σας παρακαλούμεν να προσπαθήσετε, να είμεθα υπό την εύνοιαν και προστασίαν του μεγάλου τούτου κράτους.» <br><em>Προκήρυξη του Αχαϊκού Διευθυντηρίου (Αχαϊκό Διευθυντήριο: επιτροπή προσωρινής διακυβέρνησης που σχηματίστηκε από προύχοντες της Αχαΐας αμέσως μετά την έκρηξη της επανάστασης.).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο συντάκτης προσδιορίζει τους επαναστάτες ως «το Ελληνικόν έθνος των Χριστιανών» τονίζοντας τη θρησκευτική ταυτότητά τους (κοινό στοιχείο με τους Ευρωπαίους, στοιχείο αντίθεσης με τους μουσουλμάνους Οθωμανούς). Υπογραμμίζει, επίσης, ότι οι Έλληνες επαναστάτησαν για τα «δίκαιά» τους (σαφής αναφορά στο διαφωτιστικό λόγο περί δικαιωμάτων) και άρα θεωρούν φυσικό να έχουν τη συμπαράσταση των Ευρωπαίων. Οι τελευταίοι, άλλωστε, οφείλουν να βοηθήσουν ανταποδίδοντας την πνευματική προσφορά που είχαν λάβει από τους αρχαίους Έλληνες.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>1. Η Α΄ Εθνοσυνέλευση για τον χαρακτήρα της ελληνικής επανάστασης</h5>
+                                <p>«Ο κατά των Τούρκων πόλεμος ημών, μακράν τού να στηρίζεται εις αρχάς τινας δημαγωγικάς και στασιώδεις ή ιδιωφελείς μέρους τινός του σύμπαντος Ελληνικού Έθνους σκοπούς, είναι πόλεμος εθνικός, πόλεμος ιερός, πόλεμος του οποίου η μόνη αιτία είναι η ανάκτησις των δικαίων της προσωπικής ημών ελευθερίας, της ιδιοκτησίας και της τιμής [...]. Από τοιαύτας αρχάς των φυσικών δικαίων ορμώμενοι, και θέλοντες να εξομοιωθώμεν με τους λοιπούς συναδέλφους μας, Ευρωπαίους Χριστιανούς, εκινήσαμεν τον πόλεμον κατά των Τούρκων [...]» <br><em>Διακήρυξη της Α΄ Εθνοσυνέλευσης της Επιδαύρου (αποσπάσματα).</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Στο παραπάνω απόσπασμα είναι προφανής η πρόθεση της Α΄ Εθνοσυνέλευσης να διαλύσει κάθε υποψία που μπορεί να υπήρχε στις ευρωπαϊκές ηγεσίες ότι η ελληνική επανάσταση πιθανόν να είχε και κοινωνικοανατρεπτικές επιδιώξεις.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>Το 1823, όμως, ο νέος Άγγλος υπουργός Εξωτερικών Τζορτζ Κάνιγκ, εκτιμώντας ότι ένα δυναμικό ελληνικό κράτος θα μπορούσε να αποτελέσει χρήσιμο συνεργάτη της Αγγλίας στη νοτιοανατολική Μεσόγειο, αναθεώρησε την πολιτική της χώρας του και αναγνώρισε τους Έλληνες ως εμπόλεμη δύναμη. Η Ρωσία, θορυβημένη από τις πρωτοβουλίες του Κάνιγκ και φοβούμενη ότι εξαιτίας της στάσης της απέναντι στην ελληνική επανάσταση θα χάσει την επιρροή της στους Έλληνες, γνωστοποίησε, στις αρχές του 1824, το σχέδιο των τριών τμημάτων, που προέβλεπε τον σχηματισμό τριών αυτόνομων ελληνικών ηγεμονιών. Το σχέδιο, ωστόσο, απορρίφθηκε όχι μόνο από τον σουλτάνο αλλά και από τους Έλληνες.</p>
+            <p>Η αγγλική μεταστροφή ενίσπευσε την επιρροή της Αγγλίας μεταξύ των Ελλήνων. Στο πλαίσιο αυτό, η κυβέρνηση Κουντουριώτη προώθησε τη σύναψη δύο δανείων με αγγλικές τράπεζες (1824, 1825). Λίγο αργότερα, το 1825, η δύσκολη θέση στην οποία είχε περιέλθει η επανάσταση, εξαιτίας της επέμβασης του αιγυπτιακού στρατού, διευκόλυνε τους αγγλόφιλους να πείσουν τους περισσότερους Έλληνες ηγέτες να υπογράψουν την πράξη προστασίας, ένα έγγραφο με το οποίο ζητούσαν από την Αγγλία να αναλάβει την προστασία των Ελλήνων. Ένας από τους λίγους που δεν υπέγραψαν ήταν ο Δ. Υψηλάντης.</p>
+            <p>Καθώς η Αγγλία, η Ρωσία και η Γαλλία αναμειγνύονταν όλο και περισσότερο στα ελληνικά πράγματα, αρκετοί Έλληνες άρχισαν να πείθονται ότι η λύση θα ερχόταν, τελικά, από τις Δυνάμεις. Έτσι, δημιουργήθηκαν, την περίοδο 1823-1825, πολιτικές ομάδες-κόμματα που συνδέονταν με τις Δυνάμεων. Αυτά ήταν το αγγλικό με επικεφαλής τον Αλ. Μαυροκορδάτο, το γαλλικό με ηγέτη τον Ι. Κωλέττη και το ρωσικό με αρχηγούς τους Α. Μεταξά και Θ. Κολοκοτρώνη.</p>
+
+            <h4>Το κίνημα του φιλελληνισμού</h4>
+            <p>Παράλληλα, αναπτυσσόταν τόσο στην Ευρώπη όσο και στην Αμερική ο φιλελληνισμός, ένα κίνημα συμπαράστασης στους Έλληνες. Κύριοι παράγοντες που γέννησαν τον φιλελληνισμό ήταν ο φιλελευθερισμός και ο επαναστατικός ριζοσπαστισμός που είχε σπείρει η γαλλική επανάσταση. Ως πολιτική συμπεριφορά ο φιλελληνισμός στρεφόταν εναντίον τόσο της οθωμανικής απολυταρχίας όσο και της Ιερής Συμμαχίας αποτελώντας μια από τις κορυφαίες στιγμές του πολιτικού Ρομαντισμού του 19ου αιώνα. Ο φιλελληνισμός ευνοήθηκε, επίσης, από τον θαυμασμό των Ευρωπαίων για τον αρχαίο ελληνικό πολιτισμό, τον αποτροπιασμό για τις βιαιότητες των Τούρκων σε βάρος άμαχων Ελλήνων, αλλά και από τη συγκίνηση που είχαν προκαλέσει οι ελληνικές επιτυχίες. Βεβαίως, υπήρχαν και κάποιοι που, ενώ παρουσιάζονταν ως φιλέλληνες, συμπεριφέρονταν τυχοδιωκτικά ενδιαφερόμενοι μόνο για χρήματα και αξιώματα.</p>
+            <p>Ο φιλελληνισμός πρόσφερε ενίσχυση τόσο οικονομική (χρήματα, εφόδια) όσο και ηθική (ποικίλες εκδηλώσεις συμπαράστασης). Ιδιαίτερη αναφορά αξίζει στους φιλέλληνες που συμμετείχαν προσωπικά στον Αγώνα και στις προσπάθειες συγκρότησης κράτους. Πολλοί από αυτούς σκοτώθηκαν πολεμώντας για την ελευθερία των Ελλήνων. Ιδιαίτερη αναφορά αξίζει στον Άγγλο λόρδο Μπάιρον που πέθανε στο πολιορκημένο Μεσολόγγι (1824).</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>2. Ο φιλέλληνας ποιητής Σέλεϊ: «Είμαστε όλοι Έλληνες...»</h5>
+                                <p>Ο ριζοσπάστης Βρετανός ποιητής Σέλεϊ όταν έμαθε την έκρηξη της ελληνικής επανάστασης συνέθεσε ένα λυρικό δράμα με τίτλο Hellas. Στον πρόλογό του έγραφε: «Είμαστε όλοι Έλληνες. Οι νόμοι μας, η φιλολογία μας, η θρησκεία μας, οι τέχνες μας έχουν όλα τις ρίζες τους στην Ελλάδα...». Ο πρώτος εκδότης του έργου αφαίρεσε από τον πρόλογο μια μεγάλη παράγραφο στην οποία ο ποιητής τόνιζε ότι «αυτή είναι η εποχή του πολέμου των καταπιεσμένων εναντίον των καταπιεστών». Έχει υποστηριχθεί ότι το ποίημα Hellas υπήρξε το πρότυπο-ερέθισμα του Διονύσιου Σολωμού για να συνθέσει το έργο του Ύμνος εις την Ελευθερίαν, που έγινε αργότερα ο εθνικός ύμνος των Ελλήνων.</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Βρετανός ποιητής Σέλεϊ, εμπνευσμένος από την Ελληνική Επανάσταση, συνέθεσε το έργο "Hellas", υπογραμμίζοντας τις αρχαίες ελληνικές ρίζες του δυτικού πολιτισμού. Η παράγραφος που λογοκρίθηκε, η οποία τόνιζε τον αγώνα των καταπιεσμένων, αναδεικνύει τον επαναστατικό χαρακτήρα του φιλελληνισμού. Το έργο του Σέλεϊ θεωρείται ότι επηρέασε τον Διονύσιο Σολωμό στην σύνθεση του "Ύμνου εις την Ελευθερίαν".</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>2. Το ιδεολογικό υπόβαθρο του ευρωπαϊκού φιλελληνισμού</h5>
+                                <p>«Ευρωπαίοι φιλελεύθεροι διανοούμενοι, καρμπονάροι, [...] Ιακωβίνοι πρώην αξιωματικοί του Ναπολέοντα και άλλοι, μεταξύ εκείνων που μεταλαμπάδευσαν τα Φώτα στις ελληνικές ελίτ, όταν το 1821 είδαν, μετά από έξι χρόνια ήττας και σιωπής που τους είχε επιβάλει η Ιερή Συμμαχία, να ξεσηκώνονται οι Έλληνες, ήταν σαν να ενσαρκώνονταν και να επαναστατούσαν τα ίδια τα ιδεολογικά σύμβολα των. Και για τούτο ανταπέδωσαν την προσφορά με το κίνημα του Φιλελληνισμού. Και αυτή ήταν η δεύτερη δύναμη της Ελληνικής Επανάστασης και η πρώτη διεθνοποίηση της υπόθεσης των Ελλήνων.» <br><em>Π. Πιζάνιας, «Επανάσταση και έθνος, μια ιστορική-κοινωνιολογική προσέγγιση του '21», Ιστορία του νέου ελληνισμού, Ελληνικά Γράμματα, Αθήνα 2003, τόμ. 3ος, σ. 51.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Η ελληνική επανάσταση ενέπνευσε τους Ευρωπαίους φιλελεύθερους και επαναστατικούς κύκλους, καθώς είδαν σε αυτήν την ενσάρκωση των δικών τους ιδεολογικών συμβόλων. Αυτή η διεθνοποίηση του ελληνικού ζητήματος μέσω του φιλελληνισμού, προσέφερε στην επανάσταση σημαντική στήριξη.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Προς την ίδρυση ανεξάρτητου ελληνικού κράτους (1826-1830)</h4>
+            <p>Μετά το 1826 οι Δυνάμεων φαίνονταν αποφασισμένες να λύσουν το ελληνικό ζήτημα. Η ιουλιανή συνθήκη του Λονδίνου (6 Ιουλίου 1827: Αγγλία, Ρωσία, Γαλλία) προέβλεπε την ίδρυση αυτόνομου ελληνικού κράτους. Η άρνηση του σουλτάνου να αποδεχτεί αυτή τη ρύθμιση προκάλεσε την ένοπλη επέμβαση των Δυνάμεων: στη ναυμαχία του Ναβαρίνου (8 Οκτωβρίου 1827) οι στόλοι της Αγγλίας, της Ρωσίας και της Γαλλίας συνέτριψαν τον τουρκοαιγυπτιακό στόλο.</p>
+
+            <figure>
+                <img src="2.jpg" alt="Carneray, Η ναυμαχία του Ναβαρίνου." class="responsive-image">
+                <figcaption>2. Carneray, Η ναυμαχία του Ναβαρίνου.</figcaption>
+            </figure>
+
+            <p>Η νέα τουρκική ήττα στον ρωσοτουρκικό πόλεμο που ακολούθησε (1828-1829) υποχρέωσε τον σουλτάνο να αποδεχτεί όλες τις μέχρι τότε αποφάσεις των Δυνάμεων σχετικά με το ελληνικό ζήτημα (συνθήκη της Αδριανούπολης, 14 Σεπτεμβρίου 1829). Καθώς η Ρωσία φαινόταν έτοιμη να αποκομίσει μόνη της όλα τα διπλωματικά οφέλη από τη διευθέτηση του ελληνικού ζητήματος, η Αγγλία και η Γαλλία πρότεαν τη δημιουργία ενός ανεξάρτητου ελληνικού κράτους. Πράγματι, στις 22 Ιανουαρίου / 3 Φεβρουαρίου (ν.η.) 1830 υπογράφτηκε από την Αγγλία, τη Ρωσία και τη Γαλλία το πρωτόκολλο της Ανεξαρτησίας, η πρώτη επίσημη διεθνής διπλωματική πράξη που αναγνώρισε την Ελλάδα ως κράτος κυρίαρχο και ανεξάρτητο. Το ελληνικό κράτος συμφωνήθηκε ότι θα εκτεινόταν νότια της συνοριακής γραμμής που ορίζεται από τους ποταμούς Αχελώο και Σπερχειό. Ωστόσο, τα σύνορα αυτά θα άλλαζαν λίγο αργότερα (βλέπε ενότητα 17). Παράλληλα, οι Δυνάμεων επέλεξαν τον πρίγκιπα Λεοπόλδο του Σαξ Κόμπουργκ ως ηγεμόνα της Ελλάδας. Αυτός, όμως, δεν αποδέχτηκε την εκλογή του.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>3. Η ελληνική επανάσταση στην πολιτική πραγματικότητα της εποχής της</h5>
+                                <p>«Μόνο μία από τις επαναστάσεις του 1820-1822 κατόρθωσε να επιβληθεί, και αυτό αποδίδεται εν μέρει στην επιτυχία της να πάρει μορφή γνήσιας λαϊκής επανάστασης και στην ευνοϊκή διπλωματική κατάσταση: ο ελληνικός ξεσηκωμός του 1821. Η Ελλάδα, συνεπώς, έγινε πηγή έμπνευσης του διεθνούς φιλελευθερισμού [...].» <br><em>E.J. Hobsbawm, Η εποχή των επαναστάσεων, μτφρ. Μ. Οικονομοπούλου, ΜMIET, Αθήνα 1990, σ. 159.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο σύγχρονος ιστορικός Έρικ Χόμπσμπαουμ θεωρεί ότι η ελληνική επανάσταση πέτυχε, επειδή αφενός κατάφερε να πάρει μορφή γνήσιας λαϊκής επανάστασης και αφετέρου ευνοήθηκε από τη διπλωματική συγκυρία. Έτσι, η ελληνική επανάσταση λειτούργησε ως πηγή έμπνευσης και κινητοποίησης των φιλελεύθερων ανθρώπων της εποχής.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <figure>
+                <img src="3.jpg" alt="Η επικράτεια του πρώτου ελληνικού κράτους (1830)." class="responsive-image half-size">
+                <figcaption>3. Η επικράτεια του πρώτου ελληνικού κράτους (1830).</figcaption>
+            </figure>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>3. Το πρωτόκολλο του Λονδίνου, 3 Φεβρουαρίου 1830 (αποσπάσματα)</h5>
+                                <p>«1. Η Ελλάς θέλει σχηματίσει εν Κράτος ανεξάρτητον, και θέλει χαίρει όλα τα δίκαια πολιτικά, διοικητικά και εμπορικά τα προσπεφυκότα εις εντελή ανεξαρτησίαν. <br>2. [...] η διοριστική γραμμή των συνόρων της Ελλάδος, αρξαμένη από τας εκβολάς του Ασπροποτάμου [σημ. Αχελώος], θέλει ανατρέξει τον ποταμόν αυτόν έως [...]τον κόλπον του Ζητουνίου [σημ. Λαμία], εις τον οποίον θέλει καταντήσει προς τας εκβολάς του Σπερχειού. Όλαι αι χώραι και τόποι κείμενοι προς Μεσημβρίαν αυτής της γραμμής [...], θέλουν ανήκει εις την Ελλάδα [...]. Θέλουν ανήκει ωσαύτως εις την Ελλάδα η νήσος Εύβοια ολόκληρος, αι Δαιμονόνησοι [σημ. Σποράδες], η νήσος Σκύρος, και αι νήσοι, αι εγνωσμέναι το αρχαίον υπό το όνομα Κυκλάδες, συμπεριλαμβανομένης και της νήσου Αμοργού [...]. <br>3. Η Ελληνική Κυβέρνησις θέλει είναι μοναρχική και κληρονομική [...].» <br><em>Πηγή: Δ. Κόκκινος, Η Ελληνική Επανάστασις, Μέλισσα, Αθήνα 1959-1960, τόμ. 6, σ. 437.</em></p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Το Πρωτόκολλο του Λονδίνου του 1830 αποτέλεσε την πρώτη διεθνή πράξη αναγνώρισης της Ελλάδας ως ανεξάρτητου κράτους. Καθόρισε τα αρχικά σύνορα, περιλαμβάνοντας την Πελοπόννησο, τη Στερεά Ελλάδα μέχρι τον Αχελώο και τον Σπερχειό, την Εύβοια, τις Σποράδες, τη Σκύρο και τις Κυκλάδες. Προέβλεψε επίσης μοναρχική και κληρονομική διακυβέρνηση για το νέο κράτος.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="quiz-section-10" class="content-block">
+            <h3>Δοκίμασε τις γνώσεις σου!</h3>
+            <div class="quiz-container">
+                <h4>Κουίζ Πολλαπλών Επιλογών</h4>
+                <div class="question-block">
+                    <p>1. Ποια ήταν η στάση των ευρωπαϊκών Δυνάμεων (Αγγλία, Ρωσία, Αυστρία, Γαλλία, Πρωσία) έναντι της ελληνικής επανάστασης κατά τα δύο πρώτα χρόνια (1821-1822);</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σταθερά αρνητική.</button>
+                        <button class="option" data-correct="false">Σταθερά θετική.</button>
+                        <button class="option" data-correct="false">Ουδέτερη.</button>
+                        <button class="option" data-correct="false">Αρχικά θετική, μετά αρνητική.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Ποιος Άγγλος υπουργός Εξωτερικών αναγνώρισε τους Έλληνες ως εμπόλεμη δύναμη το 1823;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Λόρδος Βύρων</button>
+                        <button class="option" data-correct="true">Τζορτζ Κάνιγκ.</button>
+                        <button class="option" data-correct="false">Ιωάννης Καποδίστριας</button>
+                        <button class="option" data-correct="false">Αλέξανδρος Μαυροκορδάτος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Ποιος από τους παρακάτω ηγέτες δεν υπέγραψε την πράξη προστασίας του 1825;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Αλέξανδρος Μαυροκορδάτος</button>
+                        <button class="option" data-correct="true">Δημήτριος Υψηλάντης.</button>
+                        <button class="option" data-correct="false">Ιωάννης Κωλέττης</button>
+                        <button class="option" data-correct="false">Θεόδωρος Κολοκοτρώνης</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>4. Ποιος ήταν ο κύριος παράγοντας που γέννησε τον φιλελληνισμό;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Ο φόβος της διάλυσης του Οθωμανικού κράτους</button>
+                        <button class="option" data-correct="true">Ο φιλελευθερισμός και ο επαναστατικός ριζοσπαστισμός της γαλλικής επανάστασης.</button>
+                        <button class="option" data-correct="false">Η επιθυμία των Δυνάμεων για εδαφική επέκταση</button>
+                        <button class="option" data-correct="false">Η άρνηση του σουλτάνου να αποδεχτεί την αυτονομία</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>5. Ποια συνθήκη προέβλεπε την ίδρυση αυτόνομου ελληνικού κράτους στις 6 Ιουλίου 1827;</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Συνθήκη της Αδριανούπολης</button>
+                        <button class="option" data-correct="false">Πρωτόκολλο της Ανεξαρτησίας</button>
+                        <button class="option" data-correct="true">Ιουλιανή Συνθήκη του Λονδίνου.</button>
+                        <button class="option" data-correct="false">Συνθήκη των Παρισίων</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <div class="quiz-container true-false-quiz">
+                <h4>Άσκηση Σωστού/Λάθους</h4>
+                <div class="question-block">
+                    <p>1. Η ελληνική επανάσταση, σύμφωνα με τις πρώτες προκηρύξεις, είχε ως στόχο την κοινωνική ανατροπή.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>2. Το σχέδιο των τριών τμημάτων της Ρωσίας για τρεις αυτόνομες ελληνικές ηγεμονίες απορρίφθηκε από τους Έλληνες.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>3. Ο λόρδος Μπάιρον πέθανε πολεμώντας στο Μεσολόγγι.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>4. Η ναυμαχία του Ναβαρίνου συνέβη μετά την υπογραφή της Συνθήκης της Αδριανούπολης.</p>
+                    <div class="options">
+                        <button class="option" data-correct="false">Σωστό</button>
+                        <button class="option" data-correct="true">Λάθος.</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question-block">
+                    <p>5. Το Πρωτόκολλο της Ανεξαρτησίας του 1830 αναγνώρισε την Ελλάδα ως κυρίαρχο και ανεξάρτητο κράτος.</p>
+                    <div class="options">
+                        <button class="option" data-correct="true">Σωστό.</button>
+                        <button class="option" data-correct="false">Λάθος</button>
+                    </div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-10" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-10">
+                            <h4>ΕΝΟΤΗΤΑ 10: Ελληνική επανάσταση και Ευρώπη</h4>
+                            <h5>Το Κίνημα του Φιλελληνισμού</h5>
+                            <ul>
+                                <li><strong>Ορισμός</strong>: Ο φιλελληνισμός στρεφόταν εναντίον τόσο της οθωμανικής απολυταρχίας όσο και της Ιερής Συμμαχίας.</li>
+                                <li><strong>Παράγοντες γέννησης</strong>: α) ο φιλελευθερισμός και β) ο επαναστατικός ριζοσπαστισμός (Γαλλική Επανάσταση).</li>
+                                <li><strong>Λόγοι ανάπτυξης</strong>: α) θαυμασμός των Ευρωπαίων για τον αρχαίο ελληνικό πολιτισμό, β) αποτροπιασμός για τις βιαιότητες των Τούρκων σε βάρος άμαχων Ελλήνων, γ) συγκίνηση που είχαν προκαλέσει οι ελληνικές επιτυχίες.</li>
+                                <li><strong>Στήριξη</strong>: α) οικονομική ενίσχυση (χρήματα, εφόδια) , β) ηθική (εκδηλώσεις συμπαράστασης).</li>
+                                <li><strong>Προσωπική συμμετοχή</strong>: Υπήρχαν και Φιλέλληνες που ήρθαν, πολέμησαν και πέθαναν στην Ελλάδα (Λόρδος Μπάιρον, πέθανε στο πολιορκημένο Μεσολόγγι, 1824).</li>
+                            </ul>
+                            <h5>Η Ίδρυση του Ελληνικού Κράτους</h5>
+                            <ul>
+                                <li><strong>6 Ιουλίου 1827</strong>: Συνθήκη του Λονδίνου (Αγγλία, Γαλλία και Ρωσία αποφασίζουν την ίδρυση αυτόνομου ελληνικού κράτους)˙ η άρνηση αποδοχής της Συνθήκης από τον Σουλτάνο προκάλεψε τη Ναυμαχία του Ναβαρίνου (8 Οκτωβρίου 1827): οι Δυνάμεις κατέστρεψαν ολοσχερώς τον τουρκοαιγυπτιακό στόλο.</li>
+                                <li><strong>1828-1829</strong>: Η Τουρκία ηττάται στο ρωσοτουρκικό πόλεμο και ο Σουλτάνος αναγκάζεται να δεχθεί όλες τις μέχρι τότε συνθήκες.</li>
+                                <li>Για να μην αποκομίσει η Ρωσία μόνη της τα οφέλη από την ανεξαρτησία της Ελλάδος, η Αγγλία και η Γαλλία προτείνουν τη δημιουργία ανεξάρτητου ελληνικού κράτους˙ <strong>22 Ιανουαρίου 1830</strong>, Αγγλία – Γαλλία – Ρωσία υπογράφουν το Πρωτόκολλο της Ανεξαρτησίας (η 1η επίσημη διεθνής διπλωματική πράξη που αναγνωρίζει την Ελλάδα κράτος ανεξάρτητο και κυρίαρχο), τα σύνορα ορίστηκαν στον Αχελώο και Σπερχειό ποταμό και η βασιλεία ανατέθηκε στον πρίγκιπα Λεοπόλδο του Σαξ Κόμπουργκ, ο οποίος όμως αρνήθηκε.</li>
+                            </ul>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Αφού μελετήσετε την πηγή 1, να καταγράψετε τα επιχειρήματα με τα οποία προσπάθησαν οι Έλληνες να πείσουν τους Ευρωπαίους ηγέτες να τους συμπαρασταθούν.</button>
+                    <div class="accordion-content">
+                        <p>Με βάση την πηγή 1 (Προκήρυξη του Αχαϊκού Διευθυντηρίου) και την ανάλυσή της, οι Έλληνες προσπάθησαν να πείσουν τους Ευρωπαίους ηγέτες με τα εξής επιχειρήματα:
+                            <ul>
+                                <li>Τόνισαν την εθνική και θρησκευτική τους ταυτότητα ως "Ελληνικόν έθνος των Χριστιανών", κοινή με τους Ευρωπαίους, σε αντίθεση με τους μουσουλμάνους Οθωμανούς.</li>
+                                <li>Υπογράμμισαν ότι ο αγώνας τους ήταν για τα "δίκαιά" τους, αναφερόμενοι στις αρχές του Διαφωτισμού περί δικαιωμάτων, θεωρώντας φυσική τη συμπαράσταση των Ευρωπαίων.</li>
+                                <li>Επικαλέστηκαν την πνευματική προσφορά των αρχαίων Ελλήνων στην ανθρωπότητα, υπονοώντας ότι οι Ευρωπαίοι όφειλαν να ανταποδώσουν αυτή την προσφορά.</li>
+                                <li>Διακήρυξαν ότι ο πόλεμος ήταν "εθνικός" και "ιερός", με αποκλειστική επιδίωξη την ανάκτησης της ελευθερίας, της ιδιοκτησίας και της τιμής, διαλύοντας κάθε υποψία κοινωνικοανατρεπτικών σκοπών.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Ποια ήταν η θέση της ελληνικής επανάστασης στο ευρωπαϊκό πολιτικό τοπίο της εποχής της; Πριν απαντήσετε, να μελετήσετε την πηγή 3.</button>
+                    <div class="accordion-content">
+                        <p>Με βάση την πηγή 3 (E.J. Hobsbawm) και την ανάλυσή της, η ελληνική επανάσταση είχε μια ιδιαίτερη θέση στο ευρωπαϊκό πολιτικό τοπίο της εποχής της:
+                            <ul>
+                                <li>Ήταν η μόνη από τις επαναστάσεις της περιόδου 1820-1822 που κατόρθωσε να επιβληθεί.</li>
+                                <li>Η επιτυχία της αποδίδεται, εν μέρει, στο ότι πήρε μορφή γνήσιας λαϊκής επανάστασης.</li>
+                                <li>Ευνοήθηκε από την ευνοϊκή διπλωματική συγκυρία.</li>
+                                <li>Έγινε πηγή έμπνευσης και κινητοποίησης για τον διεθνή φιλελευθερισμό, λειτουργώντας ως σύμβολο για τους φιλελεύθερους ανθρώπους της εποχής.</li>
+                            </ul>
+                            Γενικότερα, η επανάσταση εκτυλίχθηκε σε μια περίοδο Παλινόρθωσης στην Ευρώπη, όπου οι Δυνάμεων προσπαθούσαν να διατηρήσουν τις ισορροπίες και να αποτρέψουν μεγάλους πολέμους, βλέποντας αρχικά το ελληνικό ζήτημα ως μέρος του Ανατολικού Ζητήματος και φοβούμενοι τη διάλυση της Οθωμανικής Αυτοκρατορίας. Παρά αυτή την αρχική αρνητική στάση, η ελληνική επανάσταση κατάφερε τελικά να αποσπάσει τη στήριξη και την αναγνώριση των Δυνάμεων, χάρη και στον φιλελληνισμό.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Διαθεματική δραστηριότητα: Αφού μελετήσετε τον παραπάνω χάρτη του πρώτου ανεξάρτητου ελληνικού κράτους, να συνθέσετε δίστηλο πίνακα: στη μία στήλη να καταγράψετε τα διαμερίσματα της σημερινής Ελλάδας που συμπεριλαμβάνονταν στα εδάφη εκείνης της πρώτης Ελλάδας και στην άλλη τα διαμερίσματα που δεν συμπεριλαμβάνονταν.</button>
+                    <div class="accordion-content">
+                        <p>Με βάση τον χάρτη "3. Η επικράτεια του πρώτου ελληνικού κράτους (1830)" και το Πρωτόκολλο της Ανεξαρτησίας, μπορούμε να συνθέσουμε τον εξής πίνακα:</p>
+                        <table style="width:100%; border-collapse: collapse; margin-top: 15px;">
+                            <thead>
+                                <tr style="background-color: var(--light-coffee); color: var(--off-white);">
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Διαμερίσματα σημερινής Ελλάδας που συμπεριλαμβάνονταν (1830)</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Διαμερίσματα σημερινής Ελλάδας που ΔΕΝ συμπεριλαμβάνονταν (1830)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Πελοπόννησος</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Θεσσαλία</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Στερεά Ελλάδα (μέχρι τη γραμμή Αχελώου - Σπερχειού: Δυτική Στερεά Ελλάδα, τμήμα της Φθιώτιδας, Βοιωτία, Αττική)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Ήπειρος</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Εύβοια</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Μακεδονία</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Κυκλάδες (συμπεριλαμβανομένης της Αμοργού)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Θράκη</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Σποράδες (Δαιμονόνησοι)</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Κρήτη</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Σκύρος</td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Νησιά Ανατολικού Αιγαίου (π.χ. Λέσβος, Χίος, Σάμος)</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Δωδεκάνησα</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #ddd;"></td>
+                                    <td style="padding: 8px; border: 1px solid #ddd;">Ιόνια Νησιά (ανήκαν στην Αγγλία)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 15px; font-style: italic;">Σημείωση: Ο πίνακας αυτός αντικατοπτρίζει τα σύνορα του 1830. Τα σύνορα του ελληνικού κράτους επεκτάθηκαν σταδιακά σε μεταγενέστερες περιόδους, όπως αναφέρεται στην ενότητα 17 του βιβλίου.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 18</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        /* Interactive Map Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .map-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--light-coffee);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid var(--off-white);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+        .accordion-content ul {
+            padding: 15px 20px;
+            margin: 0;
+        }
+        .accordion-content ul li {
+            margin-bottom: 5px;
+        }
+
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* General Info Button (i icon) - for figcaption */
+        .info-button {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Specific positioning for info-button inside figcaption */
+        figcaption .info-button {
+            top: 5px;
+            right: 5px;
+            transform: none;
+        }
+
+        .info-button:hover {
+            background-color: var(--coffee);
+        }
+
+        /* New: Analysis Button (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .analysis-button {
+            background: var(--coffee);
+            color: var(--off-white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease;
+            display: block;
+            width: fit-content;
+        }
+
+        .analysis-button:hover {
+            background-color: var(--light-coffee);
+        }
+
+        /* Timeline Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .timeline-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timeline-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .timeline-events {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .timeline-event {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .timeline-event:hover {
+            background-color: var(--coffee);
+        }
+
+        .timeline-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Source Comparison (Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .coin-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+
+        /* Basic Modal for map markers */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--off-white);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--light-coffee);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .modal-content p, .modal-content ul {
+            text-align: justify;
+        }
+        .modal-content ul li {
+            text-align: justify;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+                padding-right: 25px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .image-gallery figcaption {
+                font-size: 0.8em;
+            }
+
+            .info-button {
+                width: 18px;
+                height: 18px;
+                font-size: 0.7em;
+            }
+
+            .analysis-button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+
+            .timeline-event {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .flip-card-front h5, .flip-card-back h5 {
+                font-size: 1.2em;
+            }
+
+            .flip-card-front p, .flip-card-back p {
+                font-size: 0.85em;
+            }
+
+            .options button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 15px;
+            }
+
+            .responsive-image.last-image {
+                max-width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Ρύθμιση Modal (Κεντρική και ανθεκτική) ---
+            let infoModal = document.getElementById("infoModal");
+            let modalText = document.getElementById("modalText");
+            let closeModalButton;
+
+            // Ελέγχουμε αν το modal υπάρχει ήδη στο HTML, αλλιώς το δημιουργούμε δυναμικά
+            if (!infoModal) {
+                infoModal = document.createElement('div');
+                infoModal.id = 'infoModal';
+                infoModal.classList.add('modal');
+                infoModal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="modalText"></p>
+                    </div>
+                `;
+                document.body.appendChild(infoModal);
+                modalText = infoModal.querySelector('#modalText'); // Βρίσκουμε το modalText αφού δημιουργηθεί το modal
+            }
+            // Τώρα που το modal σίγουρα υπάρχει, βρίσκουμε το κουμπί κλεισίματος
+            closeModalButton = infoModal.querySelector('.close-button');
+
+            // Προσθέτουμε τον event listener για το κουμπί κλεισίματος
+            if (closeModalButton) {
+                closeModalButton.onclick = function() {
+                    infoModal.style.display = "none";
+                };
+            }
+
+            // Κλείσιμο modal όταν γίνεται κλικ έξω από το περιεχόμενο του
+            infoModal.addEventListener('click', (event) => {
+                if (event.target === infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+
+            // --- Βοηθητική συνάρτηση για άνοιγμα του modal ---
+            function openInfoModal(content, isHtml = false) {
+                if (isHtml) {
+                    modalText.innerHTML = content;
+                } else {
+                    modalText.textContent = content;
+                }
+                infoModal.style.display = "block";
+            }
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Κλείσιμο άλλων ανοιχτών accordions στην ίδια ομάδα
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        const otherAccordionItem = otherHeader.parentElement;
+                        const otherAccordionContent = otherHeader.nextElementSibling;
+                        // Ελέγχουμε αν είναι διαφορετικό item ΚΑΙ στην ίδια ομάδα accordion (αν υπάρχει)
+                        if (otherAccordionItem !== accordionItem && otherHeader.classList.contains('active') && otherHeader.closest('.accordion') === header.closest('.accordion')) {
+                            otherHeader.classList.remove('active');
+                            otherAccordionContent.style.maxHeight = 0;
+                            otherAccordionContent.style.overflow = 'hidden'; // Ensure it's hidden
+                        }
+                    });
+
+                    // Εναλλαγή (άνοιγμα/κλείσιμο) του τρέχοντος accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Αρχικός υπολογισμός
+                        // Προσθήκη μικρής καθυστέρησης για να διασφαλιστεί ότι το scrollHeight έχει υπολογιστεί σωστά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 'fit-content'; // Ρύθμιση σε fit-content για πλήρη εμφάνιση
+                            accordionContent.style.overflow = 'visible'; // Να είναι ορατό όλο το περιεχόμενο
+                        }, 300); // Μικρή καθυστέρηση μετά το transition time του CSS
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Πρέπει να έχει την τρέχουσα τιμή πριν το κλείσιμο
+                        accordionContent.style.overflow = 'hidden'; // Κρύβουμε το overflow ξανά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 0; // Τώρα κλείνουμε
+                        }, 10); // Μικρή καθυστέρηση για να "συλλάβουμε" το scrollHeight
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            flipCard.classList.toggle('flipped');
+                        });
+                    });
+                }
+            });
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+
+                        // Απενεργοποιούμε όλες τις επιλογές μόλις επιλεγεί μία
+                        options.forEach(opt => {
+                            opt.classList.remove('correct', 'incorrect');
+                            opt.disabled = true;
+                        });
+                        feedback.textContent = ''; // Καθαρίζουμε προηγούμενο feedback
+
+                        // Εφαρμόζουμε το feedback για την τρέχουσα επιλογή
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            // Εμφανίζουμε τη σωστή απάντηση αν ήταν λάθος
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // --- Λειτουργία Map Markers ---
+            document.querySelectorAll('.map-marker').forEach(marker => {
+                marker.addEventListener('click', () => {
+                    openInfoModal(marker.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Timeline Events ---
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                event.addEventListener('click', () => {
+                    openInfoModal(event.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Info Button (το μικρό i) ---
+            document.querySelectorAll('.info-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Σταματάμε το event να επεκταθεί σε γονείς
+                    openInfoModal(button.dataset.info);
+                });
+            });
+
+            // Η λειτουργία εκτύπωσης έχει αφαιρεθεί, όπως ζητήθηκε.
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΔΕΥΤΕΡΟ: Η ΕΛΛΑΔΑ ΑΠΟ ΤΑ ΤΕΛΗ ΤΟΥ 18ου ΑΙΩΝΑ ΕΩΣ ΤΟΝ 20ο ΑΙΩΝΑ</h2>
+    </header>
+
+    <main>
+        <section id="unit-18" class="content-block">
+            <h3>ΕΝΟΤΗΤΑ 18: Από την άφιξη του Όθωνα (1833) έως την 3η Σεπτεμβρίου 1843</h3>
+
+            <div class="key-terms">
+                <h4>Λέξεις-κλειδιά της ενότητας:</h4>
+                <ul>
+                    <li>Απόλυτη Μοναρχία</li>
+                    <li>Συνταγματική Μοναρχία</li>
+                    <li>Αντιβασιλεία</li>
+                    <li>Οικοδόμηση κρατικών θεσμών</li>
+                    <li>Προσωπική διακυβέρνηση του Όθωνα</li>
+                    <li>Επανάσταση 3ης Σεπτεμβρίου 1843</li>
+                </ul>
+            </div>
+
+            <h4>Η εκλογή και η άφιξη του Όθωνα στην Ελλάδα</h4>
+            <p>Ο εμφύλιος πόλεμος που ξέσπασε στην Ελλάδα μετά τη δολοφονία του Καποδίστρια οδήγησε τις Δυνάμεις να επέμβουν, ώστε να αποτρέψουν τη δημιουργία εστίας αναταραχής στη νοτιοανατολική Μεσόγειο, κάτι που θα έβλαπτε τα συμφέροντά τους. Όρισαν, λοιπόν, βασιλιά της Ελλάδας τον Όθωνα, τον 17χρονο γιο του βασιλιά της Βαυαρίας Λουδοβίκου Α΄ (συνθήκη του Λονδίνου, 1832). Το πολίτευμα ορίστηκε να είναι απόλυτη μοναρχία. Επιπλέον, οι Δυνάμεις έδωσαν στην Ελλάδα 20.000.000 φράγκα ως πρώτη δόση ενός δανείου που θα έφτανε συνολικά τα 60.000.000 φράγκα.</p>
+
+            <figure>
+                <img src="1.jpg" alt="Π. φον Ες, Η αποβίβαση του Όθωνα στο Ναύπλιο, 25 Ιανουαρίου 1833." class="responsive-image">
+                <figcaption>1. Π. φον Ες, Η αποβίβαση του Όθωνα στο Ναύπλιο, 25 Ιανουαρίου 1833.</figcaption>
+            </figure>
+            <p>Αξίζει ιδιαίτερα να επισημανθεί το πανηγυρικό κλίμα που φαίνεται ότι επικρατούσε κατά την υποδοχή του Όθωνα στο Ναύπλιο, γεγονός που αποτυπώνεται στον πίνακα και μαρτυρά τις προσδοκίες που είχαν οι Έλληνες από τον νεαρό βασιλιά.</p>
+
+            <h4>Η περίοδος της Αντιβασιλείας (1833-1835)</h4>
+            <p>Επειδή ο Όθωνας ήταν ανήλικος, συμφωνήθηκε ότι την εξουσία θα ασκούσε, μέχρι την ενηλικίωσή του (1835), η Αντιβασιλεία, μια επιτροπή από Βαυαρούς αξιωματούχους διορισμένους από τον πατέρα του Όθωνα. Τα τρία κύρια μέλη της ήταν ο Άρμανσμπεργκ, πρωθυπουργός και υπουργός Εξωτερικών, ο Μάουρερ, αρμόδιος για την εκπαίδευση, τη δικαιοσύνη και την εκκλησία, και ο Χάιντεκ, υπεύθυνος για τις ένοπλες δυνάμεις.</p>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>α. Η άποψη του μέλους της Αντιβασιλείας Γκέοργκ Λούντβιχ φον Μάουρερ</h5>
+                                <p>Μόλις αποβιβαστήκαμε, κυκλοφορήσαμε μια προκήρυξη με την οποία ζητούσαμε να μας χαρίσει ο Ελληνικός Λαός πρώτα απ' όλα την εμπιστοσύνη του. [..] Για ν' αποκτήσει ο τόπος ηρεμία, δημοσιεύσαμε αυστηρότατους νόμους –με προσωρινό φυσικά χαρακτήρα- εναντίον εκείνων που θα επιχειρούσαν να διασαλεύσουν την τάξη. [..] Με τα μέτρα που πήραμε σχετικά με τη Δικαιοσύνη και το Στρατό, αποκαταστάθηκε η τάξη και η ασφάλεια [ ] σταμάτησαν οι ληστείες και οι πειρατείες. Με τη βαθμιαία οργάνωση στα θέματα της διοίκησης, ταχτοποιήθηκαν ένα σωρό ζητήματα, και με τη σιγουριά που απλώθηκε παντού, άρχισε να αναπτύσσεται η γεωργία, το εμπόριο και η βιομηχανία.</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Γκέοργκ Λούντβιχ φον Μάουρερ, μέλος της Αντιβασιλείας, εκφράζει την άποψη ότι οι ενέργειες της Αντιβασιλείας συνέβαλαν στην αποκατάσταση της τάσης και της ασφάλειας στην Ελλάδα, καθώς και στην ανάπτυξη της γεωργίας, του εμπορίου και της βιομηχανίας. Τονίζει την προσπάθεια για οικοδόμηση κρατικών θεσμών και τη θέσπιση νόμων για την εξασφάλιση της ηρεμίας.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>β. Η άποψη του Βαυαρού αξιωματούχου Ρούντχαρτ</h5>
+                                <p>Ο Ίγκνατς φον Ρούντχαρτ διετέλεσε για λίγο, το 1837, αρχηγός του βασιλικού οίκου της Ελλάδας (θέση παρόμοια με αυτή του σημερινού πρωθυπουργού), αλλά διαφώνησε με τον Όθωνα και παραιτήθηκε. Δε σκοπεύω να κατηγορήσω την Αντιβασιλεία, αλλά δεν μπορώ να κρύψω την παρατήρηση ότι [ ] οι δημόσιοι άντρες, που είχαν αναλάβει τη διακυβέρνηση και τη διοίκηση της Ελλάδας, δεν έπρεπε να ξεκινήσουν από τις δικές τους αντιλήψεις και από το διοικητικό τυπικό [..] αλλά να θεσπίσουν ρυθμίσεις που να ταιριάζουν στην κατάσταση της φτωχής και εξαντλημένης χώρας [..] Έπρεπε στην αρχή να περιοριστούν στη θεμελίωση του κράτους βάσει των κοινοτήτων που ήδη υπήρχαν [-]</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Ρούντχαρτ επικρίνει την Αντιβασιλεία για την προσέγγισή της, υποστηρίζοντας ότι δεν έλαβε υπόψη της τις ιδιαιτερότητες της φτωχής και εξαντλημένης Ελλάδας. Τονίζει ότι οι μεταρρυθμίσεις έπρεπε να βασίζονται στις υπάρχουσες τοπικές δομές και όχι σε ξένα διοικητικά πρότυπα.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>γ. Η άποψη του Μακρυγιάννη, αντιπάλου της Αντιβασιλείας</h5>
+                                <p>Ότι οι Μπαυαρέζοι και οι οπαδοί τους Έλληνες θέλαν να μας φάνε κι' ο Θεός μας γλύτωσε από τους κακούς τους σκοπούς. Και πασκίζαμεν έξω και μέσα με τρόπον και κατηχούσαμεν τους ανθρώπους ίσως και κινηθούμεν διά τα έξω και λευτερωθούμεν κ' εμείς εδώ μέσα και κάμωμεν νόμους στέρεους και διοικηθούμεν ως άνθρωποι ότι μας κυβερνούν οι ανθρωποφάγοι με το «έτζι θέλω» και κρίμα στα αίματα και θυσίες οπού κάμαμεν.</p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>Ο Μακρυγιάννης, ως αντίπαλος της Αντιβασιλείας, εκφράζει έντονη δυσαρέσκεια και κατηγορεί τους Βαυαρούς και τους υποστηρικτές τους για δεσποτική διακυβέρνηση, αγνοώντας τις θυσίες του ελληνικού λαού και την επιθυμία για πραγματικούς νόμους και ανθρώπινη διοίκηση. Η άποψή του αντανακλά την εχθρική στάση μεγάλου μέρους του ελληνικού πληθυσμού.</p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>Η Αντιβασιλεία θέλησε να οικοδομήσει ένα σύγχρονο, κατά τα δυτικά πρότυπα, εθνικό κράτος. Οι επιδιώξεις της συνοψίζονταν στο τρίπτυχο: εθνική ανεξαρτησία, βασιλική απολυταρχία και συγκεντρωτικό σύστημα διακυβέρνησης.</p>
+            <p>Η διοίκηση του κράτους ήταν συγκεντρωτική. Η Ελλάδα διαιρέθηκε σε 10 νομούς, ενώ η πρωτεύουσα μεταφέρθηκε το 1834 από το Ναύπλιο στην Αθήνα, κίνηση που σκοπό είχε να τονίσει ότι το νέο κράτος ήταν κληρονόμος της αρχαίας Ελλάδας.</p>
+            <p>Ο στρατός βασίστηκε, αρχικά, στους περίπου 3.500 Βαυαρούς στρατιωτικούς που είχαν έρθει μαζί με τον Όθωνα στην Ελλάδα. Οι Έλληνες αγωνιστές που δεν έγιναν δεκτοί στις ένοπλες δυνάμες του κράτους έμειναν χωρίς κανέναν πόρο ζωής, με αποτέλεσμα τη μεγάλη δυσαρέσκειά τους. Αρκετοί από αυτούς στράφηκαν στη ληστεία.</p>
+            <p>Η δικαιοσύνη αναδιοργανώθηκε, ιδρύθηκαν δικαστήρια και συντάχθηκαν νέοι νόμοι.</p>
+            <p>Η εκπαίδευση αναμορφώθηκε, επίσης. Η πρωτοβάθμια εκπαίδευση παρεχόταν στα επταετούς διάρκειας αλληλοδιδακτικά Δημοτικά σχολεία. Η δευτεροβάθμια εκπαίδευση προσφερόταν στα τριτάξια Ελληνικά σχολεία, που βρίσκονταν στις πρωτεύουσες των επαρχιών, και στα τετρατάξια Γυμνάσια, που υπήρχαν στις πρωτεύουσες των νομών. Επίσης, ιδρύθηκε, το 1837, Πανεπιστήμιο στην Αθήνα. Την ίδια χρονιά ιδρύθηκε και το Πολυτεχνικό Σχολείο, πρόδρομος του σημερινού Πολυτεχνείου. Ωστόσο, η εκπαίδευσης των κοριτσιών παρέμεινε παραμελημένη.</p>
+            <p>Η ελληνική εκκλησία ορίστηκε αυτοκέφαλη, δηλαδή χωρίστηκε διοικητικά από το Πατριαρχείο Κωνσταντινουπόλεως, απόφαση που υπαγορεύθηκε από το ότι το τελευταίο βρισκόταν σε οθωμανικό έδαφος, υπό την άμεση επιρροή του σουλτάνου. Επίσης, διατάχθηκε το κλείσιμο των μοναστηριών που είχαν μικρό αριθμό μοναχών.</p>
+            <p>Η στάση των Ελλήνων απέναντι στην Αντιβασιλεία ήταν αρχικά δύσπιστη και στη συνέχεια απροκάλυπτα εχθρική. Αναπτύχθηκαν, μάλιστα, συνωμοτικές κινήσεις με σκοπό την ανατροπή της Αντιβασιλείας, ενώ δεν έλειψαν και ανοιχτές εξεγέρσεις (Μεσσηνία, 1834).</p>
+
+            <h4>Η περίοδος της απόλυτης μοναρχίας του Όθωνα (1835-1843)</h4>
+            <p>Μετά την ανάληψη της διακυβέρνησης από τον Όθωνα (Μάιος 1835), η κατάσταση δεν άλλαξε. Ο βασιλιάς προσπάθησε, όπως και η Αντιβασιλεία πριν απ' αυτόν, να περιορίσει την επιρροή των κομμάτων ενισχύοντας κατά περιόδους ένα από αυτά και περιθωριοποιώντας τα άλλα. Ωστόσο, η πολιτική αυτή συνάντησε έντονες αντιδράσεις που εκφράστηκαν αρχικά με εξεγέρσεις τοπικού χαρακτήρα (Ύδρα, Μεσσηνία).</p>
+
+            <h4>Η 3η Σεπτεμβρίου 1843</h4>
+            <p>Παράλληλα, η οικονομική κατάσταση των αγροτών χειροτέρευε και στην ύπαιθρο αναπτυσσόταν η ληστεία. Επιπλέον, η Ελλάδα αδυνατούσε να εξοφλήσει τα δάνειά της, με αποτέλεσμα οι Δυνάμεις να επιβάλουν οικονομικό έλεγχο στη χώρα και περικοπή των κρατικών δαπανών. Οι στρατιωτικοί, από τα πρώτα θύματα των περικοπών, στράφηκαν εναντίον του Όθωνα. Η γενική αναταραχή οδήγωσε σε έντονη πολιτική κινητοποίηση με πρωτεργάτες τους Α. Μαυροκορδάτο, Ι. Κωλέττη, Α. Μεταξά και Α. Λόντο, δηλαδή πολιτικούς όλων των κομμάτων. Κοινή ήταν η πεποίθηση ότι η παραχώρηση συντάγματος θα απάλλασσε τη χώρα από τους Βαυαρούς και θα την ανακούφιζε από την οικονομική και κοινωνική κρίση.</p>
+            <p>Έτσι, τη νύχτα της 2ης προς την 3η Σεπτεμβρίου 1843 δυνάμεις της φρουράς της Αθήνας και πολλοί πολίτες με επικεφαλής τον συνταγματάρχη Δημήτριο Καλλέργη και τον αγωνιστή του '21 Μακρυγιάννη συγκεντρώθηκαν έξω από τα ανάκτορα (σημερινή Βουλή) και απαίτησαν από τον Όθωνα να παραχωρήσει σύνταγμα (σε ανάμνηση των γεγονότων ο χώρος ονομάστηκε αργότερα πλατεία Συντάγματος). Ο βασιλιάς, αν και αρχικά αρνήθηκε, υποχρεώθηκε τελικά να προκηρύξει εκλογές για Εθνοσυνέλευση, που θα ψήφιζε σύνταγμα. Έτσι, τελείωσε η περίοδος της απόλυτης μοναρχίας του Όθωνα.</p>
+
+            <figure>
+                <img src="2.jpg" alt="Χ. Μάρτενς, Η νύχτα της 3ης Σεπτεμβρίου 1843. Ο Καλλέργης έφιππος στο κέντρο στο παράθυρο διακρίνεται ο Όθωνας." class="responsive-image last-image">
+                <figcaption>2. Χ. Μάρτενς, Η νύχτα της 3ης Σεπτεμβρίου 1843. Ο Καλλέργης έφιππος στο κέντρο στο παράθυρο διακρίνεται ο Όθωνας.</figcaption>
+            </figure>
+
+        </section>
+
+        <section id="homework-section" class="content-block">
+            <h3>Εργασία για το σπίτι</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Ανάλυση Παραθέματος</button>
+                    <div class="accordion-content">
+                        <p>«Στο μεταξύ, η εξέλιξη των κοινωνικο-οικονομικών δομών της χώρας ήταν υπερβολικά αργή. Η απόλυτη μοναρχία του βασιλιά Όθωνα, με την πολυάριθμη βαυαρική αυλή του, είχε σαν βασικό χαρακτηριστικό την πλήρη περιφρόνηση των αναγκών και των πραγματικών επιδιώξεων των Ελλήνων. Ο λαός, στην πιο μεγάλη αθλιότητα, και η άρχουσα τάξη που είχε αναδειχθεί κατά, και μετά, την επανάσταση (ιδιοκτήτες της γης, προύχοντες και στρατιωτικοί αρχηγοί), ήταν βαθύτατα δυσαρεστημένοι. Η βαυαρική διοίκηση, αποκομμένη ολότελα από τις αυτόχθονες δυνάμεις, είχε επιβάλει έναν απροκάλυπτο δεσποτισμό. Αυτή η κατάσταση πραγμάτων ελάχιστα μεταβλήθηκε από την επανάσταση του 1843, που οδήγησε στην καθιέρωση του πρώτου Συντάγματος (1844). Οι περιορισμοί που επιβλήθηκαν στην απόλυτη εξουσία του μονάρχη ήταν φαινομενικοί, γι΄ αυτό τα τρία μεγάλα κόμματα, που αντιπροσώπευαν απροκάλυπτα τα συμφέροντα των προστάτιδων δυνάμεων (και που ονομάζονταν αποκαλυπτικότατα το αγγλικό, το γαλλικό και το ρωσικό κόμμα) ελίσσονταν με σκοπό την απόκτηση της βασιλικής ευνοίας. Μόνο όταν ο οικονομικός έλεγχος τερματίστηκε, το 1860, έγινε κάποια πρόοδος, μαζί με την εμφάνιση μιας νέας πολιτικής γενιάς και με τα πρώτα σημεία κεφαλαιοκρατικής ανάπτυξης. Η βιομηχανική δραστηριότητα έμενε βεβαιότατα σε πολύ  περιορισμένα επίπεδα, αλλά η  ταχύτατη αύξηση της εμπορικής ναυτιλίας και η αλματώδης ανάπτυξη του εμπορίου είχαν επακόλουθο τη δημιουργία και την άνοδο της αστικής τάξης».</p>
+                        <p>Κ. Τσουκαλάς, Η Ελληνική τραγωδία, 1981, σ. 10.</p>
+                        <p>Με τη βοήθεια των ερωτήσεων του πίνακα προσπαθώ να κατανοήσω το περιεχόμενο του παραθέματος:</p>
+                        <ol>
+                            <li>Σε ποια εποχή αναφέρεται το παράθεμα; Ποιος κυβερνάει την Ελλάδα;</li>
+                            <li>Σε ποια κατάσταση βρίσκεται η χώρα; Προοδεύει; Εξελίσσεται κοινωνικο-οικονομικά; Αυτοί που κυβερνάνε φροντίζουν για την πρόοδο και την ευημερία του ελληνικού λαού; Νοιάζονται για τις πραγματικές ανάγκες των Ελλήνων;</li>
+                            <li>Ποια είναι τα συναισθήματα του ελληνικού λαού αλλά και της ελληνικής άρχουσας τάξης για την κατάσταση που επικρατεί στη χώρα;</li>
+                            <li>Αυτοί που κυβερνάνε λαμβάνουν υπόψη τους την γνώμη των Ελλήνων στον τρόπο διακυβέρνησης;</li>
+                            <li>Μετά την επανάσταση της 3ης Σεπτεμβρίου άλλαξε κάτι ουσιαστικά; Περιορίστηκαν οι υπερεξουσίες του μονάρχη;</li>
+                            <li>Μέσα σε αυτήν την κατάσταση ποια ήταν η στάση των ελληνικών κομμάτων και των αρχηγών τους;</li>
+                        </ol>
+                        <p>...και στη συνέχεια προσπαθώ να γράψω ένα σύντομο κείμενο (8-10 σειρές) στο οποίο θα περιγράφω την κατάσταση που επικρατεί στην Ελλάδα την περίοδο της Βαυαροκρατίας.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-1" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-1">
+                            <h4>ΕΝΟΤΗΤΑ 18: ΑΠΌ ΤΗΝ ΑΦΙΞΗ ΤΟΥ ΟΘΩΝΑ (1833) ΕΩΣ ΤΗΝ 3η ΣΕΠΤΕΜΒΡΙΟΥ 1843</h4>
+                            <h5>Η εκλογή και άφιξη του Όθωνα στην Ελλάδα</h5>
+                            <ul>
+                                <li>Συνθήκη του Λονδίνου (1832): άφιξη του Όθωνα στην Ελλάδα.</li>
+                                <li>Πολίτευμα: απόλυτη μοναρχία.</li>
+                                <li>Δάνειο: 60.000.000 φράγκα (ο Όθων ήρθε φέρνοντας τα 20.000.000 απ’ το σύνολο).</li>
+                            </ul>
+                            <h5>Η περίοδος της Αντιβασιλείας (1833-1835)</h5>
+                            <ul>
+                                <li>Αντιβασιλεία: την εξουσία ασκούσαν 3 αντιβασιλείς, διότι ο Όθων ήταν ανήλικος, όταν ήρθε στην Ελλάδα: α) Άρμανσμπεργκ (πρωθυπουργός και υπουργός Εξωτερικών), β) Μάουρερ (αρμόδιος για την εκπαίδευση, τη δικαιοσύνη και την εκκλησία), γ) Χάιντεκ (υπεύθυνος για τις ένοπλες δυνάμεις).</li>
+                                <li>Στόχος της Αντιβασιλείας: η δημιουργία σύγχρονου, εθνικού κράτους, κατά τα δυτικά πρότυπα (τρίπτυχο: εθνική ανεξαρτησία, βασιλική απολυταρχία και συγκεντρωτικό σύστημα διακυβέρνησης).</li>
+                                <li>Διοίκηση: συγκεντρωτική, η χώρα διαιρέθηκε σε 10 Νομούς, ενώ πρωτεύουσα έγινε η Αθήνα (1834).</li>
+                                <li>Στρατός: Αρχικά βασίστηκε στους 3.500 Βαυαρούς που είχαν συνοδεύσει τον Όθωνα. Οι Έλληνες περιθωριοποιήθηκαν και μερικοί από αυτούς κατέφυγαν στη ληστεία.</li>
+                                <li>Δικαιοσύνη: Ιδρύθηκαν Δικαστήρια και συντάχθηκαν Νόμοι.</li>
+                                <li>Εκπαίδευση: Πρωτοβάθμια: αλληλοδιδακτικά σχολεία 7ετούς φοίτησης, Δευτεροβάθμια: Ελληνικά Σχολεία 3ετούς φοίτησης (πρωτεύουσες επαρχιών) και Γυμνάσια 4ετούς φοίτησης (πρωτεύουσες νομών). Το 1837 ιδρύεται το Πανεπιστήμιο Αθηνών και το Πολυτεχνείο.</li>
+                                <li>Εκκλησία: ορίστηκε Αυτοκέφαλη (διοικητικά χωρίστηκε από το Πατριαρχείο Κων/πολης), τα μικρά μοναστήρια έκλεισαν.</li>
+                                <li>Αντιμετώπιση της Αντιβασιλείας: Οι Έλληνες αντιμετώπισαν τους Βαυαρούς αρχικά με καχυποψία και στη συνέχεια εχθρικά. Υπήρξαν συνωμοτικές κινήσεις και επαναστάσεις (Μεσσηνία 1834).</li>
+                            </ul>
+                            <h5>Η περίοδος της απόλυτης μοναρχίας του Όθωνα (1835-1843)</h5>
+                            <ul>
+                                <li>Προσπάθησε να διχάσει τα κόμματα προς όφελός του, πότε βοηθώντας τους μεν και πότε τους δε. Δημιουργήθηκαν εξεγέρσεις τοπικού χαρακτήρα (Ύδρα, Μεσσηνία).</li>
+                            </ul>
+                            <h5>Η 3η Σεπτεμβρίου 1843</h5>
+                            <ul>
+                                <li>Αίτια: 1) η κατάσταση των αγροτών χειροτέρευε και στην ύπαιθρο αναπτυσσόταν η δουλεία, 2) η Ελλάδα αδυνατούσε να εξοφλήσει τα δάνειά της (επιβολή διεθνούς οικονομικού ελέγχου από τις Δυνάμεις και περικοπή των κρατικών δαπανών).</li>
+                                <li>Αποτέλεσμα: Οι στρατιωτικοί στράφηκαν κατά του Όθωνα.</li>
+                                <li>Πρωτεργάτες: Α. Μαυροκορδάτος, Ι. Κωλέττης, Α. Μεταξάς, Α. Λόντος.</li>
+                                <li>Αίτημα: Παραχώρηση Συντάγματος (= απαλλαγή της χώρας από τους Βαυαρούς, ανακούφιση από την οικονομική και την κοινωνική κρίση).</li>
+                                <li>2-3 Σεπτεμβρίου 1843: Η φρουρά και πολλοί πολίτες (Δ. Καλλέργης, Μακρυγιάννης) απαίτησαν Σύνταγμα. Ο Όθων αναγκάστηκε να δεχθεί.</li>
+                            </ul>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>

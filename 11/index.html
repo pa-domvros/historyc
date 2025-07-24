@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος - Ενότητα 17</title>
+
+    <style>
+        :root {
+            --off-white: #F8F8F8;    /* Ελαφρώς εκρού/λευκό */
+            --beige: #F5F5DC;       /* Μπεζ */
+            --light-coffee: #C8B5AC; /* Πιο ανοιχτό καφέ */
+            --coffee: #6F4E37;      /* Το κύριο καφέ, τώρα το πιο σκούρο */
+            --text-color: #333333;  /* Σκούρο γκρι για κείμενο */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--off-white);
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        header {
+            background: var(--coffee);
+            color: var(--off-white);
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .content-block {
+            background: var(--beige);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h3, h4 {
+            color: var(--coffee);
+            border-bottom: 2px solid var(--light-coffee);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+            text-align: left;
+        }
+
+        .key-terms ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .key-terms li {
+            background: var(--off-white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .responsive-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .responsive-image.last-image {
+            max-width: 50%;
+            margin: 15px auto;
+        }
+
+        /* Interactive Map Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .map-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .map-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--light-coffee);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid var(--off-white);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s ease-in-out;
+            z-index: 10;
+        }
+
+        .map-marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 1px solid var(--light-coffee);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+            padding: 12px 15px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: var(--coffee);
+            color: var(--off-white);
+        }
+
+        .accordion-header::after {
+            content: '\002B'; /* Plus sign */
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .accordion-header.active::after {
+            content: '\2212'; /* Minus sign */
+        }
+
+        .accordion-content {
+            padding: 0 15px;
+            background-color: var(--beige);
+            max-height: 0; /* Ξεκινάει κλειστό */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* Ομαλή μετάβαση */
+        }
+
+        .accordion-content p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery figure {
+            margin: 0;
+            padding: 10px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 8px;
+            background-color: var(--off-white);
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .image-gallery figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Για τις μεμονωμένες λεζάντες φωτογραφιών (όχι μέσα σε gallery) */
+        figure figcaption {
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        /* General Info Button (i icon) - for figcaption */
+        .info-button {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Specific positioning for info-button inside figcaption */
+        figcaption .info-button {
+            top: 5px;
+            right: 5px;
+            transform: none;
+        }
+
+        .info-button:hover {
+            background-color: var(--coffee);
+        }
+
+        /* New: Analysis Button (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .analysis-button {
+            background: var(--coffee);
+            color: var(--off-white);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease;
+            display: block;
+            width: fit-content;
+        }
+
+        .analysis-button:hover {
+            background-color: var(--light-coffee);
+        }
+
+        /* Timeline Section (Not used in this unit, but keeping the styles for consistency if needed later) */
+        .timeline-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .timeline-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .timeline-events {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .timeline-event {
+            background: var(--light-coffee);
+            color: var(--off-white);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .timeline-event:hover {
+            background-color: var(--coffee);
+        }
+
+        .timeline-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* Source Comparison (Flip Card) */
+        .flip-card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            position: relative;
+            min-height: 250px;
+            margin: 30px auto;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .flip-card-front {
+            background-color: var(--light-coffee);
+            color: var(--off-white);
+        }
+
+        .flip-card-back {
+            background-color: var(--coffee);
+            color: var(--off-white);
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front h5, .flip-card-back h5 {
+            margin-top: 0;
+            font-size: 1.4em;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .flip-card-front p, .flip-card-back p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            text-align: justify;
+            flex-grow: 1;
+        }
+
+        .flip-button {
+            background-color: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            margin-top: auto;
+        }
+
+        .flip-button:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .coin-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-container.true-false-quiz {
+            background: var(--beige);
+            border: 1px solid var(--light-coffee);
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-block p {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border: 1px solid var(--light-coffee);
+            border-radius: 5px;
+            background-color: var(--beige);
+            color: var(--text-color);
+            cursor: pointer;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .options button:hover {
+            background-color: #e0e0d0;
+        }
+
+        .options button.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .options button.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: var(--coffee);
+            color: var(--off-white);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+
+        .summary-footer-text {
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+        }
+
+
+        /* Basic Modal for map markers */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: var(--off-white);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid var(--light-coffee);
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            color: var(--text-color);
+            text-align: left;
+        }
+
+        .modal-content p, .modal-content ul {
+            text-align: justify;
+        }
+        .modal-content ul li {
+            text-align: justify;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* --- MOBILE OPTIMIZATIONS (VERY SMALL SCREENS) --- */
+        @media screen and (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header h2 {
+                font-size: 1.1em;
+            }
+
+            main {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+
+            .content-block {
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            h4 {
+                font-size: 1em;
+                margin-bottom: 10px;
+                padding-right: 25px;
+            }
+
+            .key-terms li {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .image-gallery figcaption {
+                font-size: 0.8em;
+            }
+
+            .info-button {
+                width: 18px;
+                height: 18px;
+                font-size: 0.7em;
+            }
+
+            .analysis-button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+
+            .timeline-event {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .flip-card-container {
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .flip-card-front h5, .flip-card-back h5 {
+                font-size: 1.2em;
+            }
+
+            .flip-card-front p, .flip-card-back p {
+                font-size: 0.85em;
+            }
+
+            .options button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 90%;
+                padding: 15px;
+            }
+
+            .responsive-image.last-image {
+                max-width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Ρύθμιση Modal (Κεντρική και ανθεκτική) ---
+            let infoModal = document.getElementById("infoModal");
+            let modalText = document.getElementById("modalText");
+            let closeModalButton;
+
+            // Ελέγχουμε αν το modal υπάρχει ήδη στο HTML, αλλιώς το δημιουργούμε δυναμικά
+            if (!infoModal) {
+                infoModal = document.createElement('div');
+                infoModal.id = 'infoModal';
+                infoModal.classList.add('modal');
+                infoModal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <p id="modalText"></p>
+                    </div>
+                `;
+                document.body.appendChild(infoModal);
+                modalText = infoModal.querySelector('#modalText'); // Βρίσκουμε το modalText αφού δημιουργηθεί το modal
+            }
+            // Τώρα που το modal σίγουρα υπάρχει, βρίσκουμε το κουμπί κλεισίματος
+            closeModalButton = infoModal.querySelector('.close-button');
+
+            // Προσθέτουμε τον event listener για το κουμπί κλεισίματος
+            if (closeModalButton) {
+                closeModalButton.onclick = function() {
+                    infoModal.style.display = "none";
+                };
+            }
+
+            // Κλείσιμο modal όταν γίνεται κλικ έξω από το περιεχόμενο του
+            infoModal.addEventListener('click', (event) => {
+                if (event.target === infoModal) {
+                    infoModal.style.display = "none";
+                }
+            });
+
+            // --- Βοηθητική συνάρτηση για άνοιγμα του modal ---
+            function openInfoModal(content, isHtml = false) {
+                if (isHtml) {
+                    modalText.innerHTML = content;
+                } else {
+                    modalText.textContent = content;
+                }
+                infoModal.style.display = "block";
+            }
+
+            // --- Λειτουργία Collapsible / Accordion ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.parentElement;
+
+                    // Κλείσιμο άλλων ανοιχτών accordions στην ίδια ομάδα
+                    document.querySelectorAll('.accordion-header').forEach(otherHeader => {
+                        const otherAccordionItem = otherHeader.parentElement;
+                        const otherAccordionContent = otherHeader.nextElementSibling;
+                        // Ελέγχουμε αν είναι διαφορετικό item ΚΑΙ στην ίδια ομάδα accordion (αν υπάρχει)
+                        if (otherAccordionItem !== accordionItem && otherHeader.classList.contains('active') && otherHeader.closest('.accordion') === header.closest('.accordion')) {
+                            otherHeader.classList.remove('active');
+                            otherAccordionContent.style.maxHeight = 0;
+                            otherAccordionContent.style.overflow = 'hidden'; // Ensure it's hidden
+                        }
+                    });
+
+                    // Εναλλαγή (άνοιγμα/κλείσιμο) του τρέχοντος accordion
+                    header.classList.toggle('active');
+                    if (header.classList.contains('active')) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Αρχικός υπολογισμός
+                        // Προσθήκη μικρής καθυστέρησης για να διασφαλιστεί ότι το scrollHeight έχει υπολογιστεί σωστά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 'fit-content'; // Ρύθμιση σε fit-content για πλήρη εμφάνιση
+                            accordionContent.style.overflow = 'visible'; // Να είναι ορατό όλο το περιεχόμενο
+                        }, 300); // Μικρή καθυστέρηση μετά το transition time του CSS
+                    } else {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'; // Πρέπει να έχει την τρέχουσα τιμή πριν το κλείσιμο
+                        accordionContent.style.overflow = 'hidden'; // Κρύβουμε το overflow ξανά
+                        setTimeout(() => {
+                            accordionContent.style.maxHeight = 0; // Τώρα κλείνουμε
+                        }, 10); // Μικρή καθυστέρηση για να "συλλάβουμε" το scrollHeight
+                    }
+                });
+            });
+
+            // --- Λειτουργία Flip Card ---
+            document.querySelectorAll('.flip-card').forEach(flipCard => {
+                if (flipCard) {
+                    flipCard.querySelectorAll('.flip-button').forEach(button => {
+                        button.addEventListener('click', () => {
+                            flipCard.classList.toggle('flipped');
+                        });
+                    });
+                }
+            });
+
+            // --- Λειτουργία Quiz ---
+            document.querySelectorAll('.question-block').forEach(container => {
+                const options = container.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', () => {
+                        const feedback = container.querySelector('.feedback');
+
+                        // Απενεργοποιούμε όλες τις επιλογές μόλις επιλεγεί μία
+                        options.forEach(opt => {
+                            opt.classList.remove('correct', 'incorrect');
+                            opt.disabled = true;
+                        });
+                        feedback.textContent = ''; // Καθαρίζουμε προηγούμενο feedback
+
+                        // Εφαρμόζουμε το feedback για την τρέχουσα επιλογή
+                        if (option.dataset.correct === 'true') {
+                            option.classList.add('correct');
+                            feedback.textContent = 'Σωστό! Μπράβο!';
+                        } else {
+                            option.classList.add('incorrect');
+                            feedback.textContent = 'Λάθος απάντηση.';
+                            // Εμφανίζουμε τη σωστή απάντηση αν ήταν λάθος
+                            const correctAnswer = container.querySelector('[data-correct="true"]');
+                            if (correctAnswer) {
+                                correctAnswer.classList.add('correct');
+                            }
+                        }
+                    });
+                });
+            });
+
+            // --- Λειτουργία Map Markers ---
+            document.querySelectorAll('.map-marker').forEach(marker => {
+                marker.addEventListener('click', () => {
+                    openInfoModal(marker.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Timeline Events ---
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                event.addEventListener('click', () => {
+                    openInfoModal(event.dataset.info);
+                });
+            });
+
+            // --- Λειτουργία Info Button (το μικρό i) ---
+            document.querySelectorAll('.info-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Σταματάμε το event να επεκταθεί σε γονείς
+                    openInfoModal(button.dataset.info);
+                });
+            });
+
+            // Η λειτουργία εκτύπωσης έχει αφαιρεθεί, όπως ζητήθηκε.
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Ιστορία Γ' Γυμνασίου: Ο Νεότερος Κόσμος</h1>
+        <h2>ΚΕΦΑΛΑΙΟ ΤΕΤΑΡΤΟ: ΤΟ ΕΛΛΗΝΙΚΟ ΚΡΑΤΟΣ ΑΠΟ ΤΗΝ ΙΔΡΥΣΗ ΤΟΥ ΕΩΣ ΤΙΣ ΑΡΧΕΣ ΤΟΥ 20ού ΑΙΩΝΑ</h2>
+    </header>
+
+    <main>
+        <section id="unit-17" class="content-block">
+            <h3>17. Ο Ι. Καποδίστριας ως κυβερνήτης της Ελλάδας (1828-1831). Η ολοκλήρωση της ελληνικής επανάστασης (1829)</h3>
+
+            <p style="background-color: var(--beige); padding: 10px;">
+                Ο Ιωάννης Καποδίστριας εκλέχτηκε κυβερνήτης της Ελλάδας από την Εθνοσυνέλευση της Τροιζήνας (άνοιξη 1827) και στις αρχές του 1828 ήρθε στο Ναύπλιο. Η κατάσταση που βρήκε ήταν τραγική. Η χώρα ήταν κατερειπωμένη και ο λαός εξαθλιωμένος. Ληστές και πειρατές έλεγχαν μεγάλες περιοχές, ενώ αιγυπτιακός στρατός παρέμενε στη ΝΔ Πελοπόννησο και τουρκικός στη Στερεά Ελλάδα.
+            </p>
+
+            <h4>Πολίτευμα και διοίκηση</h4>
+            <p>
+                Ο Καποδίστριας ανέστειλε την ισχύ του συντάγματος της Τροιζήνας και συγκέντρωσε στα χέρια του όλες τις εξουσίες. Έκρινε ότι αυτό ήταν αναγκαίο για να αντιμετωπιστούν τα επείγοντα προβλήματα της χώρας. Η Δ΄ Εθνοσυνέλευση (Άργος, καλοκαίρι 1829) επικύρωσε αυτές τις αποφάσεις και έθεσε τις βασικές αρχές μιας μελλοντικής συνταγματικής αναθεώρησης.
+            </p>
+
+            <h4>Ένοπλες δυνάμεις</h4>
+            <p>
+                Ο Κυβερνήτης ασχολήθηκε ιδιαίτερα με τη συγκρότηση τακτικών ενόπλων δυνάμεων, καθώς έπρεπε να εκκαθαρισθεί η Στερεά Ελλάδα από τον τουρκικό στρατό αλλά και να αντιμετωπιστούν σοβαρά προβλήματα εσωτερικής τάξης (ληστεία, πειρατεία). Ορισμένοι από τους αγωνιστές αξιοποιήθηκαν για τη δημιουργία τακτικού στρατού. Επιπλέον, ιδρύθηκε ο Λόχος των Ευελπίδων, πρόδρομος της σημερινής Στρατιωτικής Σχολής Ευελπίδων. Παράλληλα, έγιναν τα πρώτα βήματα για την οργάνωση τακτικού πολεμικού ναυτικού και καταπολεμήθηκε η πειρατεία χάρη και στη δράση του Ανδρέα Μιαούλη.
+            </p>
+            <figure>
+                <img src="1.jpg" alt="Ιωάννης Καποδίστριας" class="responsive-image">
+                <figcaption>1. Ιωάννης Καποδίστριας</figcaption>
+            </figure>
+
+            <h4>Οικονομία</h4>
+            <p>
+                Ο Καποδίστριας σχημάτισε ένα πρώτο κρατικό ταμείο, το οποίο προήλθε από εισφορές Ελλήνων του εξωτερικού και φιλελλήνων. Κατόπιν προχώρησε, με τη συνεργασία του φίλου του Γαλλοελβετού τραπεζίτη Εϋνάρδου, στην ίδρυση τράπεζας και στην κοπή νομίσματος, του φοίνικα. Παράλληλα, εφάρμοσε αυστηρή λιτότητα στις δημόσιες δαπάνες και επιχείρησε να εκσυγχρονίσει τη γεωργία εισάγοντας νέες καλλιέργειες (πατάτα) και νέες καλλιεργητικές μεθόδους (χρήση σιδερένιου άροτρου).
+            </p>
+
+            <h4>Εκπαίδευση</h4>
+            <p>
+                Μια από τις κύριες προτεραιότητες του Κυβερνήτη υπήρξε η οργάνωση της εκπαίδευσης. Ίδρυσε το Ορφανοτροφείο της Αίγινας, στο οποίο λειτούργησαν τρία αλληλοδιδακτικά σχολεία (αντίστοιχα των σημερινών δημοτικών αλλά τετραετούς φοίτησης), τρία ελληνικά (αντίστοιχα των σημερινών γυμνασίων με τριετή φοίτηση), αρκετά χειροτεχνεία (επαγγελματικές σχολές), καθώς και το Πρότυπον Σχολείον, στο οποίο σπούδαζαν όσοι προορίζονταν για δάσκαλοι στα αλληλοδιδακτικά. Επίσης, ιδρύθηκε το Κεντρικόν Σχολείον, στο οποίο φοιτούσαν όσοι προορίζονταν για σπουδές σε πανεπιστήμια του εξωτερικού. Επιπλέον, δημιουργήθηκε στην Τίρυνθα (περιοχή ανάμεσα στο Άργος και το Ναύπλιο) το Πρότυπον Αγροκήπιον (γεωργική σχολή). Ο Καποδίστριας πίστευε ότι στη δεδομένη στιγμή η εκπαίδευση θα έπρεπε να παρέχει, πρώτα απ' όλα, βασικές γνώσεις και επαγγελματική κατάρτιση. Αυτός ήταν και ο λόγος που δεν προχώρησε τότε στην ίδρυση πανεπιστημίου.
+            </p>
+
+            <h4>Η ολοκλήρωση της επανάστασης (1829)</h4>
+            <p>
+                Όταν έφτασε στην Ελλάδα ο Καποδίστριας, η επανάσταση βρισκόταν ακόμη σε εξέλιξη. Εκκρεμούσαν ο βαθμός ανεξαρτησίας του κράτους (αν θα ήταν αυτόνομο ή ανεξάρτητο, βλέπε γλωσσάριο) και ο καθορισμός των συνόρων του· ακόμη, δεν είχαν σταματήσει οι πολεμικές επιχειρήσεις. Η τελευταία μάχη δόθηκε στις 12 Σεπτεμβρίου 1829 στην Πέτρα της Βοιωτίας, όπου ελληνικές δυνάμεις με επικεφαλής τον Δ. Υψηλάντη επικράτησαν επίλεκτων τουρκικών δυνάμεων. Λίγο αργότερα, χάρη και στους επιδέξιους χειρισμούς του Κυβερνήτη, η Ελλάδα όχι μόνο αναγνωρίστηκε κράτος ανεξάρτητο (πρωτόκολλο της Ανεξαρτησίας, 1830), αλλά και διεύρυνε τα σύνορά της ενσωματώνοντας όλα τα εδάφη νοτίως της γραμμής Αμβρακικού κόλπου-Παγασητικού κόλπου (συνθήκη της Κωνσταντινούπολης, 1832). Το ελληνικό κράτος θα περιελάμβανε τη Στερεά Ελλάδα, την Πελοπόννησο, τα νησιά του Αργοσαρωνικού, την Εύβοια, τις Κυκλάδες και τις Σποράδες.
+            </p>
+            <figure>
+                <img src="2.jpg" alt="Χάρτης ελληνικού κράτους" class="responsive-image">
+                <figcaption>2. Το ελληνικό κράτος σύμφωνα με τη συνθήκη της Κωνσταντινούπολης (1832).</figcaption>
+            </figure>
+
+            <h4>Η αντιπολίτευση κατά του Καποδίστρια</h4>
+            <p>
+                Η επιλογή του Καποδίστρια να συγκροτήσει ένα ισχυρό, συγκεντρωτικό κράτος, κατά τα δυτικά πρότυπα, προκάλεσε αντιδράσεις. Πρόκριτοι με τοπική εξουσία (Π. Μαυρομιχάλης), πλούσιοι πλοιοκτήτες (Γ. Κουντουριώτης) και έμπειροι Φαναριώτες (Α. Μαυροκορδάτος) δυσαρεστήθηκαν, την ίδια στιγμή που φιλελεύθεροι διανοούμενοι (Αδ. Κοραής) καυτηρίαζαν τον αυταρχισμό του Καποδίστρια και αξίωναν την παραχώρηση συνταγματικών ελευθεριών. Επίσης, η Αγγλία και η Γαλλία υποκινούσαν τις αντικαποδιστριακές κινήσεις θεωρώντας τον Κυβερνήτη όργανο της Ρωσίας. Από τις αρχές του 1830 σημειώθηκαν εξεγέρσεις και αργότερα ο Α. Μιαούλης, αντίπαλος πλέον του Κυβερνήτη, ανατίναξε στον Πόρο τα δύο μεγαλύτερα ελληνικά πολεμικά πλοία. Στην Ύδρα, κέντρο της αντιπολίτευσης, η εφημερίδα Απόλλων προπαγάνδιζε τη δολοφονία του Κυβερνήτη. Η ένταση κορυφώθηκε όταν ο Καποδίστριας φυλάκισε τον πρόκριτο της Μάνης Πετρόμπεη Μαυρομιχάλη θεωρώντάς τον υπεύθυνο για αντικυβερνητικές κινήσεις. Η αντίδραση δεν άργησε. Στις 27 Σεπτεμβρίου 1831 ο Κωνσταντίνος και ο Γεώργιος Μαυρομιχάλης δολοφόνησαν τον Καποδίστρια στο Ναύπλιο.
+            </p>
+            <figure>
+                <img src="3.jpg" alt="Δολοφονία Καποδίστρια" class="responsive-image">
+                <figcaption>3. Η δολοφονία του Καποδίστρια (πίνακας λαϊκού ζωγράφου).</figcaption>
+            </figure>
+        </section>
+
+        <section id="kapodistrias-sources" class="content-block">
+            <h3>Ο Καποδίστριας μέσα από τις πηγές</h3>
+
+            <h4>Προβλήματα κατά την άφιξη του Καποδίστρια</h4>
+            <p>
+                Ο Ιωάννης Καποδίστριας έφτασε στο Ναύπλιο τον Ιανουάριο του 1828. Οι Έλληνες περίμεναν πολλά από αυτόν: ήταν πολιτικός με πείρα, γνωστός στα ευρωπαϊκά κράτη και θεωρούσαν ότι μπορούσε να διαπραγματευτεί μαζί τους. Πίστευαν ότι μπορούσε να βρει τα χρήματα που χρειάζονταν, ότι θα έκανε πραγματικότητα την ενότητα και ότι θα πετύχαινε να δημιουργήσει ανεξάρτητο κράτος.
+            </p>
+            <p>
+                Όμως ο Καποδίστριας είχε να αντιμετωπίσει πολλές δυσκολίες:
+                <ul>
+                    <li>Ο Ιμπραήμ και ο Κιουταχής κατείχαν το μεγαλύτερο μέρος της χώρας.</li>
+                    <li>Η οικονομία ήταν καταστραμμένη.</li>
+                    <li>Οι διοικητικές υπηρεσίες δε λειτουργούσαν.</li>
+                    <li>Στο Αιγαίο υπήρχαν πολλοί πειρατές.</li>
+                </ul>
+            </p>
+
+            <h4>Τα πιο σημαντικά μέτρα που πήρε ήταν τα ακόλουθα:</h4>
+            <ul>
+                <li>Ανέστειλε (κατάργησε προσωρινά) το πολίτευμα που δημιούργησαν οι Εθνοσυνελεύσεις και συγκέντρωσε τις εξουσίες στα χέρια του και σε ανθρώπους που εμπιστευόταν.</li>
+                <li>Αναδιοργάνωσε τις διοικητικές υπηρεσίες και ίδρυσε δικαστήρια.</li>
+                <li>Αύξησε τα δημόσια έσοδα. Αυτό το πέτυχε με τους φόρους που άρχισαν να εισπράττονται συστηματικά και με χρήματα που συγκέντρωσε από το εξωτερικό. Ακόμη, ίδρυσε την «Εθνική Χρηματιστική Τράπεζα» και έκοψε εθνικό νόμισμα (το φοίνικα).</li>
+                <li>Αναδιοργάνωσε το στρατό. Ήταν πολύ δύσκολο για τον Καποδίστρια να πείσει τους αγωνιστές της Επανάστασης να μπουν σε τακτικό στρατό, που είχε πειθαρχία και αυστηρούς κανόνες. Ούτε όμως μπορούσε και να τους διαλύσει. Έτσι τους οργάνωσε σε χιλιαρχίες, που δεν ήταν ούτε τακτικός στρατός ούτε όμως και άτακτα σώματα.</li>
+                <li>Οργάνωσε τη βασική εκπαίδευση και ίδρυσε σχολεία.</li>
+            </ul>
+
+            <h4>Δύο αντίθετες απόψεις για τον Ι. Καποδίστρια και το έργο του</h4>
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>α. Η άποψη του Ιωάννη Κωλέττη, αρχηγού του γαλλικού κόμματος</h5>
+                                <p>
+                                    Απομάκρυνε [ενν. ο Καποδίστριας] από τα πράγματα όλους τους αρχηγούς των Ελλήνων, όλους τους επιρροή έχοντας και όλους τους πεπαιδευμένους [..], κατεπάτησεν [..] τα ψηφίσματα της εν Άργει Εθνοσυνελεύσεως, καταφρόνησε τα δίκαια του πολίτου, και τέτρεξε την ελευθεροτυπία, σύστησε και διοργάνωσε δικαστήρια καθ' όλην την έκτασιν εξηρτημένα από την θέλησίν του εμψύχωσε την κακοήθεια, την επιβουλήν, την προδοσία.
+                                </p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>
+                                    Στο πρώτο κείμενο, ο γνωστός πολιτικός Ιωάννης Κωλέττης ασκεί αυστηρότατη κριτική στον Καποδίστρια, κατηγορώντάς τον ότι καταπάτησε τα δικαιώματα των Ελλήνων εγκαθιστώντας ένα αυταρχικό και ανελεύθερο σύστημα προσωπικής διακυβέρνησης. Ωστόσο, η ουσία ίσως να βρίσκεται στην αρχική αναφορά του Κωλέττη, σύμφωνα με την οποία ο Καποδίστριας απομάκρυνε από την κεντρική πολιτική σκηνή τους διάφορους πολιτικούς ηγέτες, ανάμεσα σε αυτούς και τον ίδιο τον Κωλέττη.
+                                </p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="source-comparison">
+                <div class="flip-card-container">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <h5>β. Η άποψη του Εϋνάρδου, φιλέλληνα συνεργάτη του Καποδίστρια</h5>
+                                <p>
+                                    Ο ενάρετος ανήρ [...] όστις εθυσίασε το παν διά την πατρίδα του, απέθανε θύμα ιδιαιτέρας εκδικήσεως [..]. Οι Έλληνες πάσης φατρίας θέλουν γνωρίσει αργότερα την αμέτρητον ζημίαν, την οποίαν υπέφερον, θέλουν ιδεί εντός ολίγου, ότι δεν υπάρχει άνθρωπος ικανός ν' αναπληρώση την έλλειψιν του Κόμητος Καποδίστρια, και όταν εξετάσουν όλα όσα έπραξε διά την πατρίδα του, θέλουν τον αναγνωρίσει ως τον αγαθώτερον άνθρωπον.
+                                </p>
+                                <button class="flip-button">Διάβασε την Ανάλυση</button>
+                            </div>
+                            <div class="flip-card-back">
+                                <h5>Ανάλυση Πηγής</h5>
+                                <p>
+                                    Το δεύτερο κείμενο, γραμμένο από τον Γαλλοελβετό τραπεζίτη και φίλο του Καποδίστρια Jean Gabriel Eynard (που λόγω της μακροχρόνιας παραμονής του στην Ελλάδα έγινε γνωστός ως Εϋνάρδος), θεωρεί ότι ο Καποδίστριας πρόσφερε πολύτιμες υπηρεσίες στο ελληνικό κράτος προσέφερε τα πάντα για την Ελλάδα και κρίνει ότι η δολοφονία του υπήρξε «συμφορά διά την Ελλάδα».
+                                </p>
+                                <button class="flip-button">Πίσω στην Πηγή</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>Λόγοι για τους οποίους ο Καποδίστριας δημιούργησε πολλούς εχθρούς:</h4>
+            <ul>
+                <li>Παραμέρισε πολλούς από τους ηγέτες της Ελληνικής Επανάστασης, προεστούς και οπλαρχηγούς, και περιόρισε τα προνόμια και τις εξουσίες που είχαν παλαιότερα.</li>
+                <li>Προσπάθησε να δημιουργήσει ένα κράτος με ισχυρή κεντρική διοίκηση. Έτσι, συγκρούστηκε με τους τοπικούς άρχοντες, που ήταν ακόμη ισχυροί.</li>
+                <li>Προκάλεσε ακόμη δυσαρέσκεια και σε λαϊκά στρώματα, επειδή αύξησε τους φόρους και δε μοίρασε την εθνική γη.</li>
+                <li>Ανέστειλε το σύνταγμα και έτσι έκανε αντιπάλους του τους φιλελεύθερους.</li>
+            </ul>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ιωάννης Καποδίστριας σε 20 ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Από ποιον και πότε εκλέχτηκε κυβερνήτης της Ελλάδας ο Καποδίστριας;</button>
+                    <div class="accordion-content">
+                        <p>Ο Ιωάννης Καποδίστριας εκλέχτηκε Κυβερνήτης της Ελλάδας από τη Συνέλευση της Τροιζήνας (άνοιξη 1827) για 7 χρόνια.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Που και πότε κατέφτασε ο Καποδίστριας;</button>
+                    <div class="accordion-content">
+                        <p>Ο Καποδίστριας έφτασε στο Ναύπλιο το 1828. Συγκεκριμένα, στις 8 Ιανουαρίου 1828 έφτασε στο Ναύπλιο και στις 12 Ιανουαρίου 1828 έφτασε στην Αίγινα.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποια ήταν τα προβλήματα της Ελλάδας αναφορικά με το λαό;</button>
+                    <div class="accordion-content">
+                        <p>Ο λαός ήταν εξαθλιωμένος.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποια ήταν η κατάσταση της Ελλάδας αναφορικά με την ύπαρξη ξένων στρατών;</button>
+                    <div class="accordion-content">
+                        <p>Αιγυπτιακός στρατός παρέμενε στην Πελοπόννησο και τουρκικός στη Στερεά Ελλάδα.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποια ήταν η κατάσταση της Ελλάδας αναφορικά με την ασφάλεια;</button>
+                    <div class="accordion-content">
+                        <p>Ληστές και πειρατές έλεγχαν μεγάλες περιοχές.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Πώς διαμόρφωσε το πολίτευμα ο Καποδίστριας και πώς επικύρωσε την απόφαση του;</button>
+                    <div class="accordion-content">
+                        <p>Ο Καποδίστριας ανέστειλε τις αποφάσεις της Εθνοσυνέλευσης και συγκέντρωσε στα χέρια του όλες τις εξουσίες. Η Δ’ Εθνοσυνέλευση (Άργος 1829) επικύρωσε αυτές τις αποφάσεις.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Πώς οργάνωσε ο Καποδίστριας τις ένοπλες δυνάμεις σε στεριά και θάλασσα και ποιο σώμα ίδρυσε;</button>
+                    <div class="accordion-content">
+                        <p>Συγκρότησε τακτικές ένοπλες δυνάμεις, αξιοποίησε ορισμένους από τους αγωνιστές, ίδρυσε τον Λόχο των Ευελπίδων, έκανε τα πρώτα βήματα για την οργάνωση τακτικού πολεμικού ναυτικού και καταπολέμησε την πειρατεία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποιο ήταν το βασικό χαρακτηριστικό της οικονομικής πολιτικής του Καποδίστρια;</button>
+                    <div class="accordion-content">
+                        <p>Εφάρμοσε αυστηρή λιτότητα στις δημόσιες δαπάνες και εκσυγχρόνισε τη γεωργία.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Πώς ονόμασε ο Καποδίστριας το πρώτο ελληνικό νόμισμα και γιατί διάλεξε τη συγκεκριμένη αναπαράσταση πάνω σ’ αυτό;</button>
+                    <div class="accordion-content">
+                        <p>Το πρώτο ελληνικό νόμισμα ονομάστηκε φοίνικας. Ο λόγος επιλογής της αναπαράστασης δεν αναφέρεται στις πηγές.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Σε ποιο τομέα της οικονομίας έδωσε βάση ο Καποδίστριας εκσυγχρονίζοντας τον;</button>
+                    <div class="accordion-content">
+                        <p>Εκσυγχρόνισε τη γεωργία, εισάγοντας νέες καλλιέργειες και καλλιεργητικές μεθόδους.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Τι οδήγησε τον Καποδίστρια στην ίδρυση Ορφανοτροφείου και πού;</button>
+                    <div class="accordion-content">
+                        <p>Ο Καποδίστριας ίδρυσε το Ορφανοτροφείο της Αίγινας για τα άπορα και ορφανά παιδιά.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Τι ήταν αλληλοδιδακτική μέθοδος που εφαρμόστηκε στα σχολεία;</button>
+                    <div class="accordion-content">
+                        <p>Στο Ορφανοτροφείο της Αίγινας λειτούργησαν αλληλοδιδακτικά σχολεία, τα οποία ήταν αντίστοιχα των σημερινών δημοτικών, τετραετούς φοίτησης.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Για ποιο λόγο ιδρύθηκε το Πρότυπον Αγροκήπιον και που;</button>
+                    <div class="accordion-content">
+                        <p>Το Πρότυπον Αγροκήπιον δημιουργήθηκε στην Τίρυνθα ως γεωργική σχολή.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Για ποιο λόγο δεν ίδρυσε Πανεπιστήμιο ο Καποδίστριας;</button>
+                    <div class="accordion-content">
+                        <p>Ο Καποδίστριας δεν προχώρησε στην ίδρυση Πανεπιστημίου, καθώς πίστευε ότι η εκπαίδευση θα έπρεπε να παρέχει, πρώτα απ' όλα, βασικές γνώσεις και επαγγελματική κατάρτιση, με βάση τις τότε ανάγκες της Ελλάδας.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Τι προέβλεπε το Πρωτόκολλο της Ανεξαρτησίας και πότε υπογράφηκε;</button>
+                    <div class="accordion-content">
+                        <p>Το Πρωτόκολλο της Ανεξαρτησίας υπογράφηκε το 1830 και ανακήρυξε την Ελλάδα ανεξάρτητο κράτος.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Τι προέβλεπε η Συνθήκη της Κωνσταντινούπολης και πότε υπογράφηκε;</button>
+                    <div class="accordion-content">
+                        <p>Η Συνθήκη της Κωνσταντινούπολης υπογράφηκε το 1832 και προέβλεπε ότι η Ελλάδα διευρύνει τα σύνορά της ως το σημείο του Αμβρακικού – Παγασητικού κόλπου (Πελοπόννησος, Στερεά Ελλάδα, νησιά του Αργοσαρωνικού, Εύβοια, Κυκλάδες, Σποράδες).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποιοι ήταν οι βασικοί πολιτικοί αντίπαλοι του Καποδίστρια;</button>
+                    <div class="accordion-content">
+                        <p>Οι βασικοί πολιτικοί αντίπαλοι του Καποδίστρια ήταν πρόκριτοι με τοπική εξουσία (Π. Μαυρομιχάλης), πλούσιοι πλοιοκτήτες (Γ. Κουντουριώτης), έμπειροι Φαναριώτες (Α. Μαυροκορδάτος) και φιλελεύθεροι διανοούμενοι (Αδ. Κοραής).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποια εφημερίδα ασκούσε έντονη κριτική στον Καποδίστρια; Σε ποια πόλη κυκλοφορούσε;</button>
+                    <div class="accordion-content">
+                        <p>Η εφημερίδα "Απόλλων" ασκούσε έντονη κριτική στον Καποδίστρια και κυκλοφορούσε στην Ύδρα.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Ποιο ήταν το βασικό αίτημα των πολιτικών αντιπάλων του Καποδίστρια;</button>
+                    <div class="accordion-content">
+                        <p>Το βασικό αίτημα των πολιτικών αντιπάλων του Καποδίστρια ήταν η παραχώρηση συνταγματικών ελευθεριών.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Πότε, που και ποιοι δολοφόνησαν τον Καποδίστρια;</button>
+                    <div class="accordion-content">
+                        <p>Στις 27 Σεπτεμβρίου 1831 ο Κωνσταντίνος και ο Γεώργιος Μαυρομιχάλης δολοφόνησαν τον Καποδίστρια στο Ναύπλιο.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary-section-17" class="content-block">
+            <h3>Περίληψη Ενότητας</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Κύρια Σημεία της Ενότητας</button>
+                    <div class="accordion-content">
+                        <div id="summary-content-17">
+                            <h4>ΚΕΦΑΛΑΙΟ ΤΕΤΑΡΤΟ: ΤΟ ΕΛΛΗΝΙΚΟ ΚΡΑΤΟΣ ΑΠΟ ΤΗΝ ΙΔΡΥΣΗ ΤΟΥ ΕΩΣ ΤΙΣ ΑΡΧΕΣ ΤΟΥ 20ού ΑΙΩΝΑ</h4>
+                            <h5>17. Ο ΚΑΠΟΔΙΣΤΡΙΑΣ ΩΣ ΚΥΒΕΡΝΗΤΗΣ ΤΗΣ ΕΛΛΑΔΑΣ (1828-1831). Η ΟΛΟΚΛΗΡΩΣΗ ΤΗΣ ΕΛΛΗΝΙΚΗΣ ΕΠΑΝΑΣΤΑΣΗΣ (1829)</h5>
+                            <p>Ο Ιωάννης Καποδίστριας εκλέχτηκε Κυβερνήτης από τη Συνέλευση της Τροιζήνας (άνοιξη 1827) για 7 χρόνια.</p>
+                            <p>Έφτασε στο Ναύπλιο το 1828. Η κατάσταση της χώρας ήταν η εξής: α) ο λαός εξαθλιωμένος, β) ληστές και πειρατές έλεγχαν μεγάλες περιοχές, γ) αιγυπτιακός στρατός παρέμενε στην Πελοπόννησο και δ) τουρκικός στη Στερεά Ελλάδα.</p>
+                            <p><strong>Πολίτευμα και Διοίκηση:</strong> Ο Καποδίστριας ανέστειλε τις αποφάσεις της Εθνοσυνέλευσης και συγκέντρωσε στα χέρια του όλες τις εξουσίες. Η Δ’ Εθνοσυνέλευση (Άργος 1829) επικύρωσε αυτές τις αποφάσεις.</p>
+                            <p><strong>Ένοπλες Δυνάμες:</strong> α) Συγκρότηση τακτικών ενόπλων δυνάμεων, β) αξιοποιήθηκαν ορισμένοι από τους αγωνιστές, γ) ιδρύθηκε ο Λόχος των Ευελπίδων, δ) έγιναν τα πρώτα βήματα για την οργάνωση τακτικού πολεμικού ναυτικού και ε) καταπολεμήθηκε η πειρατεία (Α. Μιαούλη).</p>
+                            <p><strong>Οικονομία:</strong> α) Σχημάτισε ένα πρώτο κρατικό ταμείο, β) προχώρησε στην ίδρυση τράπεζας και την κοπή νομίσματος (φοίνικας), γ) εφάρμοσε αυστηρή λιτότητα στις δημόσιες δαπάνες, δ) εκσυγχρόνισε τη γεωργία (νέες καλλιέργειες αλλά και καλλιεργητικές μέθοδοι).</p>
+                            <p><strong>Εκπαίδευση:</strong> Ίδρυσε το Ορφανοτροφείο της Αίγινας (λειτούργησαν 3 αλληλοδιδακτικά σχολεία, 3 ελληνικά, αρκετά χειροτεχνεία, το Πρότυπον Σχολείον και το Κεντρικόν Σχολείον). Στην Τίρυνθα δημιούργησε το Πρότυπον Αγροκήπιον. Δεν προχώρησε όμως στην ίδρυση Πανεπιστημίου.</p>
+                            <p><strong>Η Ολοκλήρωση της Επανάστασης (1829):</strong> Όταν έφθασε ο Κυβερνήτης στην Ελλάδα, ο βαθμός ανεξαρτησίας του κράτους και ο καθορισμός των συνόρων του εκκρεμούσαν και οι πολεμικές επιχειρήσεις δεν είχαν σταματήσει. Στις 12 Σεπτεμβρίου 1829 δόθηκε η τελευταία μάχη στην Πέτρα της Βοιωτίας (οι Έλληνες επικράτησαν των Τούρκων με αρχηγό τον Δ. Υψηλάντη). Το 1830 υπογράφηκε το Πρωτόκολλο της Ανεξαρτησίας, με το οποίο η Ελλάδα ανακηρύχθηκε ανεξάρτητο κράτος. Το 1832 υπογράφηκε η Συνθήκη της Κωνσταντινούπολης, με την οποία η Ελλάδα διεύρυνε τα σύνορά της ως το σημείο του Αμβρακικού – Παγασητικού κόλπου (Πελοπόννησος, Στερεά Ελλάδα, νησιά του Αργοσαρωνικού, Εύβοια, Κυκλάδες, Σποράδες).</p>
+                            <p><strong>Η αντιπολίτευση κατά του Καποδίστρια:</strong> Αίτιο ήταν η επιλογή του Κυβερνήτη να συγκροτήσει ένα κράτος ισχυρό κατά τα δυτικοευρωπαϊκά πρότυπα (ακόμη, Αγγλία και Γαλλία υποδαύλιζαν την κατάσταση, θεωρώντας τον Καποδίστρια όργανο της Ρωσίας). Πολιτικοί αντίπαλοι ήταν πρόκριτοι με τοπική εξουσία (Π. Μαυρομιχάλης), πλούσιοι πλοιοκτήτες (Γ. Κουντουριώτης), έμπειροι Φαναριώτες (Α. Μαυροκορδάτος) και φιλελεύθεροι διανοούμενοι (Αδ. Κοραής). Αίτημα ήταν η παραχώρηση συνταγματικών ελευθεριών. Το 1830 σημειώθηκαν εξεγέρσεις. Ο Μιαούλης ανατίναξε τα δύο μεγαλύτερα πολεμικά πλοία στον Πόρο. Στην Ύδρα η εφημερίδα Απόλλων προπαγάνδιζε τη δολοφονία του Καποδίστρια. Η ένταση κορυφώθηκε με τη φυλάκιση του Πετρόμπεη Μαυρομιχάλη. Στις 27 Σεπτεμβρίου 1831 ο Κυβερνήτης δολοφονήθηκε από τους Κωνσταντίνο και Γεώργιο Μαυρομιχάλη.</p>
+                            <p class="summary-footer-text">Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-ended-questions-section" class="content-block">
+            <h3>Ερωτήσεις</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">1. Αφού αντιπαραβάλετε τις πηγές α και β, να καταγράψετε τις θέσεις που διατυπώνονται σε αυτές.</button>
+                    <div class="accordion-content">
+                        <p>Η πηγή α, από τον Ιωάννη Κωλέττη, ασκεί αυστηρή κριτική στον Καποδίστρια, κατηγορώντας τον ότι κατέπατησε τα δικαιώματα των Ελλήνων, εγκαθιστώντας ένα αυταρχικό και ανελεύθερο σύστημα προσωπικής διακυβέρνησης, και ότι απομάκρυνε πολιτικούς ηγέτες από την κεντρική πολιτική σκηνή. Αντίθετα, η πηγή β, από τον Jean Gabriel Eynard, εξυμνεί τον Καποδίστρια ως έναν ενάρετο άνδρα που θυσίασε τα πάντα για την πατρίδα του, θεωρώντας τη δολοφονία του «συμφορά διά την Ελλάδα» και υποστηρίζοντας ότι δεν υπήρχε ικανός άνθρωπος να τον αντικαταστήσει.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">2. Να αποτιμήσετε την εκπαιδευτική πολιτική του Καποδίστρια.</button>
+                    <div class="accordion-content">
+                        <p>Η εκπαιδευτική πολιτική του Καποδίστρια έδινε ιδιαίτερη έμφαση στην επέκταση και ενίσχυση της στοιχειώδους και επαγγελματικής εκπαίδευσης. Με κριτήριο τις τότε ανάγκες της Ελλάδας, αυτή η πολιτική φαίνεται να ήταν προσανατολισμένη σε σωστή κατεύθυνση. Η απόφασή του να μην προχωρήσει στην ίδρυση πανεπιστημίου, σε μια χώρα όπου η συντριπτική πλειονότητα των κατοίκων ήταν αναλφάβητοι, μοιάζει επίσης σωστή.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">3. Ποια ήταν τα αίτια της σύγκρουσης Καποδίστρια-αντιπολίτευσης;</button>
+                    <div class="accordion-content">
+                        <p>Τα αίτια της σύγκρουσης Καποδίστρια-αντιπολίτευσης ήταν η επιλογή του Κυβερνήτη να συγκροτήσει ένα ισχυρό, συγκεντρωτικό κράτος, κατά τα δυτικά πρότυπα. Αυτό προκάλεσε αντιδράσεις από πρόκριτους με τοπική εξουσία (Π. Μαυρομιχάλης), πλούσιους πλοιοκτήτες (Γ. Κουντουριώτης) και έμπειρους Φαναριώτες (Α. Μαυροκορδάτος), ενώ φιλελεύθεροι διανοούμενοι (Αδ. Κοραής) καυτηρίαζαν τον αυταρχισμό του και αξίωναν συνταγματικές ελευθερίες. Επιπλέον, η Αγγλία και η Γαλλία υποκινούσαν τις αντικαποδιστριακές κινήσεις θεωρώντας τον όργανο της Ρωσίας. Η σύγκρουση αυτή ήταν ουσιαστικά μια πολιτική σύγκρουση για την εξουσία, καθώς ο Καποδίστριας απέκλεισε τη διοικητική αριστοκρατία από την εξουσία.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Δημιουργία / Επιμέλεια: Παναγιώτης Δόμβρος, Διευθυντής 1ου Γυμνασίου Πυλαίας ©2025-26</p>
+    </footer>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>
